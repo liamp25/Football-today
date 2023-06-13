@@ -7,7 +7,7 @@
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="pills-match-preview-tab" data-toggle="pill" href="#pills-match-preview" role="tab"
-                aria-controls="pills-match-preview" aria-selected="true">Match Previewss</a>
+                aria-controls="pills-match-preview" aria-selected="true">Match Preview</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="pills-injuries-tab" data-toggle="pill" href="#pills-injuries" role="tab"
