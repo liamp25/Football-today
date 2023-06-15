@@ -315,7 +315,16 @@ class FixtureService
         $resp_1 = CurlCaller::get($url_1, []);
 
         if ($resp_1) {
-            $injuries['home'] = $resp_1->response;
+            $uniquePlayers = array();
+            $final_resp =  array();
+            foreach($resp_1->response as $k=>$v){
+                if(!in_array($v->player->id,$uniquePlayers)){
+                    $final_resp[] = $v;
+                    $uniquePlayers[] = $v->player->id;
+                }
+            }
+            $injuries['home'] = $final_resp;
+            // $injuries['home'] = $resp_1->response;
         }
         // else {
         //     return $this->getTeamStatistics($response);
@@ -326,7 +335,16 @@ class FixtureService
         $resp_2 = CurlCaller::get($url_2, []);
 
         if ($resp_2) {
-            $injuries['away'] = $resp_2->response;
+            $uniquePlayers = array();
+            $final_resp =  array();
+            foreach($resp_2->response as $k=>$v){
+                if(!in_array($v->player->id,$uniquePlayers)){
+                    $final_resp[] = $v;
+                    $uniquePlayers[] = $v->player->id;
+                }
+            }
+            $injuries['away'] = $final_resp;
+            // $injuries['away'] = $resp_2->response;
         }
         // else {
         //     return $this->getTeamStatistics($response);
