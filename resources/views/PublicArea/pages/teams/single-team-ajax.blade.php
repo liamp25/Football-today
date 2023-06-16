@@ -1,4 +1,3 @@
-              
 <style>
 .player-stats:hover{
     background-color: #12e5fa;
@@ -669,7 +668,51 @@
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                
+                                                        <th colspan="2">TEAM</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Logo</th>
+                                                        <td><img src="{{$pv->statistics[0]->team->logo}}" alt="" class="mr-3 user-image"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <td><b>{{$pv->statistics[0]->team->name}}</b></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+    
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2">LEAGUE</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <td>{{$pv->statistics[0]->league->name}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Country</th>
+                                                        <td>{{$pv->statistics[0]->league->country}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Logo</th>
+                                                        <td><img src="{{$pv->statistics[0]->league->logo}}" alt="" class="mr-3 user-image"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Flag</th>
+                                                        <td><img src="{{$pv->statistics[0]->league->flag}}" alt="" class="mr-3 img img-fluid user-image"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Season</th>
+                                                        <td>{{$pv->statistics[0]->league->season}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+    
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
