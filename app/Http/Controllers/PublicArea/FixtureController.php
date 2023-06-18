@@ -5,9 +5,18 @@ namespace App\Http\Controllers\PublicArea;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use services\Callers\FixtureCaller;
-
+use Session;
 class FixtureController extends Controller
 {
+    public function login(){
+        Session::put("user-test",['login'=>true]);
+        return redirect(route('public.fixtures'));
+    }
+    public function logout(){
+        Session::forget("user-test");
+        return redirect(route('public.fixtures'));
+    }
+
     public function fixtures()
     {
         setcookie('date', Carbon::now()->format('Y-m-d'), time() + (86400 * 30), "/");
