@@ -4,7 +4,17 @@ Football-Today | Fixtures
 @endsection
 @section('content')
 
-
+<?php
+if(Session::has("user-test")){
+    ?>
+    <a href="{{route("user.logout")}}" class="btn btn-success">Logged in - logout user now</a>
+    <?php
+}else{
+    ?>
+    <a href="{{route("user.logins")}}" class="btn btn-danger">Log In</a>
+    <?php
+}
+?>
 <div class="row mt-3">
     <div class="col-md-8 text-left">
         <div class="card align-middle bg-dark text-white">
