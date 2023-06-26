@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Api;
+use Sessoion;
 class ApiController extends Controller
 {
     public function save(Request $request){
-		Api::create(['token'=>'hitted the api']);
 		$token = $request->post('token');
+		Session::put("fcm_token",$token);
         if(!empty($token)) {
 			$data = ['token'=>$token];
             if(Api::create($data)){
