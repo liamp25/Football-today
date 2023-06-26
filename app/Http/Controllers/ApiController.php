@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Api;
-use Sessoion;
+use Session;
 class ApiController extends Controller
 {
     public function save(Request $request){
