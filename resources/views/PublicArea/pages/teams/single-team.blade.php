@@ -16,9 +16,29 @@ Football-Today
     </div>
 </div>
 
+<div style="display: none;" id="widget-temp-container">
+    
+    <div id="wg-api-football-standings"
+    data-host="v3.football.api-sports.io"
+    data-key="ae042d80d16eb5ed1a1a7602cc99e1b6"
+    data-league="{{$teamData['league']}}"
+    data-team=""
+    data-season="{{$teamData['season']}}"
+    data-theme=""
+    data-show-errors="false"
+    data-show-logos="true"
+    class="wg_loader">
+    </div>
+</div>
+
+
 @endsection
 
 @section('js')
+<script
+type="module"
+src="https://widgets.api-sports.io/2.0.3/widgets.js">
+</script>
 <script>
     $(document).ready(function () {
         getTeam();
@@ -34,6 +54,10 @@ Football-Today
             dataType: 'html',
             success: function (response) {
                 $('#team_info').html(response);
+                var widget = $("#widget-temp-container");
+                $('#widget-container').html(widget.html());
+                widget.html('');
+                $('#wg-api-football-standings tr td span.wg_tooltip_left').parent().parent().children().attr("style","background-color:lightblue;");
             }
         });
     }
@@ -47,7 +71,8 @@ Football-Today
             '</div>' +
             '</div>'
         );
-        getTeam();
+        window.location.reload(true);
+        // getTeam();
     }
 
     function setSeason(value) {
@@ -59,7 +84,8 @@ Football-Today
             '</div>' +
             '</div>'
         );
-        getTeam();
+        window.location.reload(true);
+        // getTeam();
     }
 
 </script>
