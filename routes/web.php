@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function () {
 
     // routes for fixtures
-    Route::get("/logout",'FixtureController@logout')->name("user.logout");
-    Route::get("/logins",'FixtureController@login')->name("user.logins");
     Route::get('/', 'FixtureController@fixtures')->name('public.fixtures');
     Route::get('/fixtures/ajax', 'FixtureController@fixturesAjax')->name('public.fixtures.ajax');
     Route::get('/fixture/{id}', 'FixtureController@getFixture')->name('public.fixture.get');
@@ -30,7 +28,6 @@ Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function
     Route::get('/leagues/ajax', 'LeaguesController@leaguesAjax')->name('public.leagues.ajax');
     Route::get('/leagues/{nation}/{league_name}', 'LeaguesController@getLeague')->name('public.league.get');
     Route::get('/leagues/call/ajax/{id}', 'LeaguesController@getLeagueAjax')->name('public.league.get.ajax');
-
     // routes for teams
     Route::get('/team/{nation}/{club}/{id}', 'TeamsController@getTeam')->name('public.team.get');
     Route::get('/team/ajax/{id}', 'TeamsController@getTeamAjax')->name('public.team.get.ajax');

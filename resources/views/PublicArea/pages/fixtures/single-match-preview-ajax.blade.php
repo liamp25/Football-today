@@ -380,7 +380,8 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            @forelse ($standings as $single_standing)
+                            <div  id="widget-container"></div>
+                            {{-- @forelse ($standings as $single_standing)
                             <div class="table-responsive">
                                 <table class="table">
                                     <caption style="caption-side: top">{{$single_standing[0]->group}}</caption>
@@ -475,7 +476,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            @endforelse
+                            @endforelse --}}
                         </div>
                     </div>
                 </div>

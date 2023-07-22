@@ -4,21 +4,18 @@ namespace App\Http\Controllers\PublicArea;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+// use GuzzleHttp\Psr7\Request;
 use services\Callers\FixtureCaller;
+use Illuminate\Http\Request;
 use Session;
 class FixtureController extends Controller
 {
-    public function login(){
-        Session::put("user-test",['login'=>true]);
-        return redirect(route('public.fixtures'));
-    }
-    public function logout(){
-        Session::forget("user-test");
-        return redirect(route('public.fixtures'));
-    }
-
-    public function fixtures()
+    public function fixtures(Request $request)
     {
+        $token = $request->get("token");
+        // if(isset($token) && !empty($token)){
+        //     echo "<pre>"; print_r($token); die;
+        // }
         setcookie('date', Carbon::now()->format('Y-m-d'), time() + (86400 * 30), "/");
 
         return view('PublicArea.pages.fixtures.all-fixtures');
@@ -92,7 +89,7 @@ class FixtureController extends Controller
 
         $response['predictions'] = $data['predictions'];
         $response['predictions_array'] = $data['predictions_array'];
-
+        $response['fixtureData'] = FixtureCaller::getFixture($id);
         return view('PublicArea.pages.fixtures.single-match-preview')->with($response);
     }
 

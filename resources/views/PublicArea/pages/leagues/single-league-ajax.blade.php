@@ -37,14 +37,17 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade" id="pills-table" role="tabpanel" aria-labelledby="pills-table-tab">
+            
             {{-- Table --}}
             <div class="col-md-12 mb-2 px-0">
+                
                 <div class="card align-middle bg-dark text-white">
                     <h5 class="text-left p-2">Table</h5>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        @forelse ($standings as $single_standing)
+                        <div  id="widget-container"></div>
+                        {{-- @forelse ($standings as $single_standing)
                         <div class="table-responsive">
                             <table class="table">
                                 <caption style="caption-side: top">{{$single_standing[0]->group}}</caption>
@@ -137,7 +140,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        @endforelse
+                        @endforelse --}}
                     </div>
                 </div>
             </div>

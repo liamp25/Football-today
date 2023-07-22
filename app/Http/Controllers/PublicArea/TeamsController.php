@@ -18,7 +18,7 @@ class TeamsController extends Controller
         setcookie('league', TeamCaller::getLeagues($team->id)[0]->league->id, time() + (86400 * 30), "/team");
 
         $response['id'] = $id;
-
+        $response['teamData'] = TeamCaller::getTeam($id);
         return view('PublicArea.pages.teams.single-team')->with($response);
     }
 
