@@ -86,7 +86,7 @@ class FixtureController extends Controller
         $response['id'] = $id;
 
         $data = FixtureCaller::getPredictions($id);
-
+        $response['api_key'] = config('app.football_api_key');
         $response['predictions'] = $data['predictions'];
         $response['predictions_array'] = $data['predictions_array'];
         $response['fixtureData'] = FixtureCaller::getFixture($id);
