@@ -23,7 +23,7 @@ Football-Today
     
     <div id="wg-api-football-standings"
     data-host="v3.football.api-sports.io"
-    data-key="ae042d80d16eb5ed1a1a7602cc99e1b6"
+    data-key="{{$api_key}}"
     data-league="{{$id}}"
     data-team=""
     data-season="{{$leagueData['season']}}"

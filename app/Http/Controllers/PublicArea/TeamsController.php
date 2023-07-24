@@ -14,9 +14,16 @@ class TeamsController extends Controller
     {
         // $team = TeamCaller::getTeamByNLC($nation, $league, $club, Carbon::now()->year);
         $team = TeamCaller::getTeamById($id);
-        setcookie('season_team', LeagueCaller::getCurrentSeason(TeamCaller::getLeagues($team->id)[0]->league->id), time() + (86400 * 30), "/team");
-        setcookie('league', TeamCaller::getLeagues($team->id)[0]->league->id, time() + (86400 * 30), "/team");
-
+        if (!isset($_COOKIE["season_team"])) {
+            setcookie('season_team', LeagueCaller::getCurrentSeason(TeamCaller::getLeagues($team->id)[0]->league->id), time() + (86400 * 30), "/team");
+        }
+        
+        if (!isset($_COOKIE["league"])) {
+            setcookie('league', TeamCaller::getLeagues($team->id)[0]->league->id, time() + (86400 * 30), "/team");
+        }
+       
+        
+        $response['api_key'] = config('app.football_api_key');
         $response['id'] = $id;
         $response['teamData'] = TeamCaller::getTeam($id);
         return view('PublicArea.pages.teams.single-team')->with($response);
