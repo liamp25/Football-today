@@ -60,8 +60,7 @@ Football-Today | Articles
                                                         <span>
                                                             <h4>{{$article->title}}</h4>
                                                             <span
-                                                                class="badge badge-success">{{$article->category?$article->category->title : ''}}</span>&nbsp;<small>{{$article->created_at}}</small>
-                                                        </span>
+                                                                class="badge badge-success">{{$article->category?$article->category->title : ''}}</span>&nbsp;<small>
                                                     </div>
                                                 </td>
                                             </tr>

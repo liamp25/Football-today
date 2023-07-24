@@ -35,7 +35,7 @@ Football-Today | Article
                                         <br>
                                         <span
                                             class="badge
-                                            badge-success">{{$article->category?$article->category->title : ''}}</span>&nbsp;|&nbsp;<small>{{$article->created_at}}</small>
+                                            badge-success">{{$article->category?$article->category->title : ''}}</span>&nbsp;|&nbsp;<small></small>
                                     </span>
 
                                 </div>
