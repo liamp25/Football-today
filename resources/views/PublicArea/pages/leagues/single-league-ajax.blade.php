@@ -44,71 +44,301 @@
                 <div class="card align-middle bg-dark text-white">
                     <h5 class="text-left p-2">Table</h5>
                 </div>
+                <style>
+                    :root {
+                        --font: "Raleway",sans-serif;
+                        --background-color: #fff;
+                        --background-color-header: #e9ecef;
+                        --color-text: #000;
+                        --color-text-header: #000;
+                        --color-green: #01d099;
+                        --color-red: #f64e60;
+                        --color-yellow: #ffa800;
+                        --primary-font-size: 11px;
+                        --secondary-font-size: 10px;
+                        --header-font-size: 11px;
+                        --header-text-transform: uppercase;
+                        --header-link-text-transform: none;
+                        --border-bottom: 0.5px solid var(--background-color-header);
+                        --primary-padding: 3px 3px;
+                        --primary-line-height: 13px;
+                        --secondary-padding: .3rem;
+                        --button-info-font-size: 9px;
+                        --button-info-line-height: 16px;
+                        --toolbar-font-size: var(--header-font-size);
+                        --modale-background-overlay: rgba(0,0,0,0.4);
+                        --modale-close-size: 28px;
+                        --modale-score-size: 36px;
+                        --modale-teams-size: 13px;
+                        --standings-team-form-font-size: 9px;
+                        --standings-team-form-line-height: 16px;
+                        --flags-size: 16px;
+                        --teams-logo-size: 16px;
+                        --teams-logo-modal-size: 90%;
+                        --teams-logo-block-modal-size: 85px;
+                        --teams-logo-block-radius-modal: 5px;
+                        --teams-logo-block-background-modal: var(--background-color-header);
+                    }
+                    .wg-table {
+                        font-family: var(--font);
+                        width: 100%;
+                        /* border-collapse: collapse; */
+                    }
+                    thead {
+                        display: table-header-group;
+                        vertical-align: middle;
+                        border-color: inherit;
+                    }
+                    tbody {
+                        display: table-row-group;
+                        vertical-align: middle;
+                        border-color: inherit;
+                    }
+                    table {
+                        display: table;
+                        border-collapse: separate;
+                        box-sizing: border-box;
+                        text-indent: initial;
+                        border-spacing: 2px;
+                        border-color: gray;
+                    }
+                    table,table td, table tr{
+                        border-top: 0px solid #dee2e6 !important;
+                    }
+                    tr {
+                        display: table-row;
+                        vertical-align: inherit;
+                        border-color: inherit;
+                    }
+                    td {
+                        padding: var(--primary-padding) !important; 
+                        font-size: var(--primary-font-size);
+                        letter-spacing: 0;
+                        line-height: var(--primary-line-height);
+                        vertical-align: middle;
+                        background: var(--background-color);
+                        color: var(--color-text);
+                        border-bottom: var(--border-bottom);
+                    }
+
+                    .wg_width_20 {
+                        width: 20px;
+                    }
+                    .wg_width_90 {
+                        width: 90px;
+                    }
+                    .wg_bolder {
+                        font-weight: 700;
+                    }
+                    .wg_bolder {
+                        font-weight: 700;
+                    }
+                    .wg_text_center {
+                        text-align: center;
+                    }
+                    .wg_nowrap {
+                        white-space: nowrap;
+                    }
+                    .wg_logo {
+                        width: var(--teams-logo-size);
+                        vertical-align: middle;
+                    }
+                    img {
+                        overflow-clip-margin: content-box;
+                        overflow: clip;
+                        width: 16px;
+                        height: 16px;
+                    }
+
+                    td {
+                        display: table-cell;
+                        vertical-align: inherit;
+                    }
+
+                    .wg_form {
+                        display: inline-block;
+                        /* margin: 1px; */
+                        width: 14px;
+                        height: 14px;
+                        line-height: var(--standings-team-form-line-height);
+                        font-size: var(--standings-team-form-font-size);
+                        text-align: center;
+                        position: relative;
+                        color: #fff;
+                    }
+                    .wg_form_lose {
+                        background: var(--color-red);
+                    }
+                    .wg_form_win {
+                        background: var(--color-green);
+                    }
+                    .wg_form_draw {
+                        background: var(--color-yellow);
+                    }
+
+                    .wg_header {
+                        padding: var(--secondary-padding);
+                        font-size: var(--header-font-size);
+                        font-weight: 600;
+                        background: var(--background-color-header);
+                        color: var(--color-text-header);
+                        text-transform: var(--header-text-transform);
+                    }
+
+                    .wg_tooltip {
+                        cursor: pointer;
+                    }
+
+                    .wg_text_center {
+                        text-align: center;
+                    }
+
+                    .wg_tooltip.wg_tooltip_left:before {
+                        left: initial;
+                        margin: initial;
+                        right: 100%;
+                        margin-right: 0;
+                    }
+
+                    .wg_tooltip:before {
+                        content: attr(data-text);
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 100%;
+                        margin-left: 0;
+                        min-width: 80px;
+                        max-width: 200px;
+                        width: auto;
+                        padding: 5px;
+                        border-radius: 3px;
+                        background: var(--color-text);
+                        color: var(--background-color);
+                        text-align: center;
+                        display: none;
+                        z-index: 99999;
+                    }
+                    .wg_info {
+                        display: inline-block;
+                        border-radius: 14px;
+                        margin: 1px;
+                        width: 14px;
+                        height: 14px;
+                        line-height: var(--button-info-line-height);
+                        font-size: var(--button-info-font-size);
+                        text-align: center;
+                        position: relative;
+                        color: #fff;
+                        background: var(--background-color-header);
+                    }
+                    .wg_flag {
+                        width: var(--flags-size);
+                        vertical-align: middle;
+                    }
+
+                    @media only screen and (max-width: 482px) {
+                        .wg_hide_xs{
+                            display: none;
+                        }
+                    }
+                    @media only screen and (max-width: 320px) {
+                        .wg_hide_xxs{
+                            display: none;
+                        }
+                    }
+                </style>
                 <div class="card">
                     <div class="card-body">
-                        <div  id="widget-container"></div>
-                        {{-- @forelse ($standings as $single_standing)
+                        @forelse ($standings as $single_standing)
                         <div class="table-responsive">
-                            <table class="table">
-                                <caption style="caption-side: top">{{$single_standing[0]->group}}</caption>
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th class="text-left" scope="col">Team</th>
-                                        <th class="text-center" scope="col">MP</th>
-                                        <th class="text-center" scope="col">W</th>
-                                        <th class="text-center" scope="col">D</th>
-                                        <th class="text-center" scope="col">L</th>
-                                        <th class="text-center" scope="col">F</th>
-                                        <th class="text-center" scope="col">A</th>
-                                        <th class="text-center" scope="col">D</th>
-                                        <th class="text-center" scope="col">P</th>
-                                    </tr>
-                                </thead>
+                            <table class="table wg-table">
+                                <thead></thead>
                                 <tbody>
-                                    @forelse ($single_standing as $standing)
                                     <tr>
-                                        <td>
+                                        <td class="wg_header" colspan="11" style="text-align: left;">
+                                            <img class="wg_flag" src="{{$league->country->flag}}" loading="lazy" onerror="this.style.display=&quot;none&quot;"> {{$league->country->name}}: {{$league->league->name}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        
+                                        <td class="wg_header" colspan="2"></td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left" data-toggle="tooltip" data-placement="left" title="MATCHES PLAYED">MP</td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left" data-toggle="tooltip" data-placement="left" title="WIN">W</td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left" data-toggle="tooltip" data-placement="left" title="DRAW">D</td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left" data-toggle="tooltip" data-placement="left" title="LOSE">L</td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xxs" data-toggle="tooltip" data-placement="left" title="GOALS FOR:GOALS AGAINST">G</td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xs" data-toggle="tooltip" data-placement="left" title="DIFFERENCE" >+/-</td>
+                                        <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left" data-toggle="tooltip" data-placement="left" title="POINTS">P</td>
+                                        <td class="wg_header wg_hide_xs" colspan="2"></td>
+                                    </tr>
+                                    @forelse ($single_standing as $standing)
+                                    @php
+                                        $rowColor = '';
+                                        if(isset($standing->description) && !empty($standing->description)){
+                                            $rowColor = 'lightblue';
+                                        }
+                                    @endphp
+                                    <tr>
+                                        <td class="wg_text_center wg_bolder wg_width_20" style="background-color: {{$rowColor}};">
                                             {{$standing->rank}}
                                         </td>
-                                        <td class="text-left" style="white-space: nowrap;">
-                                            <a class="no-underline" href="{{route('public.team.get', [
-                                            'nation' => str_replace(' ', '_', $league->country->name),
-                                            'id' => $standing->team->id,
-                                            'club' => str_replace(' ', '_', $standing->team->name)]
-                                            )}}">
-                                                <img class="team-logo" src="{{$standing->team->logo}}" alt="">
-                                                <span class="team-title">{{$standing->team->name}}</span>
-                                            </a>
+                                        <td class="wg_nowrap" style="text-align: left; background-color:{{$rowColor}};">
+                                            <img class="wg_logo" src="{{$standing->team->logo}}" alt="">
+                                            {{$standing->team->name}}
                                         </td>
-                                        <td class="text-danger" style="font-weight: bold">
+                                        <td class="wg_text_center wg_width_20" style="background-color: {{$rowColor}};">
                                             {{$standing->all->played}}
                                         </td>
-                                        <td class="text-newinfo" style="font-weight: bold">
+                                        <td class="wg_text_center wg_width_20" style="background-color: {{$rowColor}};">
                                             {{$standing->all->win}}
                                         </td>
-                                        <td class="text-danger" style="font-weight: bold">
+                                        <td class="wg_text_center wg_width_20" style="background-color: {{$rowColor}};">
                                             {{$standing->all->draw}}
                                         </td>
-                                        <td class="text-newinfo" style="font-weight: bold">
+                                        <td class="wg_text_center wg_width_20" style="background-color: {{$rowColor}};">
                                             {{$standing->all->lose}}
                                         </td>
-                                        <td class="text-danger" style="font-weight: bold">
-                                            {{$standing->all->goals->for}}
+                                        <td class="wg_text_center wg_width_20 wg_hide_xxs" style="background-color: {{$rowColor}};">
+                                            {{$standing->all->goals->for}}:{{$standing->all->goals->against}}
                                         </td>
-                                        <td class="text-newinfo" style="font-weight: bold">
-                                            {{$standing->all->goals->against}}
-                                        </td>
-                                        <td class="text-danger" style="font-weight: bold">
+                                        <td class="wg_text_center wg_width_20 wg_hide_xs" style="background-color: {{$rowColor}};">
                                             {{$standing->goalsDiff}}
                                         </td>
-                                        <td class="text-newinfo" style="font-weight: bold">
+                                        <td class="wg_text_center wg_width_20" style="background-color: {{$rowColor}};">
                                             {{$standing->points}}
+                                        </td>
+                                        <td class="wg_text_center wg_width_90 wg_hide_xs" style="text-align: left; background-color: {{$rowColor}};">
+                                            @php
+                                                $str = $standing->form;
+                                                $strCount = strlen($str);
+                                            @endphp
+                                            @if ($strCount > 0)
+                                                @for ($i = 0 ; $i < $strCount ; $i++)
+                                                    @switch($str[$i])
+                                                        @case('W')
+                                                            <span class="wg_form wg_form_win">W</span>
+                                                            @break
+                                                        @case('L')
+                                                            <span class="wg_form wg_form_lose">L</span>
+                                                            @break
+                                                        @case('D')
+                                                            <span class="wg_form wg_form_draw">D</span>
+                                                            @break
+                                                        @default
+                                                            
+                                                    @endswitch
+                                                @endfor    
+                                            @endif
+                                        </td>
+                                        <td class="wg_text_center wg_width_20 wg_hide_xs">
+                                            @if (isset($standing->description) && !empty($standing->description))
+                                            <span class="wg_info wg_tooltip wg_tooltip_left" data-toggle="tooltip" data-placement="left" title="{{$standing->description}}" >?</span>    
+                                            @endif
                                         </td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="10">
+                                        <td colspan="11">
                                             No information Available
                                         </td>
                                     </tr>
@@ -117,30 +347,17 @@
                             </table>
                         </div>
                         @empty
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th class="text-left" scope="col">Team</th>
-                                    <th class="text-center" scope="col">MP</th>
-                                    <th class="text-center" scope="col">W</th>
-                                    <th class="text-center" scope="col">D</th>
-                                    <th class="text-center" scope="col">L</th>
-                                    <th class="text-center" scope="col">F</th>
-                                    <th class="text-center" scope="col">A</th>
-                                    <th class="text-center" scope="col">D</th>
-                                    <th class="text-center" scope="col">P</th>
-                                </tr>
-                            </thead>
+                        <table class="table wg-table">
+                            <thead></thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="10">
-                                        No information Available
+                                    <td colspan="11">
+                                        No Standings Available
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        @endforelse --}}
+                        @endforelse
                     </div>
                 </div>
             </div>

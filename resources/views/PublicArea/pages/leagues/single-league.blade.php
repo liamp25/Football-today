@@ -16,31 +16,9 @@ Football-Today
         </div>
     </div>
 </div>
-
-{{--  --}}
-
-<div style="display: none;" id="widget-temp-container">
-    
-    <div id="wg-api-football-standings"
-    data-host="v3.football.api-sports.io"
-    data-key="{{$api_key}}"
-    data-league="{{$id}}"
-    data-team=""
-    data-season="{{$leagueData['season']}}"
-    data-theme=""
-    data-show-errors="false"
-    data-show-logos="true"
-    class="wg_loader">
-    </div>
-</div>
-{{--  --}}
 @endsection
 
 @section('js')
-<script
-type="module"
-src="https://widgets.api-sports.io/2.0.3/widgets.js">
-</script>
 <script>
     $(document).ready(function () {
         getLeague();
@@ -56,10 +34,7 @@ src="https://widgets.api-sports.io/2.0.3/widgets.js">
             dataType: 'html',
             success: function (response) {
                 $('#league_info').html(response);
-                var widget = $("#widget-temp-container");
-                $('#widget-container').html(widget.html());
-                widget.html('');
-                $('#wg-api-football-standings tr td span.wg_tooltip_left').parent().parent().children().attr("style","background-color:lightblue;");
+                $('[data-toggle="tooltip"]').tooltip();
             }
         });
     }
@@ -73,8 +48,7 @@ src="https://widgets.api-sports.io/2.0.3/widgets.js">
             '</div>' +
             '</div>'
         );
-        window.location.reload(true);
-        // getLeague();
+        getLeague();
     }
 
     function setRound(value) {
