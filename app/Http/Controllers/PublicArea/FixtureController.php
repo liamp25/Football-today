@@ -84,12 +84,10 @@ class FixtureController extends Controller
     public function getMatchPreview(int $id)
     {
         $response['id'] = $id;
-
         $data = FixtureCaller::getPredictions($id);
-        $response['api_key'] = config('app.football_api_key');
         $response['predictions'] = $data['predictions'];
         $response['predictions_array'] = $data['predictions_array'];
-        $response['fixtureData'] = FixtureCaller::getFixture($id);
+        
         return view('PublicArea.pages.fixtures.single-match-preview')->with($response);
     }
 
