@@ -385,7 +385,11 @@
                                 <table class="table wg-table">
                                     <thead></thead>
                                     <tbody>
-                                        
+                                        <tr>
+                                            <td class="wg_header" colspan="11" style="text-align: left;">
+                                                <img class="wg_flag" src="{{$league->flag}}" loading="lazy" > {{$league->country}}: {{$league->name}}
+                                            </td>
+                                        </tr>
                                         <tr>
                                             
                                             <td class="wg_header" colspan="2"></td>
