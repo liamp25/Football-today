@@ -32,7 +32,6 @@ class LeaguesController extends Controller
         $league = LeagueCaller::getLeagueFromLeagueName($nation, $league_name);
         setcookie('season', LeagueCaller::getCurrentSeason($league->id), time() + (86400 * 30), "/leagues");
         setcookie('round', LeagueCaller::getCurrentRound($league->id), time() + (86400 * 30), "/leagues");
-        
         $response['id'] = $league->id;
         return view('PublicArea.pages.leagues.single-league')->with($response);
     }
