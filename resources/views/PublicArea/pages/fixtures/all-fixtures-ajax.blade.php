@@ -66,9 +66,9 @@
 
                         <td class="team team-a">
                             <a href="{{route('public.team.get', [
-                                'nation' => str_replace(' ', '_', $fixture->league->country),
+                                'nation' => str_replace('/','-',str_replace(' ', '_', $fixture->league->country)),
                                 'id' => $fixture->teams->home->id,
-                                'club' => str_replace(' ', '_', $fixture->teams->home->name)]
+                                'club' => str_replace('/','-',str_replace(' ', '_', $fixture->teams->home->name))]
                                 )}}" class="flag_16 right_16 belize_16_right" title="Belize">
                                 {{$fixture->teams->home->name}}
                                 <img width="8%" src="{{$fixture->teams->home->logo}}" alt="">
@@ -106,9 +106,9 @@
                         </td>
                         <td class="team team-b">
                             <a href="{{route('public.team.get',  [
-                                'nation' => str_replace(' ', '_', $fixture->league->country),
+                                'nation' => str_replace('/','-',str_replace(' ', '_', $fixture->league->country)),
                                 'id' => $fixture->teams->away->id,
-                                'club' => str_replace(' ', '_', $fixture->teams->away->name)]
+                                'club' => str_replace('/','-',str_replace(' ', '_', $fixture->teams->away->name))]
                                 )}}" class="flag_16 left_16 st-lucia_16_left" title="St. Lucia">
                                 <img width="8%" src="{{$fixture->teams->away->logo}}" alt="">
                                 {{$fixture->teams->away->name}}

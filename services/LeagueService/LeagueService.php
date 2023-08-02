@@ -298,7 +298,7 @@ class LeagueService
     public function getFixtures($id, $season, $round)
     {
 
-        $url = self::URL . '/fixtures?league=' . $id . '&season=' . $season . '&round=' . $round;
+        $url = self::URL . '/fixtures?league=' . $id . '&season=' . $season . '&round=' . urlencode($round);
 
         $resp = CurlCaller::get($url, []);
 
