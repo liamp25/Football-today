@@ -56,6 +56,17 @@ class LeagueService
         return ['leagues_ordered' => $leagues_as, 'leagues' => $response];
     }
 
+    public function getTeams($league_id,$season){
+        $url = self::URL . '/teams?league=' . $league_id.'&season='.$season;
+        $teams = [];
+        $resp = CurlCaller::get($url, []);
+        if ($resp) {
+            $teams = $resp;
+        }
+
+        return $teams;
+    }
+
     public function getLeague(int $id)
     {
         if (isset($_COOKIE["season"])) {
@@ -80,6 +91,7 @@ class LeagueService
         $top_assists = [];
         $top_yellow_cards = [];
         $top_red_cards = [];
+        $teams = [];
 
         $url = self::URL . '/leagues?id=' . $id;
 
@@ -98,6 +110,7 @@ class LeagueService
                 $top_assists = $this->getTopAssists($id, $season);
                 $top_yellow_cards = $this->getTopYellowCards($id, $season);
                 $top_red_cards = $this->getTopRedCards($id, $season);
+                $teams = $this->getTeams($id,$season);
             }
         }
         // else {
@@ -120,7 +133,8 @@ class LeagueService
             'top_scorers' => $top_scorers,
             'top_assists' => $top_assists,
             'top_yellow_cards' => $top_yellow_cards,
-            'top_red_cards' => $top_red_cards
+            'top_red_cards' => $top_red_cards,
+            'teams'=>$teams
         ];
     }
 
