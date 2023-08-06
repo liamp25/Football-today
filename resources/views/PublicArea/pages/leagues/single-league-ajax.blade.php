@@ -27,12 +27,12 @@
                 aria-controls="pills-fixtures" aria-selected="false">Fixtures</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-tsa-tab" data-toggle="pill" href="#pills-tsa" role="tab"
-                aria-controls="pills-tsa" aria-selected="false">Top Scorers/Assists</a>
+            <a class="nav-link" id="pills-team-stats-tab" data-toggle="pill" href="#pills-team-stats" role="tab"
+                aria-controls="pills-team-stats" aria-selected="false">Team Stats</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-cards-tab" data-toggle="pill" href="#pills-cards" role="tab"
-                aria-controls="pills-cards" aria-selected="false">Cards</a>
+            <a class="nav-link" id="pills-player-stats-tab" data-toggle="pill" href="#pills-player-stats" role="tab"
+                aria-controls="pills-player-stats" aria-selected="false">Player Stats</a>
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
@@ -319,7 +319,29 @@
             </div>
             {{-- End of Fixtures --}}
         </div>
-        <div class="tab-pane fade" id="pills-tsa" role="tabpanel" aria-labelledby="pills-tsa-tab">
+        <div class="tab-pane fade" id="pills-team-stats" role="tabpanel" aria-labelledby="pills-team-stats-tab">
+            <div class="col-md-12 mb-2 px-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card align-middle bg-dark text-white">
+                            <h5 class="text-left p-2">Team Stats</h5>
+                        </div>
+                        <div class="card">
+                            <div class="card-body table-responsive">
+                                {{-- here we will do our code --}}
+                                @forelse ($teams->response as $team_key=>$team_value)
+                                    <img src="{{$team_value->team->logo}}" style="width:50px; height:50px;">{{$team_value->team->name}}<br>
+                                @empty
+                                    {{"no team available"}}
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-player-stats" role="tabpanel" aria-labelledby="pills-player-stats-tab">
             <div class="col-md-12 mb-2 px-0">
                 <div class="row">
                     {{-- Top Scorers --}}
@@ -425,15 +447,9 @@
                         </div>
                     </div>
                     {{-- End of Top Assists --}}
-                </div>
-            </div>
-        </div>
 
-        <div class="tab-pane fade" id="pills-cards" role="tabpanel" aria-labelledby="pills-cards-tab">
-            <div class="col-md-12 mb-2 px-0">
-                <div class="row">
                     {{-- Most Yellow Cards --}}
-                    <div class="col-md-6 mb-2 px-0">
+                    <div class="col-md-6 mt-5">
                         <div class="card align-middle bg-dark text-white">
                             <h5 class="text-left p-2">Most Yellow Cards</h5>
                         </div>
@@ -485,7 +501,7 @@
                     {{-- End of Most Yellow Cards --}}
 
                     {{-- Most Red Cards --}}
-                    <div class="col-md-6 mb-2 px-0">
+                    <div class="col-md-6 mt-5">
                         <div class="card align-middle bg-dark text-white">
                             <h5 class="text-left p-2">Most Red Cards</h5>
                         </div>
