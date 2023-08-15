@@ -329,7 +329,7 @@
                         <div class="card">
                             <div class="card-body table-responsive">
                                 {{-- here we will do our code --}}
-                                @forelse ($teams->response as $team_key=>$team_value)
+                                @forelse ($teams as $team_key=>$team_value)
                                     <img src="{{$team_value->team->logo}}" style="width:50px; height:50px;">{{$team_value->team->name}}<br>
                                 @empty
                                     {{"no team available"}}

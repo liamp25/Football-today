@@ -61,7 +61,7 @@ class LeagueService
         $teams = [];
         $resp = CurlCaller::get($url, []);
         if ($resp) {
-            $teams = $resp;
+            $teams = $resp->response;
         }
 
         return $teams;
