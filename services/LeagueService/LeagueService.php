@@ -62,9 +62,30 @@ class LeagueService
         $resp = CurlCaller::get($url, []);
         if ($resp) {
             $teams = $resp->response;
+
+            usort($teams, function($a, $b) {
+                return strcmp($a->team->name, $b->team->name);
+            });
         }
 
         return $teams;
+    }
+
+    public function getTeamStatistics($team, $league, $season){
+        $team_statistics = [];
+
+        $url = self::URL . '/teams/statistics?league=' . $league . '&season=' . $season . '&team=' . $team;
+
+        $resp = CurlCaller::get($url, []);
+
+        if ($resp) {
+            $team_statistics = $resp->response;
+        }
+        // else {
+        //     return $this->getTeamStatistics($id, $league, $season);
+        // }
+
+        return $team_statistics;
     }
 
     public function getLeague(int $id)
@@ -81,6 +102,12 @@ class LeagueService
             $round = $this->getCurrentRound($id);
         }
 
+        if (isset($_COOKIE["team"])) {
+            $team = $_COOKIE["team"];
+        } else {
+            $team = $this->getCurrentTeam($id);
+        }
+
         $seasons = [];
         $rounds = [];
         $league = [];
@@ -92,7 +119,7 @@ class LeagueService
         $top_yellow_cards = [];
         $top_red_cards = [];
         $teams = [];
-
+        $team_statistics = [];
         $url = self::URL . '/leagues?id=' . $id;
 
         $resp = CurlCaller::get($url, []);
@@ -111,6 +138,7 @@ class LeagueService
                 $top_yellow_cards = $this->getTopYellowCards($id, $season);
                 $top_red_cards = $this->getTopRedCards($id, $season);
                 $teams = $this->getTeams($id,$season);
+                $team_statistics = $this->getTeamStatistics($team, $id, $season);
             }
         }
         // else {
@@ -134,7 +162,9 @@ class LeagueService
             'top_assists' => $top_assists,
             'top_yellow_cards' => $top_yellow_cards,
             'top_red_cards' => $top_red_cards,
-            'teams'=>$teams
+            'team'=>$team,
+            'teams'=>$teams,
+            'team_statistics'=>$team_statistics,
         ];
     }
 
@@ -217,6 +247,19 @@ class LeagueService
         return $round;
     }
 
+    public function getCurrentTeam($id){
+        $team = '';
+        $season = $this->getCurrentSeason($id);
+        $teams = $this->getTeams($id,$season);
+
+        if(!empty($teams)){
+            $team = $teams[0]->team->id;
+        }
+
+        return $team;
+    }
+
+    
     public function getStandings($id, $season)
     {
         $standings = [];

@@ -32,12 +32,11 @@ class LeaguesController extends Controller
         $league = LeagueCaller::getLeagueFromLeagueName($nation, $league_name);
         setcookie('season', LeagueCaller::getCurrentSeason($league->id), time() + (86400 * 30), "/leagues");
         setcookie('round', LeagueCaller::getCurrentRound($league->id), time() + (86400 * 30), "/leagues");
+        setcookie('team', LeagueCaller::getCurrentTeam($league->id), time() + (86400 * 30), "/leagues");
+
         $response['id'] = $league->id;
-        $data = LeagueCaller::getLeague($league->id);
+        // $data = LeagueCaller::getLeague($league->id);
         // dd($data);
-        // foreach($data['teams']->response as $k=>$v){
-        //     echo "<pre>"; print_r($v->); echo "</pre>";
-        // }
         return view('PublicArea.pages.leagues.single-league')->with($response);
     }
 
@@ -61,7 +60,9 @@ class LeaguesController extends Controller
         $response['top_assists'] = $data['top_assists'];
         $response['top_yellow_cards'] = $data['top_yellow_cards'];
         $response['top_red_cards'] = $data['top_red_cards'];
+        $response['team'] = $data['team'];
         $response['teams'] = $data['teams'];
+        $response['team_statistics'] = $data['team_statistics'];
         $response['timezone'] = get_local_time();
 
         return view('PublicArea.pages.leagues.single-league-ajax')->with($response);
