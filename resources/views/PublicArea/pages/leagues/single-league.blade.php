@@ -63,8 +63,20 @@ Football-Today
         getLeague();
     }
 
-    function setTeam(value) {
-        document.cookie = "team=" + value + "; path=/leagues";
+    function setTeam_1(value) {
+        document.cookie = "team_1=" + value + "; path=/leagues";
+        $('#team-stats').html(
+            '<div class="col-md-12 text-center my-2">' +
+            '<div class="spinner-border" role="status">' +
+            '<span class="sr-only">Loading...</span>' +
+            '</div>' +
+            '</div>'
+        );
+        getLeague();
+    }
+
+    function setTeam_2(value) {
+        document.cookie = "team_2=" + value + "; path=/leagues";
         $('#team-stats').html(
             '<div class="col-md-12 text-center my-2">' +
             '<div class="spinner-border" role="status">' +
