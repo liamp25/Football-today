@@ -32,7 +32,8 @@ class LeaguesController extends Controller
         $league = LeagueCaller::getLeagueFromLeagueName($nation, $league_name);
         setcookie('season', LeagueCaller::getCurrentSeason($league->id), time() + (86400 * 30), "/leagues");
         setcookie('round', LeagueCaller::getCurrentRound($league->id), time() + (86400 * 30), "/leagues");
-        setcookie('team', LeagueCaller::getCurrentTeam($league->id), time() + (86400 * 30), "/leagues");
+        setcookie('team_1', LeagueCaller::getCurrentTeam_1($league->id), time() + (86400 * 30), "/leagues");
+        setcookie('team_2', LeagueCaller::getCurrentTeam_2($league->id), time() + (86400 * 30), "/leagues");
 
         $response['id'] = $league->id;
         // $data = LeagueCaller::getLeague($league->id);
@@ -60,9 +61,11 @@ class LeaguesController extends Controller
         $response['top_assists'] = $data['top_assists'];
         $response['top_yellow_cards'] = $data['top_yellow_cards'];
         $response['top_red_cards'] = $data['top_red_cards'];
-        $response['team'] = $data['team'];
+        $response['team_1'] = $data['team_1'];
+        $response['team_2'] = $data['team_2'];
         $response['teams'] = $data['teams'];
-        $response['team_statistics'] = $data['team_statistics'];
+        $response['team_1_statistics'] = $data['team_1_statistics'];
+        $response['team_2_statistics'] = $data['team_2_statistics'];
         $response['timezone'] = get_local_time();
 
         return view('PublicArea.pages.leagues.single-league-ajax')->with($response);

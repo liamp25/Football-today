@@ -102,10 +102,16 @@ class LeagueService
             $round = $this->getCurrentRound($id);
         }
 
-        if (isset($_COOKIE["team"])) {
-            $team = $_COOKIE["team"];
+        if (isset($_COOKIE["team_1"])) {
+            $team_1 = $_COOKIE["team_1"];
         } else {
-            $team = $this->getCurrentTeam($id);
+            $team_1 = $this->getCurrentTeam_1($id);
+        }
+
+        if (isset($_COOKIE["team_2"])) {
+            $team_2 = $_COOKIE["team_2"];
+        } else {
+            $team_2 = $this->getCurrentTeam_2($id);
         }
 
         $seasons = [];
@@ -119,7 +125,8 @@ class LeagueService
         $top_yellow_cards = [];
         $top_red_cards = [];
         $teams = [];
-        $team_statistics = [];
+        $team_1_statistics = [];
+        $team_2_statistics = [];
         $url = self::URL . '/leagues?id=' . $id;
 
         $resp = CurlCaller::get($url, []);
@@ -138,7 +145,8 @@ class LeagueService
                 $top_yellow_cards = $this->getTopYellowCards($id, $season);
                 $top_red_cards = $this->getTopRedCards($id, $season);
                 $teams = $this->getTeams($id,$season);
-                $team_statistics = $this->getTeamStatistics($team, $id, $season);
+                $team_1_statistics = $this->getTeamStatistics($team_1, $id, $season);
+                $team_2_statistics = $this->getTeamStatistics($team_2, $id, $season);
             }
         }
         // else {
@@ -162,9 +170,11 @@ class LeagueService
             'top_assists' => $top_assists,
             'top_yellow_cards' => $top_yellow_cards,
             'top_red_cards' => $top_red_cards,
-            'team'=>$team,
+            'team_1'=>$team_1,
+            'team_2'=>$team_2,
             'teams'=>$teams,
-            'team_statistics'=>$team_statistics,
+            'team_1_statistics'=>$team_1_statistics,
+            'team_2_statistics'=>$team_2_statistics,
         ];
     }
 
@@ -247,13 +257,25 @@ class LeagueService
         return $round;
     }
 
-    public function getCurrentTeam($id){
+    public function getCurrentTeam_1($id){
         $team = '';
         $season = $this->getCurrentSeason($id);
         $teams = $this->getTeams($id,$season);
 
         if(!empty($teams)){
             $team = $teams[0]->team->id;
+        }
+
+        return $team;
+    }
+
+    public function getCurrentTeam_2($id){
+        $team = '';
+        $season = $this->getCurrentSeason($id);
+        $teams = $this->getTeams($id,$season);
+
+        if(!empty($teams)){
+            $team = $teams[1]->team->id;
         }
 
         return $team;
