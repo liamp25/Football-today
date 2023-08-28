@@ -28,7 +28,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" id="pills-team-stats-tab" data-toggle="pill" href="#pills-team-stats" role="tab"
-                aria-controls="pills-team-stats" aria-selected="false">Team Stats</a>
+                aria-controls="pills-team-stats" aria-selected="false">Team stats comparison</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="pills-player-stats-tab" data-toggle="pill" href="#pills-player-stats" role="tab"
@@ -333,7 +333,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">Team Stats</h5>
+                            <h5 class="text-left p-2">Team stats comparison</h5>
                         </div>
                         <div class="card">
                             <div class="card-body" >
@@ -342,7 +342,7 @@
                                         <div class="form-group">
                                             <label for="name" class="col-md-auto col-form-label team_1_color">Team&nbsp;1</label>
                                             <div class="col-md-auto">
-                                                <select class="form-control" name="team" id="team" onchange="setTeam(this.value)">
+                                                <select class="form-control" name="team" id="team" onchange="setTeam_1(this.value)">
                                                     @foreach ($teams as $single_team)
                                                     <option {{$single_team->team->id == $team_1 ? 'selected' : ''}} value="{{$single_team->team->id}}">{{$single_team->team->name}}</option>
                                                     @endforeach
@@ -354,7 +354,7 @@
                                         <div class="form-group">
                                             <label for="name" class="col-md-auto col-form-label team_2_color">Team&nbsp;2</label>
                                             <div class="col-md-auto">
-                                                <select class="form-control" name="team" id="team" onchange="setTeam(this.value)">
+                                                <select class="form-control" name="team" id="team" onchange="setTeam_2(this.value)">
                                                     @foreach ($teams as $single_team)
                                                     <option {{$single_team->team->id == $team_2 ? 'selected' : ''}} value="{{$single_team->team->id}}">{{$single_team->team->name}}</option>
                                                     @endforeach
