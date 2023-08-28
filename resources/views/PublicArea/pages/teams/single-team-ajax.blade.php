@@ -395,7 +395,7 @@
                                         <td>{{$team_statistics->fixtures->draws->total}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left">Losses</td>
+                                        <td class="text-left">Loses</td>
                                         <td>{{$team_statistics->fixtures->loses->home}}</td>
                                         <td>{{$team_statistics->fixtures->loses->away}}</td>
                                         <td>{{$team_statistics->fixtures->loses->total}}</td>
@@ -519,9 +519,9 @@
                                         <td colspan="1">{{!empty($team_statistics->biggest->wins->away) ? $team_statistics->biggest->wins->away : 0 }}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">Loese</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->loese->home) ? $team_statistics->biggest->loese->home : 0 }}</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->loese->away) ? $team_statistics->biggest->loese->away : 0 }}</td>
+                                        <td colspan="2">Loses</td>
+                                        <td colspan="1">{{!empty($team_statistics->biggest->loses->home) ? $team_statistics->biggest->loses->home : 0 }}</td>
+                                        <td colspan="1">{{!empty($team_statistics->biggest->loses->away) ? $team_statistics->biggest->loses->away : 0 }}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Goals For</td>

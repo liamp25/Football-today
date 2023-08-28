@@ -321,327 +321,512 @@
         </div>
         <div class="tab-pane fade" id="pills-team-stats" role="tabpanel" aria-labelledby="pills-team-stats-tab">
             {{-- Team Statistics --}}
+            <style>
+                .team_1_color{
+                    color: red;
+                }
+                .team_2_color{
+                    color: blue;
+                }
+            </style>
             <div class="col-md-12 mb-2 px-0">
-                <div class="card align-middle bg-dark text-white">
-                    <h5 class="text-left p-2">Team Stats</h5>
-                </div>
-                <div class="card">
-                    <div class="card-body" >
-                        <div class="form-group row">
-                            <label for="name" class="col-md-auto col-form-label">Team&nbsp;</label>
-                            <div class="col-md-auto">
-                                <select class="form-control" name="team" id="team" onchange="setTeam(this.value)">
-                                    @foreach ($teams as $single_team)
-                                    <option {{$single_team->team->id == $team ? 'selected' : ''}} value="{{$single_team->team->id}}">{{$single_team->team->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                <div class="row">
+                    <div class="col-md-12 mb-2">
+                        <div class="card align-middle bg-dark text-white">
+                            <h5 class="text-left p-2">Team Stats</h5>
                         </div>
-                        <div class="table-responsive" id="team-stats">
-                            <table class="table table-bordered" style="width: 100%;">
-                                {{-- <thead>
-                                    <th colspan="4" class="text-center">
-                                        {{$team->team->name}}
-                                    </th>
-                                </thead> --}}
-                                <tbody >
-                                    @if (!empty($team_statistics))
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Fixtures</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th></th>
-                                        <th>Home</th>
-                                        <th>Away</th>
-                                        <th>All</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Played</td>
-                                        <td>{{$team_statistics->fixtures->played->home}}</td>
-                                        <td>{{$team_statistics->fixtures->played->away}}</td>
-                                        <td>{{$team_statistics->fixtures->played->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Wins</td>
-                                        <td>{{$team_statistics->fixtures->wins->home}}</td>
-                                        <td>{{$team_statistics->fixtures->wins->away}}</td>
-                                        <td>{{$team_statistics->fixtures->wins->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Draws</td>
-                                        <td>{{$team_statistics->fixtures->draws->home}}</td>
-                                        <td>{{$team_statistics->fixtures->draws->away}}</td>
-                                        <td>{{$team_statistics->fixtures->draws->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Losses</td>
-                                        <td>{{$team_statistics->fixtures->loses->home}}</td>
-                                        <td>{{$team_statistics->fixtures->loses->away}}</td>
-                                        <td>{{$team_statistics->fixtures->loses->total}}</td>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Goals For</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th></th>
-                                        <th>Home</th>
-                                        <th>Away</th>
-                                        <th>All</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Total</td>
-                                        <td>{{$team_statistics->goals->for->total->home}}</td>
-                                        <td>{{$team_statistics->goals->for->total->away}}</td>
-                                        <td>{{$team_statistics->goals->for->total->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Average</td>
-                                        <td>{{$team_statistics->goals->for->average->home}}</td>
-                                        <td>{{$team_statistics->goals->for->average->away}}</td>
-                                        <td>{{$team_statistics->goals->for->average->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Minute</th>
-                                                        <th>Total</th>
-                                                        <th>Percentage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($team_statistics->goals->for->minute as $k=>$v)
-                                                    <tr>
-                                                        <td>{{$k}}</td>
-                                                        <td><?php echo !empty($v->total) ? $v->total : '0'; ?></td>
-                                                        <td><?php echo !empty($v->percentage) ? $v->percentage : '0%'; ?></td>
-                                                    </tr>
+                        <div class="card">
+                            <div class="card-body" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name" class="col-md-auto col-form-label team_1_color">Team&nbsp;1</label>
+                                            <div class="col-md-auto">
+                                                <select class="form-control" name="team" id="team" onchange="setTeam(this.value)">
+                                                    @foreach ($teams as $single_team)
+                                                    <option {{$single_team->team->id == $team_1 ? 'selected' : ''}} value="{{$single_team->team->id}}">{{$single_team->team->name}}</option>
                                                     @endforeach
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    
-                                   
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Goals Against</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th></th>
-                                        <th>Home</th>
-                                        <th>Away</th>
-                                        <th>All</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Total</td>
-                                        <td>{{$team_statistics->goals->against->total->home}}</td>
-                                        <td>{{$team_statistics->goals->against->total->away}}</td>
-                                        <td>{{$team_statistics->goals->against->total->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Average</td>
-                                        <td>{{$team_statistics->goals->against->average->home}}</td>
-                                        <td>{{$team_statistics->goals->against->average->away}}</td>
-                                        <td>{{$team_statistics->goals->against->average->total}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Minute</th>
-                                                        <th>Total</th>
-                                                        <th>Percentage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($team_statistics->goals->against->minute as $k=>$v)
-                                                    <tr>
-                                                        <td>{{$k}}</td>
-                                                        <td><?php echo !empty($v->total) ? $v->total : '0'; ?></td>
-                                                        <td><?php echo !empty($v->percentage) ? $v->percentage : '0%'; ?></td>
-                                                    </tr>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name" class="col-md-auto col-form-label team_2_color">Team&nbsp;2</label>
+                                            <div class="col-md-auto">
+                                                <select class="form-control" name="team" id="team" onchange="setTeam(this.value)">
+                                                    @foreach ($teams as $single_team)
+                                                    <option {{$single_team->team->id == $team_2 ? 'selected' : ''}} value="{{$single_team->team->id}}">{{$single_team->team->name}}</option>
                                                     @endforeach
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-    
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Biggest Strak</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th></th>
-                                        <th>Wins</th>
-                                        <th>Draws</th>
-                                        <th>Loses</th>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>{{$team_statistics->biggest->streak->wins}}</td>
-                                        <td>{{$team_statistics->biggest->streak->draws}}</td>
-                                        <td>{{$team_statistics->biggest->streak->loses}}</td>
-                                    </tr>
-    
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Biggest</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th colspan="2"></th>
-                                        <th colspan="1">Home</th>
-                                        <th colspan="1">Away</th>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Wins</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->wins->home) ? $team_statistics->biggest->wins->home : 0 }}</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->wins->away) ? $team_statistics->biggest->wins->away : 0 }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Loese</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->loese->home) ? $team_statistics->biggest->loese->home : 0 }}</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->loese->away) ? $team_statistics->biggest->loese->away : 0 }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Goals For</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->goals->for->home) ? $team_statistics->biggest->goals->for->home : 0 }}</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->goals->for->away) ? $team_statistics->biggest->goals->for->away : 0 }}</td>
-                                    </tr>
-    
-                                    <tr>
-                                        <td colspan="2">Goals Against</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->goals->against->home) ? $team_statistics->biggest->goals->against->home : 0 }}</td>
-                                        <td colspan="1">{{!empty($team_statistics->biggest->goals->against->away) ? $team_statistics->biggest->goals->against->away : 0 }}</td>
-                                    </tr>
-    
-                                    <tr class="thead-light">
-                                        <th ></th>
-                                        <th >Home</th>
-                                        <th >Away</th>
-                                        <th>Total</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Clean Sheet</th>
-                                        <td>{{!empty($team_statistics->clean_sheet->home) ? $team_statistics->clean_sheet->home : 0 }}</td>
-                                        <td>{{!empty($team_statistics->clean_sheet->away) ? $team_statistics->clean_sheet->away : 0 }}</td>
-                                        <td>{{!empty($team_statistics->clean_sheet->total) ? $team_statistics->clean_sheet->total : 0 }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Failed to Score</th>
-                                        <td>{{!empty($team_statistics->failed_to_score->home) ? $team_statistics->failed_to_score->home : 0 }}</td>
-                                        <td>{{!empty($team_statistics->failed_to_score->away) ? $team_statistics->failed_to_score->away : 0 }}</td>
-                                        <td>{{!empty($team_statistics->failed_to_score->total) ? $team_statistics->failed_to_score->total : 0 }}</td>
-                                    </tr>
-    
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Penalty</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th colspan="2"></th>
-                                        <th>Total</th>
-                                        <th>Percentage</th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2" class="text-left">Scored</th>
-                                        <td>{{!empty($team_statistics->penalty->scored->total) ? $team_statistics->penalty->scored->total : 0 }}</td>
-                                        <td>{{!empty($team_statistics->penalty->scored->percentage) ? !empty($team_statistics->penalty->scored->percentage) : "0%" }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2" class="text-left">Missed</th>
-                                        <td>{{!empty($team_statistics->penalty->msissed->total) ? $team_statistics->penalty->missed->total : 0 }}</td>
-                                        <td>{{!empty($team_statistics->penalty->missed->percentage) ? !empty($team_statistics->penalty->missed->percentage) : "0%" }}</td>
-                                    </tr>
-    
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Lineups</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th colspan="2">Formation</th>
-                                        <th colspan="2">Played</th>
-                                    </tr>
-                                    @foreach ($team_statistics->lineups as $k=>$v)
-                                    <tr>
-                                        <td colspan="2">{{$v->formation}}</td>
-                                        <td colspan="2">{{$v->played}}</td>
-                                    </tr>
-                                    @endforeach
-    
-    
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Cards Yellow</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th colspan="2">Time</th>
-                                        <th>Total</th>
-                                        <th>Percentage</th>
-                                    </tr>
-                                    @php
-                                    $grand_total_yellow = 0;    
-                                    @endphp
-                                    @foreach ($team_statistics->cards->yellow as $k=>$v)
-                                    @php
-                                    $grand_total_yellow += !empty($v->total) ? $v->total : 0;    
-                                    @endphp
-                                    <tr>
-                                        <td colspan="2" class="text-left">{{$k}}</td>
-                                        <td >{{!empty($v->total) ? $v->total : 0;}}</td>
-                                        <td >{{!empty($v->percentage) ? $v->percentage : "0%";}}</td>
-                                    </tr>
-                                    @endforeach
-                                    <tr>
-                                        <th colspan="2" >Grand Total</th>
-                                        <th>{{$grand_total_yellow}}</th>
-                                        <td></td>
-                                    </tr>
-    
-                                    <tr class="thead-light">
-                                        <th colspan="4" class="text-left">Cards Red</th>
-                                    </tr>
-                                    <tr class="thead-light">
-                                        <th colspan="2">Time</th>
-                                        <th>Total</th>
-                                        <th>Percentage</th>
-                                    </tr>
-                                    @php
-                                    $grand_total_red = 0;    
-                                    @endphp
-                                    @foreach ($team_statistics->cards->red as $k=>$v)
-                                    @php
-                                    $grand_total_red += !empty($v->total) ? $v->total : 0;    
-                                    @endphp
-                                    <tr>
-                                        <td colspan="2" class="text-left">{{$k}}</td>
-                                        <td >{{!empty($v->total) ? $v->total : 0;}}</td>
-                                        <td >{{!empty($v->percentage) ? $v->percentage : "0%";}}</td>
-                                    </tr>
-                                    @endforeach
-                                    <tr>
-                                        <th colspan="2">Grand Total</th>
-                                        <th>{{$grand_total_red}}</th>
-                                        <td></td>
-                                    </tr>
-                                    
-                                    @else
-                                    <tr>
-                                        <td colspan="4" class="text-center">
-                                            No data available
-                                        </td>
-                                    </tr>
-                                    @endif
-                                </tbody>
-                            </table>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive" id="team-stats">
+                                    <table class="table table-bordered" style="width: 100%;">
+                                        {{-- <thead>
+                                            <th colspan="4" class="text-center">
+                                                {{$team->team->name}}
+                                            </th>
+                                        </thead> --}}
+                                        <tbody >
+                                            @if (!empty($team_1_statistics) && !empty($team_2_statistics))
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Fixtures</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th></th>
+                                                <th>Home</th>
+                                                <th>Away</th>
+                                                <th>All</th>
+                                            </tr> 
+                                            <tr>
+                                                <td class="text-left">Played</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->played->home}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->played->home}}</span> </td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->played->away}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->played->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->played->total}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->played->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Wins</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->wins->home}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->wins->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->wins->away}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->wins->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->wins->total}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->wins->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Draws</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->draws->home}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->draws->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->draws->away}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->draws->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->draws->total}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->draws->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Loses</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->loses->home}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->loses->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->loses->away}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->loses->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->fixtures->loses->total}}</span> / <span class="team_2_color">{{$team_2_statistics->fixtures->loses->total}}</span></td>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Goals For</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th></th>
+                                                <th>Home</th>
+                                                <th>Away</th>
+                                                <th>All</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Total</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->for->total->home}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->for->total->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->for->total->away}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->for->total->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->for->total->total}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->for->total->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Average</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->for->average->home}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->for->average->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->for->average->away}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->for->average->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->for->average->total}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->for->average->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Minute</th>
+                                                                <th>Total</th>
+                                                                <th>Percentage</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($team_1_statistics->goals->for->minute as $k=>$v)
+                                                            <tr>
+                                                                <td>{{$k}}</td>
+                                                                <td>
+                                                                    <span class="team_1_color"><?php echo !empty($team_1_statistics->goals->for->minute->{''.$k.''}->total) ? $team_1_statistics->goals->for->minute->{''.$k.''}->total : '0'; ?></span>
+                                                                    /
+                                                                    <span class="team_2_color"><?php echo !empty($team_2_statistics->goals->for->minute->{''.$k.''}->total) ? $team_2_statistics->goals->for->minute->{''.$k.''}->total : '0'; ?></span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="team_1_color"><?php echo !empty($team_1_statistics->goals->for->minute->{''.$k.''}->percentage) ? $team_1_statistics->goals->for->minute->{''.$k.''}->percentage : '0%'; ?></span>
+                                                                    /
+                                                                    <span class="team_2_color"><?php echo !empty($team_2_statistics->goals->for->minute->{''.$k.''}->percentage) ? $team_2_statistics->goals->for->minute->{''.$k.''}->percentage : '0%'; ?></span>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            
+                                        
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Goals Against</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th></th>
+                                                <th>Home</th>
+                                                <th>Away</th>
+                                                <th>All</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Total</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->against->total->home}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->against->total->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->against->total->away}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->against->total->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->against->total->total}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->against->total->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">Average</td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->against->average->home}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->against->average->home}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->against->average->away}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->against->average->away}}</span></td>
+                                                <td><span class="team_1_color">{{$team_1_statistics->goals->against->average->total}}</span> / <span class="team_2_color">{{$team_2_statistics->goals->against->average->total}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Minute</th>
+                                                                <th>Total</th>
+                                                                <th>Percentage</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($team_1_statistics->goals->against->minute as $k=>$v)
+                                                            <tr>
+                                                                <td>{{$k}}</td>
+                                                                <td>
+                                                                    <span class="team_1_color"><?php echo !empty($team_1_statistics->goals->against->minute->{''.$k.''}->total) ? $team_1_statistics->goals->against->minute->{''.$k.''}->total : '0'; ?></span>
+                                                                    /
+                                                                    <span class="team_2_color"><?php echo !empty($team_2_statistics->goals->against->minute->{''.$k.''}->total) ? $team_2_statistics->goals->against->minute->{''.$k.''}->total : '0'; ?></span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="team_1_color"><?php echo !empty($team_1_statistics->goals->against->minute->{''.$k.''}->percentage) ? $team_1_statistics->goals->against->minute->{''.$k.''}->percentage : '0%'; ?></span>
+                                                                    /
+                                                                    <span class="team_2_color"><?php echo !empty($team_2_statistics->goals->against->minute->{''.$k.''}->percentage) ? $team_2_statistics->goals->against->minute->{''.$k.''}->percentage : '0%'; ?></span>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+            
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Biggest Strak</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th></th>
+                                                <th>Wins</th>
+                                                <th>Draws</th>
+                                                <th>Loses</th>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <span class="team_1_color">{{$team_1_statistics->biggest->streak->wins}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{$team_2_statistics->biggest->streak->wins}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{$team_1_statistics->biggest->streak->draws}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{$team_2_statistics->biggest->streak->draws}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{$team_1_statistics->biggest->streak->loses}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{$team_2_statistics->biggest->streak->loses}}</span>
+
+                                                </td>
+                                            </tr>
+            
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Biggest</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th colspan="2"></th>
+                                                <th colspan="1">Home</th>
+                                                <th colspan="1">Away</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Wins</td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->wins->home) ? $team_1_statistics->biggest->wins->home : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->wins->home) ? $team_2_statistics->biggest->wins->home : 0 }}</span>
+                                                </td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->wins->away) ? $team_1_statistics->biggest->wins->away : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->wins->away) ? $team_2_statistics->biggest->wins->away : 0 }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Loses</td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->loses->home) ? $team_1_statistics->biggest->loses->home : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->loses->home) ? $team_2_statistics->biggest->loses->home : 0 }}</span>
+                                                </td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->loses->away) ? $team_1_statistics->biggest->loses->away : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->loses->away) ? $team_2_statistics->biggest->loses->away : 0 }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Goals For</td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->goals->for->home) ? $team_1_statistics->biggest->goals->for->home : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->goals->for->home) ? $team_2_statistics->biggest->goals->for->home : 0 }}</span>
+                                                </td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->goals->for->away) ? $team_1_statistics->biggest->goals->for->away : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->goals->for->away) ? $team_2_statistics->biggest->goals->for->away : 0 }}</span>
+                                                </td>
+                                            </tr>
+            
+                                            <tr>
+                                                <td colspan="2">Goals Against</td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->goals->against->home) ? $team_1_statistics->biggest->goals->against->home : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->goals->against->home) ? $team_2_statistics->biggest->goals->against->home : 0 }}</span>
+                                                </td>
+                                                <td colspan="1">
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->biggest->goals->against->away) ? $team_1_statistics->biggest->goals->against->away : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->biggest->goals->against->away) ? $team_2_statistics->biggest->goals->against->away : 0 }}</span>
+                                                </td>
+                                            </tr>
+            
+                                            <tr class="thead-light">
+                                                <th ></th>
+                                                <th >Home</th>
+                                                <th >Away</th>
+                                                <th>Total</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Clean Sheet</td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->clean_sheet->home) ? $team_1_statistics->clean_sheet->home : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->clean_sheet->home) ? $team_2_statistics->clean_sheet->home : 0 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->clean_sheet->away) ? $team_1_statistics->clean_sheet->away : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->clean_sheet->away) ? $team_2_statistics->clean_sheet->away : 0 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->clean_sheet->total) ? $team_1_statistics->clean_sheet->total : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->clean_sheet->total) ? $team_2_statistics->clean_sheet->total : 0 }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Failed to Score</td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->failed_to_score->home) ? $team_1_statistics->failed_to_score->home : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->failed_to_score->home) ? $team_2_statistics->failed_to_score->home : 0 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->failed_to_score->away) ? $team_1_statistics->failed_to_score->away : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->failed_to_score->away) ? $team_2_statistics->failed_to_score->away : 0 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->failed_to_score->total) ? $team_1_statistics->failed_to_score->total : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->failed_to_score->total) ? $team_2_statistics->failed_to_score->total : 0 }}
+                                                </td>
+                                            </tr>
+            
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Penalty</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th colspan="2"></th>
+                                                <th>Total</th>
+                                                <th>Percentage</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="text-left">Scored</td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->penalty->scored->total) ? $team_1_statistics->penalty->scored->total : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->penalty->scored->total) ? $team_2_statistics->penalty->scored->total : 0 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->penalty->scored->percentage) ? !empty($team_1_statistics->penalty->scored->percentage) : "0%" }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->penalty->scored->percentage) ? !empty($team_2_statistics->penalty->scored->percentage) : "0%" }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="text-left">Missed</td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->penalty->msissed->total) ? $team_1_statistics->penalty->missed->total : 0 }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->penalty->msissed->total) ? $team_2_statistics->penalty->missed->total : 0 }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->penalty->missed->percentage) ? !empty($team_1_statistics->penalty->missed->percentage) : "0%" }}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->penalty->missed->percentage) ? !empty($team_2_statistics->penalty->missed->percentage) : "0%" }}</span>
+                                                </td>
+                                            </tr>
+            
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Lineups</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <table class="table">
+                                                        <tr class="thead-light">
+                                                            <th colspan="2"><span class="team_1_color">Team 1</span></th>
+                                                        </tr>
+                                                        <tr class="thead-light">
+                                                            <th><span class="team_1_color">Formation</span></th>
+                                                            <th><span class="team_1_color">Played</span></th>
+                                                        </tr>
+                                                        @foreach ($team_1_statistics->lineups as $k=>$v)
+                                                        <tr>
+                                                            <td><span class="team_1_color">{{$v->formation}}</span></td>
+                                                            <td><span class="team_1_color">{{$v->played}}</span></td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </table>
+
+                                                </td>
+                                                <td colspan="2">
+                                                    <table class="table">
+                                                        <tr class="thead-light">
+                                                            <th colspan="2"><span class="team_2_color">Team 2</span></th>
+                                                        </tr>
+                                                        <tr class="thead-light">
+                                                            <th><span class="team_2_color">Formation</span></th>
+                                                            <th><span class="team_2_color">Played</span></th>
+                                                        </tr>
+                                                        @foreach ($team_2_statistics->lineups as $k=>$v)
+                                                        <tr>
+                                                            <td><span class="team_2_color">{{$v->formation}}</span></td>
+                                                            <td><span class="team_2_color">{{$v->played}}</span></td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Cards Yellow</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th colspan="2">Time</th>
+                                                <th>Total</th>
+                                                <th>Percentage</th>
+                                            </tr>
+                                            @php
+                                            $grand_total_yellow_team_1 = 0;
+                                            $grand_total_yellow_team_2 = 0;    
+                                            @endphp
+                                            @foreach ($team_1_statistics->cards->yellow as $k=>$v)
+                                            @php
+                                            $grand_total_yellow_team_1 += !empty($team_1_statistics->cards->yellow->{''.$k.''}->total) ? $team_1_statistics->cards->yellow->{''.$k.''}->total : 0;
+                                            $grand_total_yellow_team_2 += !empty($team_2_statistics->cards->yellow->{''.$k.''}->total) ? $team_2_statistics->cards->yellow->{''.$k.''}->total : 0;    
+                                            @endphp
+                                            <tr>
+                                                <td colspan="2" class="text-left">{{$k}}</td>
+                                                <td >
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->cards->yellow->{''.$k.''}->total) ? $team_1_statistics->cards->yellow->{''.$k.''}->total : 0;}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->cards->yellow->{''.$k.''}->total) ? $team_2_statistics->cards->yellow->{''.$k.''}->total : 0;}}</span>
+                                                </td>
+                                                <td >
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->cards->yellow->{''.$k.''}->percentage) ? $team_1_statistics->cards->yellow->{''.$k.''}->percentage : "0%";}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->cards->yellow->{''.$k.''}->percentage) ? $team_2_statistics->cards->yellow->{''.$k.''}->percentage : "0%";}}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                            <tr>
+                                                <th colspan="2" >Grand Total</th>
+                                                <th>
+                                                    <span class="team_1_color">{{$grand_total_yellow_team_1}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{$grand_total_yellow_team_2}}</span>
+                                                
+                                                </th>
+                                                <td></td>
+                                            </tr>
+            
+                                            <tr class="thead-light">
+                                                <th colspan="4" class="text-left">Cards Red</th>
+                                            </tr>
+                                            <tr class="thead-light">
+                                                <th colspan="2">Time</th>
+                                                <th>Total</th>
+                                                <th>Percentage</th>
+                                            </tr>
+                                            @php
+                                            $grand_total_red_team_1 = 0;
+                                            $grand_total_red_team_2 = 0;    
+                                            @endphp
+                                            @foreach ($team_1_statistics->cards->red as $k=>$v)
+                                            @php
+                                            $grand_total_red_team_1 += !empty($team_1_statistics->cards->red->{''.$k.''}->total) ? $team_1_statistics->cards->red->{''.$k.''}->total : 0;  
+                                            $grand_total_red_team_2 += !empty($team_2_statistics->cards->red->{''.$k.''}->total) ? $team_2_statistics->cards->red->{''.$k.''}->total : 0;    
+                                            @endphp
+                                            <tr>
+                                                <td colspan="2" class="text-left">{{$k}}</td>
+                                                <td >
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->cards->red->{''.$k.''}->total) ? $team_1_statistics->cards->red->{''.$k.''}->total : 0;}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->cards->red->{''.$k.''}->total) ? $team_2_statistics->cards->red->{''.$k.''}->total : 0;}}</span>
+                                                </td>
+                                                <td >
+                                                    <span class="team_1_color">{{!empty($team_1_statistics->cards->red->{''.$k.''}->percentage) ? $team_1_statistics->cards->red->{''.$k.''}->percentage : "0%";}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{!empty($team_2_statistics->cards->red->{''.$k.''}->percentage) ? $team_2_statistics->cards->red->{''.$k.''}->percentage : "0%";}}</span>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                            <tr>
+                                                <th colspan="2">Grand Total</th>
+                                                <th> 
+                                                    <span class="team_1_color">{{$grand_total_red_team_1}}</span>
+                                                    /
+                                                    <span class="team_2_color">{{$grand_total_red_team_2}}</span>
+                                                </th>
+                                                <td></td>
+                                            </tr>
+                                            
+                                            @else
+                                            <tr>
+                                                <td colspan="4" class="text-center">
+                                                    No data available
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- End Team Statistics --}}
+            {{-- End Team Statistics --}}  
         </div>
 
         <div class="tab-pane fade" id="pills-player-stats" role="tabpanel" aria-labelledby="pills-player-stats-tab">
             <div class="col-md-12 mb-2 px-0">
                 <div class="row">
                     {{-- Top Scorers --}}
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6 col-lg-6">
                         <div class="card align-middle bg-dark text-white">
                             <h5 class="text-left p-2">Top Scorers</h5>
                         </div>
