@@ -24,6 +24,28 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade" id="pills-match-preview" role="tabpanel" aria-labelledby="pills-match-preview-tab">
+            {{--  --}}
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{--  --}}
             <div class="row">
                 {{-- info --}}
                 <div class="col-md-12 mb-2">
@@ -34,7 +56,7 @@
                         <div class="card-body">
                             <div class="row justify-content-center">
                                 <div class="col-md-3 text-center mobile-resp">
-                                    <a class="no-underline" href="{{route('public.team.get', [
+                                    <a class="no-underline team-link" href="{{route('public.team.get', [
                                 'nation' => str_replace(' ', '_', $league->country),
                                 'id' => $teams->home->id,
                                 'club' => str_replace(' ', '_', $teams->home->name)]
@@ -66,7 +88,7 @@
                                     <h4 class="score-text">{{$goals->home}} - {{$goals->away}}</h4>
                                 </div>
                                 <div class="col-md-3 text-center mobile-resp">
-                                    <a class="no-underline" href="{{route('public.team.get', [
+                                    <a class="no-underline team-link" href="{{route('public.team.get', [
                                 'nation' => str_replace(' ', '_', $league->country),
                                 'id' => $teams->away->id,
                                 'club' => str_replace(' ', '_', $teams->away->name)]
@@ -1822,5 +1844,19 @@
         );
    
     }
+
+    $(document).on("click",".team-link",function(e){
+        e.preventDefault();
+        var url = $(this).attr("href");
+        $.ajax({
+            url:url,
+            type:"get",
+            success:function(response){
+                // alert(response)
+                $("#modal-body").html(response);
+                $("#exampleModal").modal("show");
+            }
+        });
+    })
 
 </script>
