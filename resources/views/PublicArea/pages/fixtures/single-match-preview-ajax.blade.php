@@ -26,21 +26,14 @@
         <div class="tab-pane fade" id="pills-match-preview" role="tabpanel" aria-labelledby="pills-match-preview-tab">
             {{--  --}}
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+            <div class="modal fade" id="screenModal" tabindex="-1" role="dialog" aria-labelledby="screenModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body" id="modal-body">
+                        <div class="modal-body" id="screen-modal-body">
                         ...
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -1853,8 +1846,8 @@
             type:"get",
             success:function(response){
                 // alert(response)
-                $("#modal-body").html(response);
-                $("#exampleModal").modal("show");
+                $("#screen-modal-body").html(response);
+                $("#screenModal").modal("show");
             }
         });
     })
