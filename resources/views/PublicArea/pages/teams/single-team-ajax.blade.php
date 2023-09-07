@@ -164,6 +164,7 @@
                                                                 </div>
                                                             </td>
                                                             @endswitch
+                                                            
     
                                                             <td class="team team-a">
                                                                 <a href="{{route('public.team.get', [
@@ -176,6 +177,7 @@
                                                                     <img class="team-logo"
                                                                         src="{{$fixture->teams->home->logo}}" alt="">
                                                                 </a>
+                                                                
                                                             </td>
     
                                                             <td class="score-time status">
@@ -197,6 +199,14 @@
                                                                     @default
                                                                     {{$fixture->goals->home}} - {{$fixture->goals->away}}
                                                                     @endswitch
+                                                                </a>
+                                                                <br>
+                                                                <a href="{{route('public.fixture.match-info.get', $fixture->fixture->id)}}"  class="btn btn-xs btn-secondary" title="Match-Info">
+                                                                    Match  Info
+                                                                </a>
+                                                                <br>
+                                                                <a href="{{route('public.fixture.match-preview.get', $fixture->fixture->id)}}"  class="btn btn-xs btn-secondary" title="Match-Info">
+                                                                    Match  Preview
                                                                 </a>
                                                             </td>
                                                             <td class="team team-b text-left">
@@ -677,6 +687,7 @@
                                             <div class="media-body">
                                               <h5 class="mt-0">{{$pv->player->name}}</h5>
                                               <p>{{$pv->player->nationality}}</p>
+                                              <p><a href="{{route('public.team.player.transfers.get', ['team'=>$team->team->id,'player'=>$pv->player->id])}}">Transfers</a></p>
                                             </div>
                                         </div>
                                     </div>
