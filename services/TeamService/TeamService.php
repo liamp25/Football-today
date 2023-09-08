@@ -52,6 +52,13 @@ class TeamService
             $standings = $this->getStandings($id, $league, $season);
             $players = $this->getPlayers($id, $league, $season, 1, []);
             $team_statistics = $this->getTeamStatistics($id, $league, $season);
+      
+            usort($players, function($a, $b) {
+                // Compare the 'appearence' property of $a and $b
+                return $b->statistics[0]->games->appearences - $a->statistics[0]->games->appearences;
+            });
+            
+            
             $playersByPosition = [
                 
                 'Goalkeeper'=>array(),
@@ -61,8 +68,7 @@ class TeamService
             ];
            
             foreach ($players as $k => $playerData) {
-                $position = $playerData->statistics[0]->games->position;
-                
+                $position = $playerData->statistics[0]->games->position;           
                 if (!isset($playersByPosition[$position])) {
                     $playersByPosition[$position][] = $playerData;
                 }
@@ -259,5 +265,22 @@ class TeamService
         // }
 
         return $team;
+    }
+
+    public function getTeamPlayerTransfers($team,$player){
+        $transfers = [];
+
+        $url = self::URL . '/transfers?player=' . $player;
+
+        $resp = CurlCaller::get($url, []);
+
+        if ($resp && isset($resp->response[0])) {
+            $transfers = $resp;
+        }
+        // else {
+        //     return $this->getTeamById($id);
+        // }
+
+        return $transfers;        
     }
 }

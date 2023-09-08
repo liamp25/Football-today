@@ -31,6 +31,8 @@ Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function
     // routes for teams
     Route::get('/team/{nation}/{club}/{id}', 'TeamsController@getTeam')->name('public.team.get');
     Route::get('/team/ajax/{id}', 'TeamsController@getTeamAjax')->name('public.team.get.ajax');
+    Route::get('/team/player/transfers/{team}/{player}', 'TeamsController@getTeamPlayerTransfers')->name('public.team.player.transfers.get');
+    Route::get('/team/player/transfers/ajax/{team}/{player}', 'TeamsController@getTeamPlayerTransfersAjax')->name('public.team.player.transfers.get.ajax');
     
 
     // routes for articles

@@ -196,6 +196,7 @@
                                                                     src="{{$home_fixture->teams->home->logo}}"
                                                                     alt="home">
                                                             </a>
+                                            
                                                         </td>
                                                         <td class="text-left">
                                                             <a class="no-underline" href="{{route('public.team.get', [
@@ -206,8 +207,10 @@
                                                                 {{$home_fixture->teams->home->name}}
                                                             </a>
                                                         </td>
-                                                        <td style="white-space: nowrap">
-                                                            {{$home_fixture->goals->home}}-{{$home_fixture->goals->away}}
+                                                        <td style="white-space: nowrap; centered-links" align="center">
+                                                            <p>{{$home_fixture->goals->home}}-{{$home_fixture->goals->away}}</p>
+                                                            <p><a href="{{route('public.fixture.match-info.get', $home_fixture->fixture->id)}}"  class="btn btn-sm btn-secondary" title="Match-Info">Match  Info</a></p>
+                                                            <p><a href="{{route('public.fixture.match-preview.get', $home_fixture->fixture->id)}}"  class="btn btn-sm btn-secondary" title="Match-Info">Match  Preview</a></p>
                                                         </td>
                                                         <td class="text-right">
                                                             <a class="no-underline" href="{{route('public.team.get', [
@@ -275,8 +278,10 @@
                                                                 {{$away_fixture->teams->home->name}}
                                                             </a>
                                                         </td>
-                                                        <td style="white-space: nowrap">
-                                                            {{$away_fixture->goals->home}}-{{$away_fixture->goals->away}}
+                                                        <td style="white-space: nowrap; centered-links" align="center">
+                                                            <p>{{$away_fixture->goals->home}}-{{$away_fixture->goals->away}}</p>
+                                                            <p><a href="{{route('public.fixture.match-info.get', $away_fixture->fixture->id)}}"  class="btn btn-sm btn-secondary" title="Match-Info">Match  Info</a></p>
+                                                            <p><a href="{{route('public.fixture.match-preview.get', $away_fixture->fixture->id)}}"  class="btn btn-sm btn-secondary" title="Match-Info">Match  Preview</a></p>
                                                         </td>
                                                         <td class="text-right">
                                                             <a class="no-underline" href="{{route('public.team.get', [
@@ -352,8 +357,10 @@
                                                 {{$h2h_single->teams->home->name}}
                                             </a>
                                         </td>
-                                        <td style="white-space: nowrap">
-                                            {{$h2h_single->goals->home}}-{{$h2h_single->goals->away}}
+                                        <td style="white-space: nowrap centered-links" align="center">
+                                            <p>{{$h2h_single->goals->home}}-{{$h2h_single->goals->away}}</p>
+                                            <p><a href="{{route('public.fixture.match-info.get', $h2h_single->fixture->id)}}"  class="btn btn-sm btn-secondary" title="Match-Info">Match  Info</a></p>
+                                            <p><a href="{{route('public.fixture.match-preview.get', $h2h_single->fixture->id)}}"  class="btn btn-sm btn-secondary" title="Match-Info">Match  Preview</a></p>
                                         </td>
                                         <td class="text-right">
                                             <a class="no-underline" href="{{route('public.team.get', [

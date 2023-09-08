@@ -16,6 +16,9 @@ class TeamsController extends Controller
         $team = TeamCaller::getTeamById($id);
         setcookie('season_team', LeagueCaller::getCurrentSeason(TeamCaller::getLeagues($team->id)[0]->league->id), time() + (86400 * 30), "/team");
         setcookie('league', TeamCaller::getLeagues($team->id)[0]->league->id, time() + (86400 * 30), "/team");
+        // setcookie('league', 'all', time() + (86400 * 30), "/team");
+        // $data = TeamCaller::getTeam($id);
+        // dd($data);
         $response['id'] = $id;
         return view('PublicArea.pages.teams.single-team')->with($response);
     }
@@ -43,6 +46,24 @@ class TeamsController extends Controller
         $response['timezone'] = get_local_time();
         $response['fixtureId'] = $id;
         return view('PublicArea.pages.teams.single-team-ajax')->with($response);
+    }
+
+    public function getTeamPlayerTransfers($team,$player){
+        $response = [
+            'team'=>$team,
+            'player'=>$player
+        ];
+        $data = TeamCaller::getTeamPlayerTransfers($team,$player);    
+        dd($data);    
+        return view('PublicArea.pages.teams.single-player-transfers')->with($response);
+    }
+
+    public function getTeamPlayerTransfersAjax(){
+        $response = [
+            
+        ];
+        return "ok ok";
+        // return view('PublicArea.pages.teams.single-player-transfers-ajax')->with($response);
     }
 
     
