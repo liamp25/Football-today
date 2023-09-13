@@ -30,7 +30,7 @@ class TeamsController extends Controller
 
         if (!$data['status']) {
             return '<div class="col-md-12 mb-2">No results found</div>';
-        }
+    }
 
         $response['season'] = $data['season'];
         $response['seasons'] = $data['seasons'];
@@ -45,26 +45,8 @@ class TeamsController extends Controller
         $response['team_statistics'] = $data['team_statistics'];
         $response['timezone'] = get_local_time();
         $response['fixtureId'] = $id;
+        $response['transfers'] = $data['transfers'];
         return view('PublicArea.pages.teams.single-team-ajax')->with($response);
     }
-
-    public function getTeamPlayerTransfers($team,$player){
-        $response = [
-            'team'=>$team,
-            'player'=>$player
-        ];
-        $data = TeamCaller::getTeamPlayerTransfers($team,$player);    
-        dd($data);    
-        return view('PublicArea.pages.teams.single-player-transfers')->with($response);
-    }
-
-    public function getTeamPlayerTransfersAjax(){
-        $response = [
-            
-        ];
-        return "ok ok";
-        // return view('PublicArea.pages.teams.single-player-transfers-ajax')->with($response);
-    }
-
     
 }

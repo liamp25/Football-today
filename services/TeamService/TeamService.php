@@ -27,6 +27,7 @@ class TeamService
         $players = [];
         $team_statistics = [];
         $lineups = [];
+        $transfers = [];
 
 
         $leagues = $this->getLeagues($id);
@@ -52,7 +53,7 @@ class TeamService
             $standings = $this->getStandings($id, $league, $season);
             $players = $this->getPlayers($id, $league, $season, 1, []);
             $team_statistics = $this->getTeamStatistics($id, $league, $season);
-      
+            $transfers = $this->getTeamTransfers($id);
             usort($players, function($a, $b) {
                 // Compare the 'appearence' property of $a and $b
                 return $b->statistics[0]->games->appearences - $a->statistics[0]->games->appearences;
@@ -97,6 +98,7 @@ class TeamService
             'playersByPosition' => $playersByPosition,
             'lineups' => $lineups,
             'team_statistics' => $team_statistics,
+            'transfers'=>$transfers,
         ];
     }
 
@@ -267,15 +269,15 @@ class TeamService
         return $team;
     }
 
-    public function getTeamPlayerTransfers($team,$player){
+    public function getTeamTransfers($team){
         $transfers = [];
 
-        $url = self::URL . '/transfers?player=' . $player;
+        $url = self::URL . '/transfers?team=' . $team;
 
         $resp = CurlCaller::get($url, []);
 
         if ($resp && isset($resp->response[0])) {
-            $transfers = $resp;
+            $transfers = $resp->response;
         }
         // else {
         //     return $this->getTeamById($id);

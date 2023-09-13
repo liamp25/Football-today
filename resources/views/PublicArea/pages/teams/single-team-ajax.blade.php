@@ -64,6 +64,10 @@
                 <a class="nav-link" id="pills-players-tab" data-toggle="pill" href="#pills-players" role="tab"
                     aria-controls="pills-players" aria-selected="false">Players</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-transfers-tab" data-toggle="pill" href="#pills-transfers" role="tab"
+                    aria-controls="pills-transfers" aria-selected="false">Transfers</a>
+            </li>
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
@@ -1005,6 +1009,40 @@
                             </div>
                             @endforeach
     
+                        </div>    
+                        @endforeach
+                    </div>
+                </div>
+                {{-- End of List of Players --}}
+
+            </div>
+            <div class="tab-pane fade" id="pills-transfers" role="tabpanel" aria-labelledby="pills-transfers-tab">
+                
+                {{-- List of Transfers --}}
+                <div class="col-md-12 mb-2 px-0">
+                    <div class="accordion" id="accordionExample">
+                        @foreach ($transfers as $k=>$v)
+                        <div class="row">
+                            <div class="col-md-12 player-position">
+                                <h5>{{$v->player->name}}<hr></h5>
+                                
+                            </div>
+
+                            @foreach ($v->transfers as $k2=>$v2)
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="player-stats card-header" id="heading-{{$k.'-'.$k2}}" data-toggle="collapse" data-target="#collapse-{{$k.'-'.$pk}}" aria-expanded="true" aria-controls="collapse-{{$k."-".$pk}}">
+                                        <img src="{{$v2->teams->in->logo}}" alt="in">   
+                                        In: {{$v2->teams->in->name}} <br>
+                                        <img src="{{$v2->teams->out->logo}}" alt="out"> 
+                                        Out: {{$v2->teams->out->name}} <br>
+                                        Type: {{$v2->type}} <br>
+                                        Date: {{$v2->date}} <br>
+
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>    
                         @endforeach
                     </div>
