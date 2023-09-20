@@ -27,10 +27,14 @@ class TeamService
         $players = [];
         $team_statistics = [];
         $lineups = [];
+        $transferYears = [];
         $transfers = [];
-
+        $transfersByYear = [];
 
         $leagues = $this->getLeagues($id);
+        $transfersData = $this->getTeamTransfers($id);
+        $transferYears = $transfersData['transferYears'];
+        $transfers = $transfersData['transfers'];
 
         if (isset($_COOKIE["league"])) {
             $league = $_COOKIE["league"];
@@ -44,6 +48,16 @@ class TeamService
             $season = LeagueCaller::getCurrentSeason($league);
         }
 
+        if (isset($_COOKIE["transferYear"])) {
+            $transferYear = $_COOKIE["transferYear"];
+        } else {
+            if (!empty($transferYears)) {
+                $transferYear = $transferYears[0];
+            }else{
+                $transferYear = date("Y");
+            }
+        }
+
         $url = self::URL . '/teams?id=' . $id;
 
         $resp = CurlCaller::get($url, []);
@@ -53,15 +67,17 @@ class TeamService
             $standings = $this->getStandings($id, $league, $season);
             $players = $this->getPlayers($id, $league, $season, 1, []);
             $team_statistics = $this->getTeamStatistics($id, $league, $season);
-            $transfers = $this->getTeamTransfers($id);
+            if(!empty($transfers) && isset($transfers[$transferYear])){
+                $transfersByYear = $transfers[$transferYear];
+            }
+            
             usort($players, function($a, $b) {
                 // Compare the 'appearence' property of $a and $b
                 return $b->statistics[0]->games->appearences - $a->statistics[0]->games->appearences;
             });
             
             
-            $playersByPosition = [
-                
+            $playersByPosition = [    
                 'Goalkeeper'=>array(),
                 'Defender'=>array(),
                 'Midfielder'=>array(),
@@ -98,7 +114,10 @@ class TeamService
             'playersByPosition' => $playersByPosition,
             'lineups' => $lineups,
             'team_statistics' => $team_statistics,
+            'transferYears'=>$transferYears,
             'transfers'=>$transfers,
+            'transferYear'=>$transferYear,
+            'transfersByYear'=>$transfersByYear,
         ];
     }
 
@@ -271,6 +290,7 @@ class TeamService
 
     public function getTeamTransfers($team){
         $transfers = [];
+        $transferYears = [];
 
         $url = self::URL . '/transfers?team=' . $team;
 
@@ -278,11 +298,37 @@ class TeamService
 
         if ($resp && isset($resp->response[0])) {
             $transfers = $resp->response;
+            $yearlyData = [];
+            foreach ($transfers as $index => $item) {
+                // $updateYear = date('Y', strtotime($item['update']));
+
+                foreach ($item->transfers as $transfer) {
+                    $transferYear = date('Y', strtotime($transfer->date));
+                    if(!in_array($transferYear,$transferYears)){
+                        $transferYears[] = $transferYear;
+                    }
+                    
+
+                    if (!isset($yearlyData[$transferYear][$index])) {
+                        $yearlyData[$transferYear][$index]['transfers_data'] = [];
+                        $yearlyData[$transferYear][$index]['player'] = $item->player;
+                    }
+                    
+                    $yearlyData[$transferYear][$index]['transfers_data'][] = $transfer;
+                }
+            }
+
+            rsort($transferYears);
+            $transfers = $yearlyData; 
         }
         // else {
         //     return $this->getTeamById($id);
         // }
 
-        return $transfers;        
+        return [
+            'transfers'=>$transfers,
+            'transferYears'=>$transferYears
+        ];        
     }
+
 }

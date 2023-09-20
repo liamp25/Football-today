@@ -1017,21 +1017,29 @@
 
             </div>
             <div class="tab-pane fade" id="pills-transfers" role="tabpanel" aria-labelledby="pills-transfers-tab">
-                
+                @if(!empty($transferYears))
+                <div class="col-md-12 mb-2 px-0">
+                    <select class="form-control" onchange="setTransferYear(this.value)">
+                        @foreach($transferYears as $year):
+                        <option value="{{$year}}" <?php echo $year == $transferYear ? 'selected' : ''; ?> >{{$year}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endif
                 {{-- List of Transfers --}}
                 <div class="col-md-12 mb-2 px-0">
                     <div class="accordion" id="accordionExample">
-                        @foreach ($transfers as $k=>$v)
+                        @foreach ($transfersByYear as $k=>$v)
                         <div class="row">
                             <div class="col-md-12 player-position">
-                                <h5>{{$v->player->name}}<hr></h5>
+                                <h5>{{$v['player']->name}}<hr></h5>
                                 
                             </div>
 
-                            @foreach ($v->transfers as $k2=>$v2)
+                            @foreach ($v['transfers_data'] as $k2=>$v2)
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="player-stats card-header" id="heading-{{$k.'-'.$k2}}" data-toggle="collapse" data-target="#collapse-{{$k.'-'.$pk}}" aria-expanded="true" aria-controls="collapse-{{$k."-".$pk}}">
+                                    <div class="player-stats card-header" id="heading-{{$k.'-'.$k2}}" data-toggle="collapse" data-target="#collapse-{{$k.'-'.$pk}}" aria-expanded="true" aria-controls="collapse-{{$k.'-'.$pk}}">
                                         <img src="{{$v2->teams->in->logo}}" alt="in">   
                                         In: {{$v2->teams->in->name}} <br>
                                         <img src="{{$v2->teams->out->logo}}" alt="out"> 
