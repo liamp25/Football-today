@@ -1017,44 +1017,74 @@
 
             </div>
             <div class="tab-pane fade" id="pills-transfers" role="tabpanel" aria-labelledby="pills-transfers-tab">
+                
                 @if(!empty($transferYears))
-                <div class="col-md-12 mb-2 px-0">
-                    <select class="form-control" onchange="setTransferYear(this.value)">
-                        @foreach($transferYears as $year):
-                        <option value="{{$year}}" <?php echo $year == $transferYear ? 'selected' : ''; ?> >{{$year}}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
+                    <div class="col-md-12 mb-2 px-0">
+                        <select class="form-control" onchange="setTransferYear(this.value)">
+                            @foreach($transferYears as $year):
+                            <option value="{{$year}}" <?php echo $year == $transferYear ? 'selected' : ''; ?> >{{$year}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 @endif
                 {{-- List of Transfers --}}
-                <div class="col-md-12 mb-2 px-0">
-                    <div class="accordion" id="accordionExample">
-                        @foreach ($transfersByYear as $k=>$v)
-                        <div class="row">
-                            <div class="col-md-12 player-position">
-                                <h5>{{$v['player']->name}}<hr></h5>
-                                
-                            </div>
-
-                            @foreach ($v['transfers_data'] as $k2=>$v2)
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="player-stats card-header" id="heading-{{$k.'-'.$k2}}" data-toggle="collapse" data-target="#collapse-{{$k.'-'.$pk}}" aria-expanded="true" aria-controls="collapse-{{$k.'-'.$pk}}">
-                                        <img src="{{$v2->teams->in->logo}}" alt="in">   
-                                        In: {{$v2->teams->in->name}} <br>
-                                        <img src="{{$v2->teams->out->logo}}" alt="out"> 
-                                        Out: {{$v2->teams->out->name}} <br>
-                                        Type: {{$v2->type}} <br>
-                                        Date: {{$v2->date}} <br>
-
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>    
-                        @endforeach
+                @if(!empty($transfersByYear))
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <table class="table table-bordered table-striped" style="text-align:left;">
+                            <thead>
+                                <tr>
+                                    <th>In</th>
+                                    <th>Left</th>
+                                    <th>Fee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($transfersByYear as $k=>$v)
+                                    @foreach ($v['transfers_data'] as $k2=>$v2)
+                                    <tr>
+                                        <td>{{$v['player']->name}}</td>
+                                        <td>
+                                            <span><img src="{{$v2->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                            <span>{{$v2->teams->out->name}}</span>
+                                        </td>
+                                        <td>{{$v2->type}}</td>
+                                    </tr>
+                                    @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <table class="table table-bordered table-striped" style="text-align:left;">
+                            <thead>
+                                <tr>
+                                    <th>Out</th>
+                                    <th>Joined</th>
+                                    <th>Fee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($transfersByYear as $k=>$v)
+                                    @foreach ($v['transfers_data'] as $k2=>$v2)
+                                    <tr>
+                                        <td>{{$v['player']->name}}</td>
+                                        <td>
+                                            <span><img src="{{$v2->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                            <span>{{$v2->teams->in->name}}</span>
+                                        </td>
+                                        <td>{{$v2->type}}</td>
+                                    </tr>
+                                    @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+                
+                @endif
                 {{-- End of List of Players --}}
 
             </div>

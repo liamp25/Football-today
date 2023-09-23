@@ -29,7 +29,7 @@ class TeamsController extends Controller
         setcookie('transferYear', $transferYear, time() + (86400 * 30), "/team");
         // setcookie('league', 'all', time() + (86400 * 30), "/team");
         // $data = TeamCaller::getTeam($id);
-        // dd($data);
+        // dd($data['transfersByYear']);
         $response['id'] = $id;
         return view('PublicArea.pages.teams.single-team')->with($response);
     }
