@@ -27,14 +27,8 @@ class TeamService
         $players = [];
         $team_statistics = [];
         $lineups = [];
-        $transferYears = [];
         $transfers = [];
-        $transfersByYear = [];
-
         $leagues = $this->getLeagues($id);
-        $transfersData = $this->getTeamTransfers($id);
-        $transferYears = $transfersData['transferYears'];
-        $transfers = $transfersData['transfers'];
 
         if (isset($_COOKIE["league"])) {
             $league = $_COOKIE["league"];
@@ -48,16 +42,6 @@ class TeamService
             $season = LeagueCaller::getCurrentSeason($league);
         }
 
-        if (isset($_COOKIE["transferYear"])) {
-            $transferYear = $_COOKIE["transferYear"];
-        } else {
-            if (!empty($transferYears)) {
-                $transferYear = $transferYears[0];
-            }else{
-                $transferYear = date("Y");
-            }
-        }
-
         $url = self::URL . '/teams?id=' . $id;
 
         $resp = CurlCaller::get($url, []);
@@ -67,9 +51,8 @@ class TeamService
             $standings = $this->getStandings($id, $league, $season);
             $players = $this->getPlayers($id, $league, $season, 1, []);
             $team_statistics = $this->getTeamStatistics($id, $league, $season);
-            if(!empty($transfers) && isset($transfers[$transferYear])){
-                $transfersByYear = $transfers[$transferYear];
-            }
+            
+            $transfers = $this->getTeamTransfers($id,$league,$season);
             
             usort($players, function($a, $b) {
                 // Compare the 'appearence' property of $a and $b
@@ -114,10 +97,7 @@ class TeamService
             'playersByPosition' => $playersByPosition,
             'lineups' => $lineups,
             'team_statistics' => $team_statistics,
-            'transferYears'=>$transferYears,
             'transfers'=>$transfers,
-            'transferYear'=>$transferYear,
-            'transfersByYear'=>$transfersByYear,
         ];
     }
 
@@ -151,6 +131,24 @@ class TeamService
         // }
 
         return $leagues;
+    }
+
+    public function getLeagueByIdAndSeason($id,$season)
+    {
+        $league = [];
+
+        $url = self::URL . '/leagues?id=' . $id .'&season=' . $season;
+
+        $resp = CurlCaller::get($url, []);
+
+        if ($resp && isset($resp->response[0])) {
+            $league = $resp->response[0];
+        }
+        // else {
+        //     return $this->getLeagues($id);
+        // }
+
+        return $league;
     }
     public function getStandings($id, $league, $season)
     {
@@ -288,47 +286,39 @@ class TeamService
         return $team;
     }
 
-    public function getTeamTransfers($team){
-        $transfers = [];
-        $transferYears = [];
-
+    public function getTeamTransfers($team,$league,$season){
+        $transfersByDateRange = [];
         $url = self::URL . '/transfers?team=' . $team;
-
         $resp = CurlCaller::get($url, []);
 
         if ($resp && isset($resp->response[0])) {
             $transfers = $resp->response;
-            $yearlyData = [];
-            foreach ($transfers as $index => $item) {
-                // $updateYear = date('Y', strtotime($item['update']));
 
-                foreach ($item->transfers as $transfer) {
-                    $transferYear = date('Y', strtotime($transfer->date));
-                    if(!in_array($transferYear,$transferYears)){
-                        $transferYears[] = $transferYear;
+            $league = $this->getLeagueByIdAndSeason($league,$season);
+            if(!empty($league)){
+                // ================
+                $fromDate = strtotime($league->seasons[0]->start);
+                $toDateDate = strtotime($league->seasons[0]->end);
+                // Iterate through the data and filter based on the date range
+                foreach ($transfers as $record) {
+                    foreach ($record->transfers as $transferKey=>$transfer) {
+                        $transferDate = strtotime($transfer->date);
+                        if ($transferDate >= $fromDate && $transferDate <= $toDateDate) {
+                            // Add the matching transfer to the $transfersByDateRange array
+                            $transfersByDateRange[] = [
+                                'player'=>$record->player,
+                                'transfer'=>$transfer
+                            ];
+                        }
                     }
-                    
-
-                    if (!isset($yearlyData[$transferYear][$index])) {
-                        $yearlyData[$transferYear][$index]['transfers_data'] = [];
-                        $yearlyData[$transferYear][$index]['player'] = $item->player;
-                    }
-                    
-                    $yearlyData[$transferYear][$index]['transfers_data'][] = $transfer;
                 }
-            }
-
-            rsort($transferYears);
-            $transfers = $yearlyData; 
+            } 
         }
         // else {
         //     return $this->getTeamById($id);
         // }
 
-        return [
-            'transfers'=>$transfers,
-            'transferYears'=>$transferYears
-        ];        
+        return $transfersByDateRange;      
     }
 
 }

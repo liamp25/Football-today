@@ -1017,20 +1017,8 @@
 
             </div>
             <div class="tab-pane fade" id="pills-transfers" role="tabpanel" aria-labelledby="pills-transfers-tab">
-                
-                @if(!empty($transferYears))
-                <div class="row">
-                    <div class="col-md-12 mb-2 px-0">
-                        <select class="form-control" onchange="setTransferYear(this.value)">
-                            @foreach($transferYears as $year):
-                            <option value="{{$year}}" <?php echo $year == $transferYear ? 'selected' : ''; ?> >{{$year}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                @endif
                 {{-- List of Transfers --}}
-                @if(!empty($transfersByYear))
+                @if(!empty($transfers))
                 <div class="row">
                     <div class="col-md-6 mb-2">
                         <table class="table table-bordered table-striped" style="text-align:left;">
@@ -1042,17 +1030,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transfersByYear as $k=>$v)
-                                    @foreach ($v['transfers_data'] as $k2=>$v2)
-                                    <tr>
-                                        <td>{{$v['player']->name}}</td>
-                                        <td>
-                                            <span><img src="{{$v2->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                            <span>{{$v2->teams->out->name}}</span>
-                                        </td>
-                                        <td>{{$v2->type}}</td>
-                                    </tr>
-                                    @endforeach
+                                @foreach ($transfers as $k=>$v)
+                                <tr>
+                                    <td>{{$v['player']->name}}</td>
+                                    <td>
+                                        <span><img src="{{$v['transfer']->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                        <span>{{$v['transfer']->teams->out->name}}</span>
+                                    </td>
+                                    <td>{{$v['transfer']->type}}</td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -1067,17 +1053,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transfersByYear as $k=>$v)
-                                    @foreach ($v['transfers_data'] as $k2=>$v2)
-                                    <tr>
-                                        <td>{{$v['player']->name}}</td>
-                                        <td>
-                                            <span><img src="{{$v2->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                            <span>{{$v2->teams->in->name}}</span>
-                                        </td>
-                                        <td>{{$v2->type}}</td>
-                                    </tr>
-                                    @endforeach
+                                @foreach ($transfers as $k=>$v)   
+                                <tr>
+                                    <td>{{$v['player']->name}}</td>
+                                    <td>
+                                        <span><img src="{{$v['transfer']->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                        <span>{{$v['transfer']->teams->in->name}}</span>
+                                    </td>
+                                    <td>{{$v['transfer']->type}}</td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

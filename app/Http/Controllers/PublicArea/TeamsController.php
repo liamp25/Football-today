@@ -16,20 +16,9 @@ class TeamsController extends Controller
         $team = TeamCaller::getTeamById($id);
         setcookie('season_team', LeagueCaller::getCurrentSeason(TeamCaller::getLeagues($team->id)[0]->league->id), time() + (86400 * 30), "/team");
         setcookie('league', TeamCaller::getLeagues($team->id)[0]->league->id, time() + (86400 * 30), "/team");
-        $transfersData = TeamCaller::getTeamTransfers($id);
-        if(!empty($transfersData['transferYears'])){
-            if(in_array(date("Y"), $transfersData['transferYears'])){
-                $transferYear = date("Y");
-            }else{
-                $transferYear = $transfersData['transferYears'][0];
-            }
-        }else{
-            $transferYear = "";
-        }
-        setcookie('transferYear', $transferYear, time() + (86400 * 30), "/team");
         // setcookie('league', 'all', time() + (86400 * 30), "/team");
         // $data = TeamCaller::getTeam($id);
-        // dd($data['transfersByYear']);
+        // dd($data);
         $response['id'] = $id;
         return view('PublicArea.pages.teams.single-team')->with($response);
     }
@@ -56,10 +45,7 @@ class TeamsController extends Controller
         $response['team_statistics'] = $data['team_statistics'];
         $response['timezone'] = get_local_time();
         $response['fixtureId'] = $id;
-        $response['transferYears'] = $data['transferYears'];
         $response['transfers'] = $data['transfers'];
-        $response['transferYear'] = $data['transferYear'];
-        $response['transfersByYear'] = $data['transfersByYear'];
         return view('PublicArea.pages.teams.single-team-ajax')->with($response);
     }
     
