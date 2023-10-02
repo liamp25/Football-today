@@ -298,12 +298,12 @@ class TeamService
             if(!empty($league)){
                 // ================
                 $fromDate = strtotime($league->seasons[0]->start);
-                $toDateDate = strtotime($league->seasons[0]->end);
+                $toDate = strtotime($league->seasons[0]->end);
                 // Iterate through the data and filter based on the date range
                 foreach ($transfers as $record) {
                     foreach ($record->transfers as $transferKey=>$transfer) {
                         $transferDate = strtotime($transfer->date);
-                        if ($transferDate >= $fromDate && $transferDate <= $toDateDate) {
+                        if ($transferDate >= $fromDate && $transferDate <= $toDate) {
                             // Add the matching transfer to the $transfersByDateRange array
                             $transfersByDateRange[] = [
                                 'player'=>$record->player,
@@ -318,7 +318,12 @@ class TeamService
         //     return $this->getTeamById($id);
         // }
 
-        return $transfersByDateRange;      
+        return [
+            'fromDate'=>date("d-m-Y",$fromDate),
+            'toDate'=>date("d-m-Y",$toDate),
+            'transfers'=>$transfersByDateRange,
+            'allTransfers'=>$transfers,
+        ];      
     }
 
 }
