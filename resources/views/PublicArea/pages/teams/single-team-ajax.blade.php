@@ -1061,6 +1061,8 @@
                             <thead>
                                 <tr>
                                     <th>Player</th>
+                                    <th>Left</th>
+                                    <th>Joined</th>
                                     <th>date</th>
                                 </tr>
                             </thead>
@@ -1068,6 +1070,14 @@
                                 @foreach ($transfers['allTransfers'] as $k=>$v) @foreach ($v->transfers as $item)
                                 <tr>    
                                     <td>{{$v->player->name}}</td>
+                                    <td>
+                                        <span><img src="{{$item->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                        <span>{{$item->teams->in->name}}</span>
+                                    </td>
+                                    <td>
+                                        <span><img src="{{$item->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                        <span>{{$item->teams->out->name}}</span>
+                                    </td>
                                     <td>{{$item->date}}</td>
                                 </tr>
                                 @endforeach @endforeach
