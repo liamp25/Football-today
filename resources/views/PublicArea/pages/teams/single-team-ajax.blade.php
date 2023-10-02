@@ -204,12 +204,12 @@
                                                                     @endswitch
                                                                 </a>
                                                                 <br>
-                                                                <a href="{{route('public.fixture.match-info.get', $fixture->fixture->id)}}"  class="btn btn-xs btn-secondary" title="Match-Info">
-                                                                    Match  Info
+                                                                <a href="{{route('public.fixture.match-info.get', $fixture->fixture->id)}}"  class="label label-secondary" title="Match-Info">
+                                                                    Match Info
                                                                 </a>
                                                                 <br>
-                                                                <a href="{{route('public.fixture.match-preview.get', $fixture->fixture->id)}}"  class="btn btn-xs btn-secondary" title="Match-Info">
-                                                                    Match  Preview
+                                                                <a href="{{route('public.fixture.match-preview.get', $fixture->fixture->id)}}"  class="label label-secondary" title="Match-Info">
+                                                                    Match Preview
                                                                 </a>
                                                             </td>
                                                             <td class="team team-b text-left">
@@ -1018,44 +1018,34 @@
             </div>
             <div class="tab-pane fade" id="pills-transfers" role="tabpanel" aria-labelledby="pills-transfers-tab">
                 {{-- List of Transfers --}}
-                @if(!empty($transfers))
+                @if(!empty($transfers['transfers']))
                 <div class="row">
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-12 mb-2">
                         <table class="table table-bordered table-striped" style="text-align:left;">
                             <thead>
                                 <tr>
-                                    <th>In</th>
+                                    <th colspan="5">TRANSFERS {{$transfers['fromDate']}} - {{$transfers['toDate']}}</th>
+                                </tr>
+                                <tr>
+                                    <th>SR#</th>
+                                    <th>Player</th>
                                     <th>Left</th>
-                                    <th>Fee</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($transfers as $k=>$v)
-                                <tr>
-                                    <td>{{$v['player']->name}}</td>
-                                    <td>
-                                        <span><img src="{{$v['transfer']->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                        <span>{{$v['transfer']->teams->out->name}}</span>
-                                    </td>
-                                    <td>{{$v['transfer']->type}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <table class="table table-bordered table-striped" style="text-align:left;">
-                            <thead>
-                                <tr>
-                                    <th>Out</th>
                                     <th>Joined</th>
                                     <th>Fee</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transfers as $k=>$v)   
+                                @php
+                                $sr = 0;
+                                @endphp
+                                @foreach ($transfers['transfers'] as $k=>$v)
                                 <tr>
+                                    <td>{{++$sr}}</td>
                                     <td>{{$v['player']->name}}</td>
+                                    <td>
+                                        <span><img src="{{$v['transfer']->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                        <span>{{$v['transfer']->teams->out->name}}</span>
+                                    </td>
                                     <td>
                                         <span><img src="{{$v['transfer']->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
                                         <span>{{$v['transfer']->teams->in->name}}</span>
@@ -1063,6 +1053,24 @@
                                     <td>{{$v['transfer']->type}}</td>
                                 </tr>
                                 @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <table class="table table-bordered table-striped" style="text-align:left;">
+                            <thead>
+                                <tr>
+                                    <th>Player</th>
+                                    <th>date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($transfers['allTransfers'] as $k=>$v) @foreach ($v->transfers as $item)
+                                <tr>    
+                                    <td>{{$v->player->name}}</td>
+                                    <td>{{$item->date}}</td>
+                                </tr>
+                                @endforeach @endforeach
                             </tbody>
                         </table>
                     </div>
