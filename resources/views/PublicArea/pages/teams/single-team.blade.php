@@ -63,6 +63,23 @@ Football-Today
         getTeam();
     }
 
+
+    function setTransferDates(){
+        var fromDate = $("#transfers_from_date").val();
+        var toDate = $("#transfers_to_date").val();
+       
+        document.cookie = "transfers_from_date=" + fromDate + "; path=/team";
+        document.cookie = "transfers_to_date=" + toDate + "; path=/team";
+        $('#transfers-container').html(
+            '<div class="col-md-12 text-center my-2">' +
+            '<div class="spinner-border" role="status">' +
+            '<span class="sr-only">Loading...</span>' +
+            '</div>' +
+            '</div>'
+        );
+        getTeam();
+    }
+
 </script>
 
 @endsection

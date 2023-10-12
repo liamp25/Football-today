@@ -16,6 +16,9 @@ class TeamsController extends Controller
         $team = TeamCaller::getTeamById($id);
         setcookie('season_team', LeagueCaller::getCurrentSeason(TeamCaller::getLeagues($team->id)[0]->league->id), time() + (86400 * 30), "/team");
         setcookie('league', TeamCaller::getLeagues($team->id)[0]->league->id, time() + (86400 * 30), "/team");
+        setcookie('transfers_from_date', '', time() + (86400 * 30), "/team");
+        setcookie('transfers_to_date', '', time() + (86400 * 30), "/team");
+
         // setcookie('league', 'all', time() + (86400 * 30), "/team");
         // $data = TeamCaller::getTeam($id);
         // dd($data);

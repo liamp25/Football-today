@@ -1017,78 +1017,70 @@
 
             </div>
             <div class="tab-pane fade" id="pills-transfers" role="tabpanel" aria-labelledby="pills-transfers-tab">
-                {{-- List of Transfers --}}
-                @if(!empty($transfers['transfers']))
                 <div class="row">
-                    <div class="col-md-12 mb-2">
-                        <table class="table table-bordered table-striped" style="text-align:left;">
-                            <thead>
-                                <tr>
-                                    <th colspan="5">TRANSFERS {{$transfers['fromDate']}} - {{$transfers['toDate']}}</th>
-                                </tr>
-                                <tr>
-                                    <th>SR#</th>
-                                    <th>Player</th>
-                                    <th>Left</th>
-                                    <th>Joined</th>
-                                    <th>Fee</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                $sr = 0;
-                                @endphp
-                                @foreach ($transfers['transfers'] as $k=>$v)
-                                <tr>
-                                    <td>{{++$sr}}</td>
-                                    <td>{{$v['player']->name}}</td>
-                                    <td>
-                                        <span><img src="{{$v['transfer']->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                        <span>{{$v['transfer']->teams->out->name}}</span>
-                                    </td>
-                                    <td>
-                                        <span><img src="{{$v['transfer']->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                        <span>{{$v['transfer']->teams->in->name}}</span>
-                                    </td>
-                                    <td>{{$v['transfer']->type}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="transfers_from_date">From Date</label>
+                            <input type="date" value="{{$transfers['fromDate']}}" class="form-control" name="transfers_from_date" id="transfers_from_date">
+                        </div>
                     </div>
-                    <div class="col-md-12 mb-2">
-                        <table class="table table-bordered table-striped" style="text-align:left;">
-                            <thead>
-                                <tr>
-                                    <th>Player</th>
-                                    <th>Left</th>
-                                    <th>Joined</th>
-                                    <th>date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($transfers['allTransfers'] as $k=>$v) @foreach ($v->transfers as $item)
-                                <tr>    
-                                    <td>{{$v->player->name}}</td>
-                                    <td>
-                                        <span><img src="{{$item->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                        <span>{{$item->teams->in->name}}</span>
-                                    </td>
-                                    <td>
-                                        <span><img src="{{$item->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
-                                        <span>{{$item->teams->out->name}}</span>
-                                    </td>
-                                    <td>{{$item->date}}</td>
-                                </tr>
-                                @endforeach @endforeach
-                            </tbody>
-                        </table>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="transfers_to_date">To Date</label>
+                            <input type="date" value="{{$transfers['toDate']}}" class="form-control" name="transfers_to_date" id="transfers_to_date">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="btn-get-transfers">&nbsp;</label>
+                            <button class="btn btn-info" type="button" onclick="setTransferDates()" id="btn-get-transfers">Get Transfers</button>
+                        </div>
                     </div>
                 </div>
-                
-                @endif
-                {{-- End of List of Players --}}
 
+                <div id="transfers-container">
+                    {{-- List of Transfers --}}
+                    @if(!empty($transfers['transfers']))
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <table class="table table-bordered table-striped" style="text-align:left;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="5">TRANSFERS {{$transfers['fromDate']}} - {{$transfers['toDate']}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>SR#</th>
+                                        <th>Player</th>
+                                        <th>Left</th>
+                                        <th>Joined</th>
+                                        <th>Fee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                    $sr = 0;
+                                    @endphp
+                                    @foreach ($transfers['transfers'] as $k=>$v)
+                                    <tr>
+                                        <td>{{++$sr}}</td>
+                                        <td>{{$v['player']->name}}</td>
+                                        <td>
+                                            <span><img src="{{$v['transfer']->teams->out->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                            <span>{{$v['transfer']->teams->out->name}}</span>
+                                        </td>
+                                        <td>
+                                            <span><img src="{{$v['transfer']->teams->in->logo}}" width="20px; height:20px;" alt="team-img"></span>
+                                            <span>{{$v['transfer']->teams->in->name}}</span>
+                                        </td>
+                                        <td>{{$v['transfer']->type}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                    {{-- End of List of Players --}}
+                </div>
             </div>
         </div>
     </div>

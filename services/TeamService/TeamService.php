@@ -16,6 +16,7 @@ class TeamService
     {
         $this->important_league_list = config('app.important_league_list');
     }
+    
 
     public function getTeam(int $id)
     {
@@ -42,6 +43,18 @@ class TeamService
             $season = LeagueCaller::getCurrentSeason($league);
         }
 
+        if (isset($_COOKIE["transfers_from_date"])) {
+            $transfers_from_date = $_COOKIE["transfers_from_date"];
+        } else {
+            $transfers_from_date = "";
+        }
+
+        if (isset($_COOKIE["transfers_to_date"])) {
+            $transfers_to_date = $_COOKIE["transfers_to_date"];
+        } else {
+            $transfers_to_date = "";
+        }
+
         $url = self::URL . '/teams?id=' . $id;
 
         $resp = CurlCaller::get($url, []);
@@ -52,7 +65,7 @@ class TeamService
             $players = $this->getPlayers($id, $league, $season, 1, []);
             $team_statistics = $this->getTeamStatistics($id, $league, $season);
             
-            $transfers = $this->getTeamTransfers($id,$league,$season);
+            $transfers = $this->getTeamTransfers($id,$transfers_from_date,$transfers_to_date);
             
             usort($players, function($a, $b) {
                 // Compare the 'appearence' property of $a and $b
@@ -133,23 +146,6 @@ class TeamService
         return $leagues;
     }
 
-    public function getLeagueByIdAndSeason($id,$season)
-    {
-        $league = [];
-
-        $url = self::URL . '/leagues?id=' . $id .'&season=' . $season;
-
-        $resp = CurlCaller::get($url, []);
-
-        if ($resp && isset($resp->response[0])) {
-            $league = $resp->response[0];
-        }
-        // else {
-        //     return $this->getLeagues($id);
-        // }
-
-        return $league;
-    }
     public function getStandings($id, $league, $season)
     {
         $standings = [];
@@ -286,19 +282,18 @@ class TeamService
         return $team;
     }
 
-    public function getTeamTransfers($team,$league,$season){
+    public function getTeamTransfers($team,$from_date,$to_date){
         $transfersByDateRange = [];
         $url = self::URL . '/transfers?team=' . $team;
         $resp = CurlCaller::get($url, []);
 
         if ($resp && isset($resp->response[0])) {
             $transfers = $resp->response;
-
-            $league = $this->getLeagueByIdAndSeason($league,$season);
-            if(!empty($league)){
+            
+            if(!empty($from_date != "" && $to_date != "")){
                 // ================
-                $fromDate = strtotime($league->seasons[0]->start);
-                $toDate = strtotime($league->seasons[0]->end);
+                $fromDate = strtotime($from_date);
+                $toDate = strtotime($to_date);
                 // Iterate through the data and filter based on the date range
                 foreach ($transfers as $record) {
                     foreach ($record->transfers as $transferKey=>$transfer) {
@@ -319,11 +314,28 @@ class TeamService
         // }
 
         return [
-            'fromDate'=>date("d-m-Y",$fromDate),
-            'toDate'=>date("d-m-Y",$toDate),
+            'fromDate'=>$from_date,
+            'toDate'=>$to_date,
             'transfers'=>$transfersByDateRange,
-            'allTransfers'=>$transfers,
         ];      
+    }
+
+    public function getLeagueByIdAndSeason($id,$season)
+    {
+        $league = [];
+
+        $url = self::URL . '/leagues?id=' . $id .'&season=' . $season;
+
+        $resp = CurlCaller::get($url, []);
+
+        if ($resp && isset($resp->response[0])) {
+            $league = $resp->response[0];
+        }
+        // else {
+        //     return $this->getLeagues($id);
+        // }
+
+        return $league;
     }
 
 }
