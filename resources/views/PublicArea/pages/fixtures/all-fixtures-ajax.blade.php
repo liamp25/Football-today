@@ -1,13 +1,20 @@
+@php
+    $collapseIndex = 0;
+@endphp
 @foreach ($leagues as $key => $league)
+
 <div class="match_list container">
     <p class="match__title"> {{$fixtures[$key][0]->league->country}} - {{$fixtures[$key][0]->league->name}}</p>
 
     @foreach ($fixtures[$key] as $fixture)
+    @php
+        $collapseIndex = $collapseIndex + 1;
+    @endphp
     <div class="card mb-2">
-       <div class="card-header p-0" id="heading{{$key}}">
+       <div class="card-header p-0" id="heading{{$collapseIndex}}">
           <h5 class="mb-0">
-             <button class="btn btn__match_list" data-toggle="collapse" data-target="#collapse{{$key}}"
-             aria-expanded="true" aria-controls="collapse{{$key}}">
+             <button class="btn btn__match_list" data-toggle="collapse" data-target="#collapse{{$collapseIndex}}"
+             aria-expanded="true" aria-controls="collapse{{$collapseIndex}}">
                 <div class="">
                     {{$fixture->teams->home->name}} vs  {{$fixture->teams->away->name}}
                    <div class="schedule match_live">LIVE</div>
@@ -15,7 +22,7 @@
              </button>
           </h5>
        </div>
-       <div id="collapse{{$key}}" class="collapse" aria-labelledby="heading{{$key}}">
+       <div id="collapse{{$collapseIndex}}" class="collapse" aria-labelledby="heading{{$collapseIndex}}">
           <div class="card-body px-0">
              <!-- Team logos start -->
              <div class="team__vs_t">
