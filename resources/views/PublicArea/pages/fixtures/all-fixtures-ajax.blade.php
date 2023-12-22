@@ -17,7 +17,23 @@
              aria-expanded="true" aria-controls="collapse{{$collapseIndex}}">
                 <div class="">
                     {{$fixture->teams->home->name}} vs  {{$fixture->teams->away->name}}
-                   <div class="schedule match_live">LIVE</div>
+                    @switch($fixture->fixture->status->short)
+                    @case("CANC")
+                     <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
+                    @break
+                    @case("PST")
+                    <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
+                    @break
+                    @case("TBD")
+                    <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
+                    @break
+                    @case("NS")
+                    <div class="schedule match_live">{{\carbon\carbon::parse($fixture->fixture->timestamp)->setTimezone($timezone)->format('H:i')}}</div>
+                    @break
+                    @default
+                    <div class="schedule match_live">{{$fixture->goals->home}} - {{$fixture->goals->away}}</div>
+                    @endswitch
+
                 </div>
              </button>
           </h5>
@@ -27,15 +43,15 @@
              <!-- Team logos start -->
              <div class="team__vs_t">
                 <div class="team1">
-                   <img src="/images/team1.png" alt="team_logo" />
+                   <img src="{{$fixture->teams->home->logo}}" alt="team_logo" />
                 </div>
                 <div class="team_score">
                    <div class="scr_highlight">
-                      <span>1</span>-<span>0</span>
+                      <span>{{$fixture->goals->home}}</span>-<span>{{$fixture->goals->away}}</span>
                    </div>
                 </div>
                 <div class="team2">
-                   <img src="/images/team2.png" alt="team_logo" />
+                   <img src="{{$fixture->teams->away->logo}}" alt="team_logo" />
                 </div>
              </div>
              <!-- Team logos End -->
@@ -194,7 +210,7 @@
 
           </div>
           <div class="match__list_footer">
-             <a href="#" type="button" data-toggle="collapse" data-target="#match_preivew"> Match preview ❯ </a>
+             <a href="{{route('public.fixture.match-preview.get', $fixture->fixture->id)}}"> Match preview ❯ </a>
           </div>
 
           <div class="collapse" id="match_preivew">
