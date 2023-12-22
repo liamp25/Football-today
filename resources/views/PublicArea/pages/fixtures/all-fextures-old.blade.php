@@ -9,10 +9,11 @@ if(Session::has("fcm_token")){
     echo Session::get("fcm_token");
 }
 ?>
-
 <div class="row mt-3">
-
     <div class="col-md-8 text-left">
+        <div class="card align-middle bg-dark text-white">
+            <h5 class="text-left p-2">Matches</h5>
+        </div>
         <div id="fixtures_list" class="my-3">
             <div class="text-center">
                 <div class="spinner-border" role="status">
@@ -21,16 +22,13 @@ if(Session::has("fcm_token")){
             </div>
         </div>
     </div>
-
     <div class="col-md-4 text-left">
         <div class="card align-middle bg-dark text-white">
             <h5 class="text-left p-2">Date Picker</h5>
         </div>
         <div class="calendar-wrapper"></div>
     </div>
-
 </div>
-
 
 @endsection
 
@@ -74,7 +72,6 @@ if(Session::has("fcm_token")){
             type: 'GET',
             dataType: 'html',
             success: function (response) {
-                console.log(response);
                 $('#fixtures_list').html(response);
             }
         });
