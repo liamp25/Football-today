@@ -32,7 +32,7 @@ Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function
     Route::get('/team/{nation}/{club}/{id}', 'TeamsController@getTeam')->name('public.team.get');
     Route::get('/team/ajax/{id}', 'TeamsController@getTeamAjax')->name('public.team.get.ajax');
     Route::get('/team/player/transfers/{team}/{player}', 'TeamsController@getTeamPlayerTransfers')->name('public.team.player.transfers.get');
-    
+
 
     // routes for articles
     Route::get('/articles', 'ArticleController@allArticles')->name('public.articles.all');

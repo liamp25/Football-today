@@ -87,7 +87,7 @@ class FixtureController extends Controller
         $data = FixtureCaller::getPredictions($id);
         $response['predictions'] = $data['predictions'];
         $response['predictions_array'] = $data['predictions_array'];
-   
+
         return view('PublicArea.pages.fixtures.single-match-preview')->with($response);
     }
 

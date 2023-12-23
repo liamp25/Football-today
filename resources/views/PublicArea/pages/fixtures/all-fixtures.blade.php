@@ -94,6 +94,57 @@ if(Session::has("fcm_token")){
         getAllFixtures();
     }
 
+    $(document).ready(function(){
+
+        $(document).on("click", ".matchbtn", function(){
+
+            const collapsed = $(this).hasClass('collapsed');
+            if(collapsed == false){
+
+                const id = $(this).data('id');
+
+                $.ajax({
+                    url: "/fixture/ajax/"+id,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (response) {
+                        console.log(response);
+                        $('#collapse'+id).html(response);
+                    }
+                });
+
+            }
+
+        });
+
+        $(document).on("click", ".match-preview-btn", function(){
+
+            const collapsed = $(this).hasClass('collapsed');
+            if(collapsed == false){
+
+                const id = $(this).data('id');
+
+                $.ajax({
+                    url: "/fixture/match-preview/ajax/"+id,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (response) {
+                        console.log(response);
+                        $('#match_preivew'+id).html(response);
+                    }
+                });
+
+            }
+
+        });
+
+    });
 </script>
 @endsection
 @section('css')
