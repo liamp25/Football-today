@@ -12,7 +12,7 @@ if(Session::has("fcm_token")){
 
 <div class="row mt-3">
 
-    <div class="col-md-8 text-left">
+    <div class="col-xl-8 text-left">
         <div id="fixtures_list" class="my-3">
             <div class="text-center">
                 <div class="spinner-border" role="status">
@@ -22,7 +22,7 @@ if(Session::has("fcm_token")){
         </div>
     </div>
 
-    <div class="col-md-4 text-left">
+    <div class="col-xl-4 text-left">
         <div class="card align-middle bg-dark text-white">
             <h5 class="text-left p-2">Date Picker</h5>
         </div>

@@ -2,6 +2,514 @@
     .standing-table img {
         width: 20px;
     }
+    
+    /* Styles for the standings table */
+    :root {
+        --font: "Raleway",sans-serif;
+        --background-color: #fff;
+        --background-color-header: #e9ecef;
+        --color-text: #000;
+        --color-text-header: #000;
+        --color-green: #01d099;
+        --color-red: #f64e60;
+        --color-yellow: #ffa800;
+        --primary-font-size: 11px;
+        --secondary-font-size: 10px;
+        --header-font-size: 11px;
+        --header-text-transform: uppercase;
+        --header-link-text-transform: none;
+        --border-bottom: 0.5px solid var(--background-color-header);
+        --primary-padding: 3px 3px;
+        --primary-line-height: 13px;
+        --secondary-padding: .3rem;
+        --button-info-font-size: 9px;
+        --button-info-line-height: 16px;
+        --toolbar-font-size: var(--header-font-size);
+        --modale-background-overlay: rgba(0,0,0,0.4);
+        --modale-close-size: 28px;
+        --modale-score-size: 36px;
+        --modale-teams-size: 13px;
+        --standings-team-form-font-size: 9px;
+        --standings-team-form-line-height: 16px;
+        --flags-size: 16px;
+        --teams-logo-size: 16px;
+        --teams-logo-modal-size: 90%;
+        --teams-logo-block-modal-size: 85px;
+        --teams-logo-block-radius-modal: 5px;
+        --teams-logo-block-background-modal: var(--background-color-header);
+    }
+    .wg-table {
+        font-family: var(--font);
+        width: 100%;
+        /* border-collapse: collapse; */
+    }
+    .standing-table thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+    .standing-table tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+    .standing-table table {
+        display: table;
+        border-collapse: separate;
+        box-sizing: border-box;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: gray;
+    }
+    .standing-table table,table td, table tr{
+        border-top: 0px solid #dee2e6 !important;
+    }
+    .standing-table tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+    .standing-table td {
+        padding: var(--primary-padding) !important; 
+        font-size: var(--primary-font-size);
+        letter-spacing: 0;
+        line-height: var(--primary-line-height);
+        vertical-align: middle;
+        background: var(--background-color);
+        color: var(--color-text);
+        border-bottom: var(--border-bottom);
+    }
+
+    .standing-table .wg_width_20 {
+        width: 20px;
+    }
+    .standing-table .wg_width_90 {
+        width: 90px;
+    }
+    .standing-table .wg_bolder {
+        font-weight: 700;
+    }
+    .standing-table .wg_bolder {
+        font-weight: 700;
+    }
+    .standing-table .wg_text_center {
+        text-align: center;
+    }
+    .standing-table .wg_nowrap {
+        white-space: nowrap;
+    }
+    .standing-table .wg_logo {
+        width: var(--teams-logo-size);
+        vertical-align: middle;
+    }
+    .standing-table img {
+        overflow-clip-margin: content-box;
+        overflow: clip;
+        width: 16px;
+        height: 16px;
+    }
+
+    .standing-table td {
+        display: table-cell;
+        vertical-align: inherit;
+    }
+
+    .standing-table .wg_form {
+        display: inline-block;
+        /* margin: 1px; */
+        width: 14px;
+        height: 14px;
+        line-height: var(--standings-team-form-line-height);
+        font-size: var(--standings-team-form-font-size);
+        text-align: center;
+        position: relative;
+        color: #fff;
+    }
+    .standing-table .wg_form_lose {
+        background: var(--color-red);
+    }
+    .standing-table .wg_form_win {
+        background: var(--color-green);
+    }
+    .standing-table .wg_form_draw {
+        background: var(--color-yellow);
+    }
+
+    .standing-table .wg_header {
+        padding: var(--secondary-padding);
+        font-size: var(--header-font-size);
+        font-weight: 600;
+        background: var(--background-color-header);
+        color: var(--color-text-header);
+        text-transform: var(--header-text-transform);
+    }
+
+    .standing-table .wg_tooltip {
+        cursor: pointer;
+    }
+
+    .standing-table .wg_text_center {
+        text-align: center;
+    }
+
+    .standing-table .wg_tooltip.wg_tooltip_left:before {
+        left: initial;
+        margin: initial;
+        right: 100%;
+        margin-right: 0;
+    }
+
+    .standing-table .wg_tooltip:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 100%;
+        margin-left: 0;
+        min-width: 80px;
+        max-width: 200px;
+        width: auto;
+        padding: 5px;
+        border-radius: 3px;
+        background: var(--color-text);
+        color: var(--background-color);
+        text-align: center;
+        display: none;
+        z-index: 99999;
+    }
+    .standing-table .wg_info {
+        display: inline-block;
+        border-radius: 14px;
+        margin: 1px;
+        width: 14px;
+        height: 14px;
+        line-height: var(--button-info-line-height);
+        font-size: var(--button-info-font-size);
+        text-align: center;
+        position: relative;
+        color: #fff;
+        background: var(--background-color-header);
+    }
+    .standing-table .wg_flag {
+        width: var(--flags-size);
+        vertical-align: middle;
+    }
+
+    @media  only screen and (max-width: 482px) {
+        .standing-table  .wg_hide_xs{
+            display: none;
+        }
+    }
+    @media  only screen and (max-width: 320px) {
+        .standing-table  .wg_hide_xxs{
+            display: none;
+        }
+    }
+                
+    /* end Styles for the standings table */
+
+    .title-band {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("https://football.bitbotlab.com/PublicArea/img/soccer-bg.png");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .nav-pills .nav-link {
+        color: #000;
+    }
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        color: #fff;
+        background-color: #12e5fa;
+    }
+
+    #fixture_info {
+        min-height: 75vh;
+    }
+
+    .team-logo {
+        width: 40%;
+    }
+
+    .team-logo-h2h {
+        width: 100%;
+    }
+
+    .team-logo-standing {
+        width: 7%;
+    }
+
+    .scorer-name {
+        min-width: 7rem;
+    }
+
+    .h2h_table td,
+    .h2h_table th {
+        vertical-align: middle !important;
+        font-size: 1.3rem;
+    }
+
+    @media (max-width: 780.98px) {
+        .team-logo {
+            width: 100%;
+        }
+
+        .team-logo-standing {
+            width: 15%;
+        }
+
+        .mobile-resp {
+            max-width: 30%;
+        }
+
+        .team-text {
+            font-size: 1rem;
+        }
+
+        .score-text {
+            font-size: 1rem;
+        }
+
+        .time-text {
+            font-size: 1.2rem;
+        }
+
+        .stats-table td,
+        .stats-table th {
+            padding: 0.35rem !important;
+        }
+
+        .h2h_table td,
+        .h2h_table th {
+            vertical-align: middle !important;
+            font-size: 0.8rem;
+        }
+    }
+
+    .player_link {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .player_link:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .table td,
+    .table th {
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    /* Styles for the standings table */
+    :root {
+        --font: "Raleway",sans-serif;
+        --background-color: #fff;
+        --background-color-header: #e9ecef;
+        --color-text: #000;
+        --color-text-header: #000;
+        --color-green: #01d099;
+        --color-red: #f64e60;
+        --color-yellow: #ffa800;
+        --primary-font-size: 11px;
+        --secondary-font-size: 10px;
+        --header-font-size: 11px;
+        --header-text-transform: uppercase;
+        --header-link-text-transform: none;
+        --border-bottom: 0.5px solid var(--background-color-header);
+        --primary-padding: 3px 3px;
+        --primary-line-height: 13px;
+        --secondary-padding: .3rem;
+        --button-info-font-size: 9px;
+        --button-info-line-height: 16px;
+        --toolbar-font-size: var(--header-font-size);
+        --modale-background-overlay: rgba(0,0,0,0.4);
+        --modale-close-size: 28px;
+        --modale-score-size: 36px;
+        --modale-teams-size: 13px;
+        --standings-team-form-font-size: 9px;
+        --standings-team-form-line-height: 16px;
+        --flags-size: 16px;
+        --teams-logo-size: 16px;
+        --teams-logo-modal-size: 90%;
+        --teams-logo-block-modal-size: 85px;
+        --teams-logo-block-radius-modal: 5px;
+        --teams-logo-block-background-modal: var(--background-color-header);
+    }
+    .wg-table {
+        font-family: var(--font);
+        width: 100%;
+        /* border-collapse: collapse; */
+    }
+    .wg-table thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+    .wg-table tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+    table.wg-table {
+        display: table;
+        border-collapse: separate;
+        box-sizing: border-box;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: gray;
+    }
+    table.wg-table,table.wg-table td, table.wg-table tr{
+        border-top: 0px solid #dee2e6 !important;
+    }
+    .wg-table tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+    .wg-table td {
+        padding: var(--primary-padding) !important; 
+        font-size: var(--primary-font-size);
+        letter-spacing: 0;
+        line-height: var(--primary-line-height);
+        vertical-align: middle;
+        background: var(--background-color);
+        color: var(--color-text);
+        border-bottom: var(--border-bottom);
+    }
+
+    .wg_width_20 {
+        width: 20px;
+    }
+    .wg_width_90 {
+        width: 90px;
+    }
+    .wg_bolder {
+        font-weight: 700;
+    }
+    .wg_bolder {
+        font-weight: 700;
+    }
+    .wg_text_center {
+        text-align: center;
+    }
+    .wg_nowrap {
+        white-space: nowrap;
+    }
+    .wg_logo {
+        width: var(--teams-logo-size);
+        vertical-align: middle;
+    }
+    .wg-table img {
+        overflow-clip-margin: content-box;
+        overflow: clip;
+        width: 16px;
+        height: 16px;
+    }
+
+    .wg-tabletd {
+        display: table-cell;
+        vertical-align: inherit;
+    }
+
+    .wg_form {
+        display: inline-block;
+        /* margin: 1px; */
+        width: 14px;
+        height: 14px;
+        line-height: var(--standings-team-form-line-height);
+        font-size: var(--standings-team-form-font-size);
+        text-align: center;
+        position: relative;
+        color: #fff;
+    }
+    .wg_form_lose {
+        background: var(--color-red);
+    }
+    .wg_form_win {
+        background: var(--color-green);
+    }
+    .wg_form_draw {
+        background: var(--color-yellow);
+    }
+
+    .wg_header {
+        padding: var(--secondary-padding);
+        font-size: var(--header-font-size);
+        font-weight: 600;
+        background: var(--background-color-header);
+        color: var(--color-text-header);
+        text-transform: var(--header-text-transform);
+    }
+
+    .wg_tooltip {
+        cursor: pointer;
+    }
+
+    .wg_text_center {
+        text-align: center;
+    }
+
+    .wg_tooltip.wg_tooltip_left:before {
+        left: initial;
+        margin: initial;
+        right: 100%;
+        margin-right: 0;
+    }
+
+    .wg_tooltip:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 100%;
+        margin-left: 0;
+        min-width: 80px;
+        max-width: 200px;
+        width: auto;
+        padding: 5px;
+        border-radius: 3px;
+        background: var(--color-text);
+        color: var(--background-color);
+        text-align: center;
+        display: none;
+        z-index: 99999;
+    }
+    .wg_info {
+        display: inline-block;
+        border-radius: 14px;
+        margin: 1px;
+        width: 14px;
+        height: 14px;
+        line-height: var(--button-info-line-height);
+        font-size: var(--button-info-font-size);
+        text-align: center;
+        position: relative;
+        color: #fff;
+        background: var(--background-color-header);
+    }
+    .wg_flag {
+        width: var(--flags-size);
+        vertical-align: middle;
+    }
+
+    @media  only screen and (max-width: 482px) {
+        .wg_hide_xs{
+            display: none;
+        }
+    }
+    @media  only screen and (max-width: 320px) {
+        .wg_hide_xxs{
+            display: none;
+        }
+    }
+                
+    /* end Styles for the standings table */
 </style>
 <div class="sub_view_btn">
     <div class="container">
@@ -16,144 +524,251 @@
                     role="tab" aria-controls="nav-Player" aria-selected="false">Player stats</a>
             </div>
         </nav>
-        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+        <div class="tab-content py-3 px-sm-0" id="nav-tabContent">
 
             <!-- summary tab content -->
             <div class="tab-pane fade show active" id="nav-summary{{ $fixture->id }}" role="tabpanel"
                 aria-labelledby="nav-summary-tab">
 
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <td><b>{{ $teams->home->name }}</b></td>
-                                <td><b>{{ $teams->away->name }}</b></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                @php
-                                    $formHomeCount = count($form['home']);
-                                    $formAwayCount = count($form['away']);
-                                    $large = $formHomeCount > $formAwayCount ? $formHomeCount : $formAwayCount;
-                                @endphp
-                                @for ($i = 0; $i < $large; $i++)
-                            <tr>
-                                @php
-                                    try {
-                                        $homeName = $form['home'][$i]->teams->home->name;
-                                        $homeGoal = $form['home'][$i]->goals->home;
-                                        $awayName = $form['home'][$i]->teams->away->name;
-                                        $awayGoal = $form['home'][$i]->goals->away;
-                                        echo "<td>$homeName $homeGoal - $awayGoal $awayName</td>";
-                                    } catch (\Exception $e) {
-                                        echo '<td></td>';
-                                    }
+                 {{-- recent form --}}
+                 <div class="mb-2">
+                    <div class="card align-middle bg-dark text-white">
+                        <h5 class="text-left p-2">Previous Fixtures</h5>
+                    </div>
+                    <div class="row my-3 text-left">
+                        <div class="col-md-6 mb-2">
+                            <div class="card">
+                                <div class="card-body table-responsive">
+                                    <h6 class="card-title">{{ $teams->home->name }}</h6>
+                                    <table class="table" style="width: 100%;">
+                                        <tbody>
+                                            @forelse ($form["home"] as $home_fixture)
+                                                <tr class="thead-light">
+                                                    <th colspan="5">
+                                                        {{ \carbon\carbon::parse($home_fixture->fixture->timestamp)->setTimezone($timezone)->format('d/m/Y') }}
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left" style="width: 15%">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $home_fixture->teams->home->id,
+                                                                'club' => str_replace(' ', '_', $home_fixture->teams->home->name),
+                                                            ]) }}">
+                                                            <img class="team-logo-h2h"
+                                                                src="{{ $home_fixture->teams->home->logo }}"
+                                                                alt="home">
+                                                        </a>
 
-                                    try {
-                                        $homeName = $form['away'][$i]->teams->home->name;
-                                        $homeGoal = $form['away'][$i]->goals->home;
-                                        $awayName = $form['away'][$i]->teams->away->name;
-                                        $awayGoal = $form['away'][$i]->goals->away;
-                                        echo "<td>$homeName $homeGoal - $awayGoal $awayName</td>";
-                                    } catch (\Exception $e) {
-                                        echo '<td></td>';
-                                    }
-                                @endphp
-                            </tr>
-                            @endfor
-                            </tr>
-                        </tbody>
-                    </table>
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $home_fixture->teams->home->id,
+                                                                'club' => str_replace(' ', '_', $home_fixture->teams->home->name),
+                                                            ]) }}">
+                                                            {{ $home_fixture->teams->home->name }}
+                                                        </a>
+                                                    </td>
+                                                    <td style="white-space: nowrap; centered-links"
+                                                        align="center">
+                                                        <p>{{ $home_fixture->goals->home }}-{{ $home_fixture->goals->away }}
+                                                        </p>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $home_fixture->teams->away->id,
+                                                                'club' => str_replace(' ', '_', $home_fixture->teams->away->name),
+                                                            ]) }}">
+                                                            {{ $home_fixture->teams->away->name }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-right" style="width: 15%">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $home_fixture->teams->away->id,
+                                                                'club' => str_replace(' ', '_', $home_fixture->teams->away->name),
+                                                            ]) }}">
+                                                            <img class="team-logo-h2h"
+                                                                src="{{ $home_fixture->teams->away->logo }}"
+                                                                alt="home">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5" class="text-center">
+                                                        No data available
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ $teams->away->name }}</h6>
+                                    <table class="table" style="width: 100%;">
+                                        <tbody>
+                                            @forelse ($form["away"] as $away_fixture)
+                                                <tr class="thead-light">
+                                                    <th colspan="5">
+                                                        {{ \carbon\carbon::parse($away_fixture->fixture->timestamp)->setTimezone($timezone)->format('d/m/Y') }}
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left" style="width: 15%">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $away_fixture->teams->home->id,
+                                                                'club' => str_replace(' ', '_', $away_fixture->teams->home->name),
+                                                            ]) }}">
+                                                            <img class="team-logo-h2h"
+                                                                src="{{ $away_fixture->teams->home->logo }}"
+                                                                alt="home">
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $away_fixture->teams->home->id,
+                                                                'club' => str_replace(' ', '_', $away_fixture->teams->home->name),
+                                                            ]) }}">
+                                                            {{ $away_fixture->teams->home->name }}
+                                                        </a>
+                                                    </td>
+                                                    <td style="white-space: nowrap; centered-links"
+                                                        align="center">
+                                                        <p>{{ $away_fixture->goals->home }}-{{ $away_fixture->goals->away }}
+                                                        </p>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $away_fixture->teams->away->id,
+                                                                'club' => str_replace(' ', '_', $away_fixture->teams->away->name),
+                                                            ]) }}">
+                                                            {{ $away_fixture->teams->away->name }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-right" style="width: 15%">
+                                                        <a class="no-underline"
+                                                            href="{{ route('public.team.get', [
+                                                                'nation' => str_replace(' ', '_', $league->country),
+                                                                'id' => $away_fixture->teams->away->id,
+                                                                'club' => str_replace(' ', '_', $away_fixture->teams->away->name),
+                                                            ]) }}">
+                                                            <img class="team-logo-h2h"
+                                                                src="{{ $away_fixture->teams->away->logo }}"
+                                                                alt="home">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5" class="text-center">
+                                                        No data available
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                {{-- end of recent form --}}
+
+                {{-- h2h --}}
+                <div class="mb-2">
+                    <div class="card align-middle bg-dark text-white">
+                        <h5 class="text-left p-2">Head To Head</h5>
+                    </div>
+                    <div class="card">
+                        <div class="card-body table-responsive">
+                            <table class="h2h_table table" style="width: 100%;">
+                                <tbody>
+                                    @forelse ($h2h as $h2h_single)
+                                        <tr class="thead-light">
+                                            <th colspan="5">
+                                                {{ \carbon\carbon::parse($h2h_single->fixture->timestamp)->setTimezone($timezone)->format('d/m/Y') }}
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left" style="width: 15%">
+                                                <a class="no-underline"
+                                                    href="{{ route('public.team.get', [
+                                                        'nation' => str_replace(' ', '_', $league->country),
+                                                        'id' => $h2h_single->teams->home->id,
+                                                        'club' => str_replace(' ', '_', $h2h_single->teams->home->name),
+                                                    ]) }}">
+                                                    <img class="team-logo-h2h"
+                                                        src="{{ $h2h_single->teams->home->logo }}" alt="home">
+                                                </a>
+                                            </td>
+                                            <td class="text-left">
+                                                <a class="no-underline"
+                                                    href="{{ route('public.team.get', [
+                                                        'nation' => str_replace(' ', '_', $league->country),
+                                                        'id' => $h2h_single->teams->home->id,
+                                                        'club' => str_replace(' ', '_', $h2h_single->teams->home->name),
+                                                    ]) }}">
+                                                    {{ $h2h_single->teams->home->name }}
+                                                </a>
+                                            </td>
+                                            <td style="white-space: nowrap centered-links" align="center">
+                                                <p>{{ $h2h_single->goals->home }}-{{ $h2h_single->goals->away }}</p>
+                                        
+                                            </td>
+                                            <td class="text-right">
+                                                <a class="no-underline"
+                                                    href="{{ route('public.team.get', [
+                                                        'nation' => str_replace(' ', '_', $league->country),
+                                                        'id' => $h2h_single->teams->away->id,
+                                                        'club' => str_replace(' ', '_', $h2h_single->teams->away->name),
+                                                    ]) }}">
+                                                    {{ $h2h_single->teams->away->name }}
+                                                </a>
+                                            </td>
+                                            <td class="text-right" style="width: 15%">
+                                                <a class="no-underline"
+                                                    href="{{ route('public.team.get', [
+                                                        'nation' => str_replace(' ', '_', $league->country),
+                                                        'id' => $h2h_single->teams->away->id,
+                                                        'club' => str_replace(' ', '_', $h2h_single->teams->away->name),
+                                                    ]) }}">
+                                                    <img class="team-logo-h2h"
+                                                        src="{{ $h2h_single->teams->away->logo }}" alt="home">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                No data available
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+                {{-- End of h2h --}}
 
-                <p class="display-4 text-center mt-2">Head 2 Head</p>
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tbody>
-                            @forelse ($h2h as $h2h_single)
-                                <tr>
-                                    <td class="text-left"><b>{{ $h2h_single->teams->home->name }}</b></td>
-                                    <td class="text-center">
-                                        <b>{{ $h2h_single->goals->home }}-{{ $h2h_single->goals->away }}</b>
-                                    </td>
-                                    <td class="text-right"><b>{{ $h2h_single->teams->away->name }}</b></td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="text-center">
-                                        No data available
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-
-                    </table>
-                </div>
-
-                <p class="display-4 text-center mt-2">injuires</p>
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <td><b>{{ $teams->home->name }}</b></td>
-                                <td><b>{{ $teams->away->name }}</b></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $injuriesHomeCount = count($injuries['home']);
-                                $injuriesAwayCount = count($injuries['away']);
-                                $large = $injuriesHomeCount > $injuriesAwayCount ? $injuriesHomeCount : $injuriesAwayCount;
-                            @endphp
-                            @for ($i = 0; $i < $large; $i++)
-                                <tr>
-                                    @php
-                                        try {
-                                            $homeInjury = $injuries['home'][$i]->player->name;
-                                            echo "<td>$homeInjury</td>";
-                                        } catch (\Exception $e) {
-                                            echo '<td></td>';
-                                        }
-
-                                        try {
-                                            $awayInjury = $injuries['away'][$i]->player->name;
-                                            echo "<td>$awayInjury</td>";
-                                        } catch (\Exception $e) {
-                                            echo '<td></td>';
-                                        }
-                                    @endphp
-                                </tr>
-                            @endfor
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td><b>Team A</b></td>
-                                <td>6666</td>
-                            </tr>
-                            <tr>
-                                <td><b>Team B</b></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>Team C</b></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>Team D</b></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-                </div>
-
+                {{-- league table --}}
                 <div>
                     <div class="card align-middle bg-dark text-white">
                         <h5 class="text-left p-2">Table</h5>
@@ -301,10 +916,58 @@
                             </div>
                         </div>
                     </div>
-                    {{-- End of league table --}}
-
                 </div>
+                {{-- end league table --}}
 
+                {{-- predictions --}}
+                <div class="mb-2">
+                    <div class="card align-middle bg-dark text-white">
+                        <h5 class="text-left p-2">Predictions</h5>
+                    </div>
+                    <div class="card">
+                        <div class="card-body table-responsive">
+                            <div class="row">
+                                {{-- <div class="col-md-6">
+                                    <canvas id="predictionChart"></canvas>
+                                </div> --}}
+                                <div class="col-md-6">
+                                    <table class="table" style="width: 100%;">
+                                        <thead>
+                                            <th>
+                                                {{ $teams->home->name }}
+                                            </th>
+                                            <th></th>
+                                            <th>
+                                                {{ $teams->away->name }}
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $text_array = ['form' => 'Strength', 'att' => 'Attacking Potential', 'def' => 'Defensive Potential', 'poisson_distribution' => 'Poisson Distribution', 'h2h' => 'Strength H2H', 'goals' => 'Goals H2H', 'total' => 'Wins the Game'];
+                                            @endphp
+                                            @foreach ($predictions['predictions'][0]->comparison as $key => $comparison)
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span
+                                                            class="badge badge-newinfo">{{ $comparison->home }}</span>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{ $text_array[$key] }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span
+                                                            class="badge badge-danger">{{ $comparison->away }}</span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- End of predictions --}}
 
             </div>
 
@@ -314,7 +977,7 @@
 
                 <div class="row">
                     {{-- team stats --}}
-                    <div class="col-md-12 mb-2">
+                    <div class="">
                         <div class="card align-middle bg-dark text-white">
                             <h5 class="text-left p-2">Team Statistics</h5>
                         </div>
@@ -610,7 +1273,7 @@
 
                                 {{--  --}}
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-goals-total" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-goals-total" data-toggle="collapse"
                                         data-target="#collapse-top-goals-total" aria-expanded="true"
                                         aria-controls="collapse-top-goals-total">
                                         Top Goals Total
@@ -638,7 +1301,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-goals-assists" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-goals-assists" data-toggle="collapse"
                                         data-target="#collapse-top-goals-assists" aria-expanded="true"
                                         aria-controls="collapse-top-goals-assists">
                                         Top Goals Assists
@@ -666,7 +1329,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-shots-total" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-shots-total" data-toggle="collapse"
                                         data-target="#collapse-top-shots-total" aria-expanded="true"
                                         aria-controls="collapse-top-shots-total">
                                         Top Shots Total
@@ -694,7 +1357,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-shots-on" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-shots-on" data-toggle="collapse"
                                         data-target="#collapse-top-shots-on" aria-expanded="true"
                                         aria-controls="collapse-top-shots-on">
                                         Top Shots On
@@ -722,7 +1385,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-games-rating" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-games-rating" data-toggle="collapse"
                                         data-target="#collapse-top-games-rating" aria-expanded="true"
                                         aria-controls="collapse-top-games-rating">
                                         Top Games Rating
@@ -750,7 +1413,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-passes-key" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-passes-key" data-toggle="collapse"
                                         data-target="#collapse-top-passes-key" aria-expanded="true"
                                         aria-controls="collapse-top-passes-key">
                                         Top Passes Key
@@ -778,7 +1441,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-tackles-total" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-tackles-total" data-toggle="collapse"
                                         data-target="#collapse-top-tackles-total" aria-expanded="true"
                                         aria-controls="collapse-top-tackles-total">
                                         Top Tackles Total
@@ -806,7 +1469,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-fouls-committed" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-fouls-committed" data-toggle="collapse"
                                         data-target="#collapse-top-fouls-committed" aria-expanded="true"
                                         aria-controls="collapse-top-fouls-committed">
                                         Top Fouls Committed
@@ -834,7 +1497,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-cards-yellow" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-cards-yellow" data-toggle="collapse"
                                         data-target="#collapse-top-cards-yellow" aria-expanded="true"
                                         aria-controls="collapse-top-cards-yellow">
                                         Top Cards Yellow
@@ -879,7 +1542,7 @@
                             <div class="card-body table-responsive" id="accordionExample2">
                                 {{--  --}}
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-goals-total2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-goals-total2" data-toggle="collapse"
                                         data-target="#collapse-top-goals-total2" aria-expanded="true"
                                         aria-controls="collapse-top-goals-total2">
                                         Top Goals Total
@@ -907,7 +1570,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-goals-assists2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-goals-assists2" data-toggle="collapse"
                                         data-target="#collapse-top-goals-assists2" aria-expanded="true"
                                         aria-controls="collapse-top-goals-assists2">
                                         Top Goals Assists
@@ -935,7 +1598,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-shots-total2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-shots-total2" data-toggle="collapse"
                                         data-target="#collapse-top-shots-total2" aria-expanded="true"
                                         aria-controls="collapse-top-shots-total2">
                                         Top Shots Total
@@ -963,7 +1626,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-shots-on2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-shots-on2" data-toggle="collapse"
                                         data-target="#collapse-top-shots-on2" aria-expanded="true"
                                         aria-controls="collapse-top-shots-on2">
                                         Top Shots On
@@ -991,7 +1654,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-games-rating2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-games-rating2" data-toggle="collapse"
                                         data-target="#collapse-top-games-rating2" aria-expanded="true"
                                         aria-controls="collapse-top-games-rating2">
                                         Top Games Rating
@@ -1019,7 +1682,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-passes-key2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-passes-key2" data-toggle="collapse"
                                         data-target="#collapse-top-passes-key2" aria-expanded="true"
                                         aria-controls="collapse-top-passes-key2">
                                         Top Passes Key
@@ -1047,7 +1710,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-tackles-total2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-tackles-total2" data-toggle="collapse"
                                         data-target="#collapse-top-tackles-total2" aria-expanded="true"
                                         aria-controls="collapse-top-tackles-total2">
                                         Top Tackles Total
@@ -1075,7 +1738,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-fouls-committed2"
+                                    <div class="player-stats card-header text-white" id="heading-top-fouls-committed2"
                                         data-toggle="collapse" data-target="#collapse-top-fouls-committed2" aria-expanded="true"
                                         aria-controls="collapse-top-fouls-committed2">
                                         Top Fouls Committed
@@ -1103,7 +1766,7 @@
                                 </div>
 
                                 <div class="card mt-2">
-                                    <div class="player-stats card-header" id="heading-top-cards-yellow2" data-toggle="collapse"
+                                    <div class="player-stats card-header text-white" id="heading-top-cards-yellow2" data-toggle="collapse"
                                         data-target="#collapse-top-cards-yellow2" aria-expanded="true"
                                         aria-controls="collapse-top-cards-yellow2">
                                         Top Cards Yellow
@@ -1146,7 +1809,7 @@
 
         <script>
             document.title = 'Football-Today | ' + "{{ $teams->home->name }} " + ' vs ' + " {{ $teams->away->name }}";
-            retrieveSelected();
+            // retrieveSelected();
             barCharts();
             pieCharts();
 
