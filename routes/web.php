@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function () {
 
     // routes for fixtures
+    Route::get('/fixture/team-stats/ajax/{id}', 'FixtureController@getTeamStats')->name('public.teamstats');
     Route::get('/', 'FixtureController@fixtures')->name('public.fixtures');
     Route::get('/fixtures/ajax', 'FixtureController@fixturesAjax')->name('public.fixtures.ajax');
     Route::get('/fixture/{id}', 'FixtureController@getFixture')->name('public.fixture.get');

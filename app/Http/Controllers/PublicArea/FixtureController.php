@@ -59,15 +59,15 @@ class FixtureController extends Controller
         $response['league'] = $data['league'];
         $response['teams'] = $data['teams'];
         $response['goals'] = $data['goals'];
-        $response['score'] = $data['score'];
-        $response['events'] = $data['events'];
-        $response['lineups'] = $data['lineups'];
-        $response['match_statistics'] = $data['match_statistics'];
-        $response['team_statistics'] = $data['team_statistics'];
-        $response['h2h'] = $data['h2h'];
-        $response['predictions'] = $data['predictions'];
-        $response['standings'] = $data['standings'];
-        $response['form'] = $data['form'];
+        // $response['score'] = $data['score'];
+        // $response['events'] = $data['events'];
+        // $response['lineups'] = $data['lineups'];
+        // $response['match_statistics'] = $data['match_statistics'];
+        // $response['team_statistics'] = $data['team_statistics'];
+        // $response['h2h'] = $data['h2h'];
+        // $response['predictions'] = $data['predictions'];
+        // $response['standings'] = $data['standings'];
+        // $response['form'] = $data['form'];
         $response['timezone'] = get_local_time();
 
         return view('PublicArea.pages.fixtures.single-fixture-ajax')->with($response);
@@ -117,6 +117,18 @@ class FixtureController extends Controller
         $response['players'] = $data['players'];
 
         return view('PublicArea.pages.fixtures.single-match-preview-ajax')->with($response);
+    }
+
+    public function getTeamStats($league_id){
+
+        $season = request("season");
+        $home_id = request("home_id");
+        $away_id = request("away_id");
+
+        $data['teamstats'] = FixtureCaller::getTeamStats($league_id, $season, $home_id, $away_id);
+        
+        return view('PublicArea.pages.fixtures.team-stats-ajax')->with($data); 
+
     }
 
 }

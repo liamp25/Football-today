@@ -88,13 +88,13 @@ class FixtureService
     }
 
     public function  getPlayers($id, $league, $season, $page, $players){
-    
+
         $url = self::URL . '/players?team=' . $id . '&season=' . $season . '&league=' . $league . '&page=' . $page;
 
         $resp = CurlCaller::get($url, []);
 
         if ($resp) {
-          
+
             if ($resp->results > 0) {
                 $players = array_merge($players, $resp->response);
             }
@@ -124,14 +124,14 @@ class FixtureService
         $topTacklesTotal = $data;
         $topFoulsCommitted = $data;
         $topCardsYellow = $data;
-        
+
 
         // Perform bubble sort based on maximum goal total
         for ($i = 0; $i < $numPlayers - 1; $i++) {
             for ($j = 0; $j < $numPlayers - $i - 1; $j++) {
                 $aGoalsTotal = !empty($topGoalsTotal[$j]->statistics[0]->goals->total) ? $topGoalsTotal[$j]->statistics[0]->goals->total : 0;
                 $bGoalsTotal = !empty($topGoalsTotal[$j + 1]->statistics[0]->goals->total) ? $topGoalsTotal[$j + 1]->statistics[0]->goals->total : 0;
-   
+
                 if ($aGoalsTotal < $bGoalsTotal) {
                     // Swap the players if the current has fewer goals total than the next
                     $temp = $topGoalsTotal[$j];
@@ -142,7 +142,7 @@ class FixtureService
                 //======
                 $aGoalsAssists = !empty($topGoalsAssists[$j]->statistics[0]->goals->assists) ? $topGoalsAssists[$j]->statistics[0]->goals->assists : 0;
                 $bGoalsAssists = !empty($topGoalsAssists[$j + 1]->statistics[0]->goals->assists) ? $topGoalsAssists[$j + 1]->statistics[0]->goals->assists : 0;
-   
+
                 if ($aGoalsAssists < $bGoalsAssists) {
                     // Swap the players if the current has fewer goals assists than the next
                     $temp = $topGoalsAssists[$j];
@@ -152,7 +152,7 @@ class FixtureService
                 //======
                 $aShotsTotal = !empty($topShotsTotal[$j]->statistics[0]->shots->total) ? $topShotsTotal[$j]->statistics[0]->shots->total : 0;
                 $bShotsTotal = !empty($topShotsTotal[$j + 1]->statistics[0]->shots->total) ? $topShotsTotal[$j + 1]->statistics[0]->shots->total : 0;
-   
+
                 if ($aShotsTotal < $bShotsTotal) {
                     // Swap the players if the current has fewer shots total than the next
                     $temp = $topShotsTotal[$j];
@@ -162,7 +162,7 @@ class FixtureService
                 //======
                 $aShotsOn = !empty($topShotsOn[$j]->statistics[0]->shots->on) ? $topShotsOn[$j]->statistics[0]->shots->on : 0;
                 $bShotsOn = !empty($topShotsOn[$j + 1]->statistics[0]->shots->on) ? $topShotsOn[$j + 1]->statistics[0]->shots->on : 0;
-   
+
                 if ($aShotsOn < $bShotsOn) {
                     // Swap the players if the current has fewer shots on than the next
                     $temp = $topShotsOn[$j];
@@ -172,7 +172,7 @@ class FixtureService
                 //======
                 $aGamesRating = !empty($topGamesRating[$j]->statistics[0]->games->rating) ? $topGamesRating[$j]->statistics[0]->games->rating : 0;
                 $bGamesRating = !empty($topGamesRating[$j + 1]->statistics[0]->games->rating) ? $topGamesRating[$j + 1]->statistics[0]->games->rating : 0;
-   
+
                 if ($aGamesRating < $bGamesRating) {
                     // Swap the players if the current has fewer rating than the next
                     $temp = $topGamesRating[$j];
@@ -182,7 +182,7 @@ class FixtureService
                 //======
                 $aPassesKey = !empty($topPassesKey[$j]->statistics[0]->passes->key) ? $topPassesKey[$j]->statistics[0]->passes->key : 0;
                 $bPassesKey = !empty($topPassesKey[$j + 1]->statistics[0]->passes->key) ? $topPassesKey[$j + 1]->statistics[0]->passes->key : 0;
-   
+
                 if ($aPassesKey < $bPassesKey) {
                     // Swap the players if the current has fewer passes key than the next
                     $temp = $topPassesKey[$j];
@@ -192,7 +192,7 @@ class FixtureService
                 //======
                 $aTacklesTotal = !empty($topTacklesTotal[$j]->statistics[0]->tackles->total) ? $topTacklesTotal[$j]->statistics[0]->tackles->total : 0;
                 $bTacklesTotal = !empty($topTacklesTotal[$j + 1]->statistics[0]->tackles->total) ? $topTacklesTotal[$j + 1]->statistics[0]->tackles->total : 0;
-   
+
                 if ($aTacklesTotal < $bTacklesTotal) {
                     // Swap the players if the current has fewer tackles total than the next
                     $temp = $topTacklesTotal[$j];
@@ -202,7 +202,7 @@ class FixtureService
                 //======
                 $aFoulsCommitted = !empty($topFoulsCommitted[$j]->statistics[0]->fouls->committed) ? $topFoulsCommitted[$j]->statistics[0]->fouls->committed : 0;
                 $bFoulsCommitted = !empty($topFoulsCommitted[$j + 1]->statistics[0]->fouls->committed) ? $topFoulsCommitted[$j + 1]->statistics[0]->fouls->committed : 0;
-   
+
                 if ($aFoulsCommitted < $bFoulsCommitted) {
                     // Swap the players if the current has fewer Fouls Committed than the next
                     $temp = $topFoulsCommitted[$j];
@@ -212,7 +212,7 @@ class FixtureService
                 //======
                 $aCardsYellow = !empty($topCardsYellow[$j]->statistics[0]->cards->yellow) ? $topCardsYellow[$j]->statistics[0]->cards->yellow : 0;
                 $bCardsYellow = !empty($topCardsYellow[$j + 1]->statistics[0]->cards->yellow) ? $topCardsYellow[$j + 1]->statistics[0]->cards->yellow : 0;
-   
+
                 if ($aCardsYellow< $bCardsYellow) {
                     // Swap the players if the current has fewer Cards Yellow than the next
                     $temp = $topCardsYellow[$j];
@@ -220,8 +220,8 @@ class FixtureService
                     $topCardsYellow[$j + 1] = $temp;
                 }
                 //======
-                
-                
+
+
             }
         }
 
@@ -280,7 +280,7 @@ class FixtureService
                 array_values($topCardsYellow);
             }
             //==
-            
+
         }
 
         // return the sorted array
@@ -296,8 +296,8 @@ class FixtureService
 
         return $players;
     }
-    
-    
+
+
 
     public function getInjuries($response)
     {
@@ -364,16 +364,16 @@ class FixtureService
         $league = null;
         $teams = null;
         $goals = null;
-        $score = null;
-        $events = null;
-        $lineups = null;
-        $match_statistics = null;
-        $team_statistics = [];
-        $h2h = [];
-        $predictions = [];
-        $standings = [];
-        $injuries = [];
-        $players = [];
+        // $score = null;
+        // $events = null;
+        // $lineups = null;
+        // $match_statistics = null;
+        // $team_statistics = [];
+        // $h2h = [];
+        // $predictions = [];
+        // $standings = [];
+        // $injuries = [];
+        // $players = [];
 
         if ($resp) {
             if ($resp->results == 0) {
@@ -385,28 +385,28 @@ class FixtureService
             $league = $resp->response[0]->league;
             $teams = $resp->response[0]->teams;
             $goals = $resp->response[0]->goals;
-            $score = $resp->response[0]->score;
-            $events = $resp->response[0]->events;
-            $lineups = $resp->response[0]->lineups;
-            $match_statistics = $resp->response[0]->statistics;
+            // $score = $resp->response[0]->score;
+            // $events = $resp->response[0]->events;
+            // $lineups = $resp->response[0]->lineups;
+            // $match_statistics = $resp->response[0]->statistics;
 
-            $team_statistics = $this->getTeamStatistics($response);
-            $h2h = $this->getH2H($response);
-            $predictions = $this->getPredictions($id);
-            $standings = LeagueCaller::getStandings($league->id, $league->season);
-            $form = $this->getTeamForm($response);
-            $injuries =  $this->getInjuries($response);
+            // $team_statistics = $this->getTeamStatistics($response);
+            // $h2h = $this->getH2H($response);
+            // $predictions = $this->getPredictions($id);
+            // $standings = LeagueCaller::getStandings($league->id, $league->season);
+            // $form = $this->getTeamForm($response);
+            // $injuries =  $this->getInjuries($response);
 
-            $fixtureLeague = $response->league->id;
-            $fixtureSeason = $response->league->season;
-            $home_team = $response->teams->home->id;
-            $away_team = $response->teams->away->id;
-          
-            $home_players = $this->getPlayers($home_team, $fixtureLeague, $fixtureSeason, 1, []);
-            $players['home'] = $this->sortPlayersByTop($home_players);
+            // $fixtureLeague = $response->league->id;
+            // $fixtureSeason = $response->league->season;
+            // $home_team = $response->teams->home->id;
+            // $away_team = $response->teams->away->id;
 
-            $away_players = $this->getPlayers($away_team, $fixtureLeague, $fixtureSeason, 1, []);
-            $players['away'] = $this->sortPlayersByTop($away_players);
+            // $home_players = $this->getPlayers($home_team, $fixtureLeague, $fixtureSeason, 1, []);
+            // $players['home'] = $this->sortPlayersByTop($home_players);
+
+            // $away_players = $this->getPlayers($away_team, $fixtureLeague, $fixtureSeason, 1, []);
+            // $players['away'] = $this->sortPlayersByTop($away_players);
             // $players['away'] = $this->sortPlayersByTop($this->getPlayers($away_team, $away_league, $away_season, 1, []));
         }
         //  else {
@@ -419,17 +419,17 @@ class FixtureService
             'league' => $league,
             'teams' => $teams,
             'goals' => $goals,
-            'score' => $score,
-            'events' => $events,
-            'lineups' => $lineups,
-            'match_statistics' => $match_statistics,
-            'team_statistics' => $team_statistics,
-            'h2h' => $h2h,
-            'predictions' => $predictions,
-            'standings' => $standings,
-            'form' => $form,
-            'injuries'=> $injuries,
-            'players'=>$players
+            // 'score' => $score,
+            // 'events' => $events,
+            // 'lineups' => $lineups,
+            // 'match_statistics' => $match_statistics,
+            // 'team_statistics' => $team_statistics,
+            // 'h2h' => $h2h,
+            // 'predictions' => $predictions,
+            // 'standings' => $standings,
+            // 'form' => $form,
+            // 'injuries'=> $injuries,
+            // 'players'=>$players
         ];
     }
 
@@ -521,6 +521,111 @@ class FixtureService
         // }
 
         return $h2h;
+    }
+
+    public function getTeamStats($league_id, $season, $home_id, $away_id){
+
+
+        $url = self::URL . "/fixtures?league=$league_id&season=$season&team=$home_id";
+        $resp = CurlCaller::get($url, []);
+        $fixtureIds = [];
+        $response = [];
+
+        $chunks = array_chunk($resp->response, 20);
+
+        foreach ($resp->response as $i => $fresp) {
+            array_push($fixtureIds, $fresp->fixture->id);
+            if(count($fixtureIds) == 20 || $i + 1 == count($resp->response)-1){
+                $fixtureIds = implode("-", $fixtureIds);
+                $url = self::URL . "/fixtures?ids=$fixtureIds";
+                $resp = CurlCaller::get($url, []);
+                array_push($response, $resp->response);
+                $fixtureIds = [];
+            }
+        }
+
+
+        dd($response);
+
+        $teamStats = [
+            "home_name" => '',
+            "away_name" => '',
+            "home" => [
+                "Shots on Goal" => 0,
+                "Shots off Goal" => 0,
+                "Total Shots" => 0,
+                "Blocked Shots" => 0,
+                "Shots insidebox" => 0,
+                "Shots outsidebox" => 0,
+                "Fouls" => 0,
+                "Corner Kicks" => 0,
+                "Offsides" => 0,
+                "Ball Possession" => 0,
+                "Yellow Cards" => 0,
+                "Red Cards" => 0,
+                "Goalkeeper Saves" => 0,
+                "Total passes" => 0,
+                "Passes accurate" => 0,
+                "Passes %" => 0
+            ],
+            "away" => [
+                "Shots on Goal" => 0,
+                "Shots off Goal" => 0,
+                "Total Shots" => 0,
+                "Blocked Shots" => 0,
+                "Shots insidebox" => 0,
+                "Shots outsidebox" => 0,
+                "Fouls" => 0,
+                "Corner Kicks" => 0,
+                "Offsides" => 0,
+                "Ball Possession" => 0,
+                "Yellow Cards" => 0,
+                "Red Cards" => 0,
+                "Goalkeeper Saves" => 0,
+                "Total passes" => 0,
+                "Passes accurate" => 0,
+                "Passes %" => 0
+            ],
+            "home_total" => 0,
+            "away_total" => 0,
+        ];
+dd($resp->response);
+        foreach ($resp->response as $cres) {
+
+            if($cres->statistics && count($cres->statistics) > 0){
+
+                if(count($cres->statistics) > 0 && $cres->statistics[0]->statistics){
+                    foreach ($cres->statistics[0]->statistics as $hstat) {
+                        if($hstat->value && is_int($hstat->value))
+                        $teamStats['home'][$hstat->type] = $teamStats['home'][$hstat->type] + $hstat->value;
+                    }
+                }
+
+            }
+
+        }
+
+        $url = self::URL . "/fixtures?league=$league_id&season=$season&team=$away_id";
+        $resp = CurlCaller::get($url, []);
+
+        foreach ($resp->response as $cres) {
+
+            if($cres->statistics && count($cres->statistics) > 0){
+
+                if(count($cres->statistics) > 0 && $cres->statistics[1]->statistics){
+                    foreach ($cres->statistics[1]->statistics as $astat) {
+                        if($astat->value && is_int($astat->value))
+                        $teamStats['away'][$astat->type] = $teamStats['away'][$astat->type] + $astat->value;
+                    }
+                }
+
+            }
+
+        }
+dd($teamStats);
+        return $teamStats;
+        // $match_statistics = $resp->response[0]->statistics;
+
     }
 
     public function getPredictions($id)
