@@ -10,6 +10,176 @@ if(Session::has("fcm_token")){
 }
 ?>
 
+
+<style>
+    .bg-12{
+        background: #F6F8FA;
+    }
+
+    .bg-gre{
+        background: #DCF0E5;
+    }
+
+    .table-row{
+        width: 100%;
+        float: left;
+        border: 1px solid #E1E1E1;
+    }
+
+    .table-row h2{
+        font-size: 15px;
+        color: #747476;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin: 0;
+    }
+
+    .font-number{
+        font-weight: 700;
+    }
+
+    .table-12{
+        margin-top: 35px;
+    }
+
+    .table-row table th{
+        font-size: 15px;
+  color: #747476;
+  font-weight: 600;
+    }
+
+    .table-row table tr td:first-child,
+    .table-row table tr td:last-child{
+        font-weight: 700;
+    }
+</style>
+
+
+
+<div class="row table-row m-0">
+    <div class="col-md-12 bg-12 py-2 px-0">
+       <div class="row m-0">
+         <div class="col-md-6 col-left-x text-left">
+           <h2><img width="20" class="mr-1" src="https://media-4.api-sports.io/football/teams/511.png" alt="">Beyern Munich</h2>
+         </div>
+         <div class="col-md-6 col-right-x text-right">
+            <h2><img width="20" class="mr-1" src="https://media-4.api-sports.io/football/teams/490.png" alt="">Borussia Dortmund</h2>
+         </div>
+       </div>
+    </div>
+    <div class="col-md-12 text-center py-2">
+        <h2>Played: <span class="font-number">10</span></h2>
+    </div>
+    <div class="col-md-12 text-center p-0 bg-12">
+        <div class="row m-0">
+            <div class="col-md-4 text-center bg-gre py-2">
+              <h2>Wins<br><span class="font-number">8</span></h2>
+            </div>
+            <div class="col-md-4 text-center py-2">
+                <h2>Draws<br><span class="font-number">1</span></h2>
+            </div>
+            <div class="col-md-4 text-center py-2">
+                <h2>Wins<br><span class="font-number">1</span></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 p-0 table-12">
+        <table class="table table-striped table-hover">
+            <thead class="bg-12">
+                <tr>
+                    <th>Total</th>
+                    <th>Per Match</th>
+                    <th></th>
+                    <th>Total</th>
+                    <th>Per Macth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bg-gre">31</td>
+                    <td class="bg-gre">3.1</td>
+                    <td>Goals</td>
+                    <td>1.4</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td class="bg-gre">14</td>
+                    <td class="bg-gre">1.4</td>
+                    <td>Goals Conected</td>
+                    <td>3.1</td>
+                    <td>31</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>1.9</td>
+                    <td>Yellow Cards</td>
+                    <td class="bg-gre">1.8</td>
+                    <td class="bg-gre">18</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0.1</td>
+                    <td>Red Cards</td>
+                    <td class="bg-gre">1.8</td>
+                    <td class="bg-gre">18</td>
+                </tr>
+                <tr>
+                    <td class="bg-gre">3</td>
+                    <td class="bg-gre">0.3</td>
+                    <td>Clean Sheets</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td class="bg-gre">50</td>
+                    <td class="bg-gre">5</td>
+                    <td>Corners</td>
+                    <td>2.4</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td class="bg-gre">98</td>
+                    <td class="bg-gre">9.8</td>
+                    <td>Fouls</td>
+                    <td>10.1</td>
+                    <td>101</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>2.9</td>
+                    <td>Offside</td>
+                    <td class="bg-gre">2.0</td>
+                    <td class="bg-gre">20</td>
+                </tr>
+                <tr>
+                    <td class="bg-gre">146</td>
+                    <td class="bg-gre">14.6</td>
+                    <td>Shots</td>
+                    <td>8.2</td>
+                    <td>82</td>
+                </tr>
+                <tr>
+                    <td class="bg-gre">63</td>
+                    <td class="bg-gre">6.3</td>
+                    <td>Shots on Goal</td>
+                    <td>3.5</td>
+                    <td>35</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
 <div class="row mt-3">
 
     <div class="col-xl-8 text-left">
@@ -97,7 +267,7 @@ if(Session::has("fcm_token")){
     $(document).ready(function(){
 
         $(document).on("click", ".matchbtn", function(){
-
+           
             const collapsed = $(this).hasClass('collapsed');
             if(collapsed == false){
 
@@ -111,7 +281,6 @@ if(Session::has("fcm_token")){
                     type: 'GET',
                     dataType: 'html',
                     success: function (response) {
-                        console.log(response);
                         $('#collapse'+id).html(response);
                     }
                 });
@@ -121,7 +290,7 @@ if(Session::has("fcm_token")){
         });
 
         $(document).on("click", ".match-preview-btn", function(){
-
+           
             const collapsed = $(this).hasClass('collapsed');
             if(collapsed == false){
 
@@ -144,33 +313,8 @@ if(Session::has("fcm_token")){
 
         });
 
-        $(document).on("click", ".navstatstab", function(){
-
-            const collapsed = $(this).hasClass('collapsed');
-            if(collapsed == false){
-                const url = $(this).data('route');
-                const id = $(this).data('id');
-                $.ajax({
-                    url: url,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (response) {
-                        // console.log(response);
-                        $('#nav-stats'+id).html(response);
-                    
-                    }
-                });
-            }
-
-        });
-
     });
 </script>
-
-
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{asset('PublicArea/calendar/css/style.css')}}">

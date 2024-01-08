@@ -2,10 +2,10 @@
     .standing-table img {
         width: 20px;
     }
-    
+
     /* Styles for the standings table */
     :root {
-        --font: "Raleway",sans-serif;
+        --font: "Raleway", sans-serif;
         --background-color: #fff;
         --background-color-header: #e9ecef;
         --color-text: #000;
@@ -25,7 +25,7 @@
         --button-info-font-size: 9px;
         --button-info-line-height: 16px;
         --toolbar-font-size: var(--header-font-size);
-        --modale-background-overlay: rgba(0,0,0,0.4);
+        --modale-background-overlay: rgba(0, 0, 0, 0.4);
         --modale-close-size: 28px;
         --modale-score-size: 36px;
         --modale-teams-size: 13px;
@@ -38,21 +38,25 @@
         --teams-logo-block-radius-modal: 5px;
         --teams-logo-block-background-modal: var(--background-color-header);
     }
+
     .wg-table {
         font-family: var(--font);
         width: 100%;
         /* border-collapse: collapse; */
     }
+
     .standing-table thead {
         display: table-header-group;
         vertical-align: middle;
         border-color: inherit;
     }
+
     .standing-table tbody {
         display: table-row-group;
         vertical-align: middle;
         border-color: inherit;
     }
+
     .standing-table table {
         display: table;
         border-collapse: separate;
@@ -61,16 +65,21 @@
         border-spacing: 2px;
         border-color: gray;
     }
-    .standing-table table,table td, table tr{
+
+    .standing-table table,
+    table td,
+    table tr {
         border-top: 0px solid #dee2e6 !important;
     }
+
     .standing-table tr {
         display: table-row;
         vertical-align: inherit;
         border-color: inherit;
     }
+
     .standing-table td {
-        padding: var(--primary-padding) !important; 
+        padding: var(--primary-padding) !important;
         font-size: var(--primary-font-size);
         letter-spacing: 0;
         line-height: var(--primary-line-height);
@@ -83,25 +92,32 @@
     .standing-table .wg_width_20 {
         width: 20px;
     }
+
     .standing-table .wg_width_90 {
         width: 90px;
     }
+
     .standing-table .wg_bolder {
         font-weight: 700;
     }
+
     .standing-table .wg_bolder {
         font-weight: 700;
     }
+
     .standing-table .wg_text_center {
         text-align: center;
     }
+
     .standing-table .wg_nowrap {
         white-space: nowrap;
     }
+
     .standing-table .wg_logo {
         width: var(--teams-logo-size);
         vertical-align: middle;
     }
+
     .standing-table img {
         overflow-clip-margin: content-box;
         overflow: clip;
@@ -125,12 +141,15 @@
         position: relative;
         color: #fff;
     }
+
     .standing-table .wg_form_lose {
         background: var(--color-red);
     }
+
     .standing-table .wg_form_win {
         background: var(--color-green);
     }
+
     .standing-table .wg_form_draw {
         background: var(--color-yellow);
     }
@@ -142,6 +161,12 @@
         background: var(--background-color-header);
         color: var(--color-text-header);
         text-transform: var(--header-text-transform);
+    }
+
+    .sub_view_btn,
+    .collapse.show{
+        width: 100%;
+        float: left;
     }
 
     .standing-table .wg_tooltip {
@@ -177,6 +202,7 @@
         display: none;
         z-index: 99999;
     }
+
     .standing-table .wg_info {
         display: inline-block;
         border-radius: 14px;
@@ -190,27 +216,29 @@
         color: #fff;
         background: var(--background-color-header);
     }
+
     .standing-table .wg_flag {
         width: var(--flags-size);
         vertical-align: middle;
     }
 
-    @media  only screen and (max-width: 482px) {
-        .standing-table  .wg_hide_xs{
+    @media only screen and (max-width: 482px) {
+        .standing-table .wg_hide_xs {
             display: none;
         }
     }
-    @media  only screen and (max-width: 320px) {
-        .standing-table  .wg_hide_xxs{
+
+    @media only screen and (max-width: 320px) {
+        .standing-table .wg_hide_xxs {
             display: none;
         }
     }
-                
+
     /* end Styles for the standings table */
 
     .title-band {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url("https://football.bitbotlab.com/PublicArea/img/soccer-bg.png");
+            url("https://football.bitbotlab.com/PublicArea/img/soccer-bg.png");
         background-size: cover;
         background-position: center;
     }
@@ -308,7 +336,7 @@
 
     /* Styles for the standings table */
     :root {
-        --font: "Raleway",sans-serif;
+        --font: "Raleway", sans-serif;
         --background-color: #fff;
         --background-color-header: #e9ecef;
         --color-text: #000;
@@ -328,7 +356,7 @@
         --button-info-font-size: 9px;
         --button-info-line-height: 16px;
         --toolbar-font-size: var(--header-font-size);
-        --modale-background-overlay: rgba(0,0,0,0.4);
+        --modale-background-overlay: rgba(0, 0, 0, 0.4);
         --modale-close-size: 28px;
         --modale-score-size: 36px;
         --modale-teams-size: 13px;
@@ -341,21 +369,25 @@
         --teams-logo-block-radius-modal: 5px;
         --teams-logo-block-background-modal: var(--background-color-header);
     }
+
     .wg-table {
         font-family: var(--font);
         width: 100%;
         /* border-collapse: collapse; */
     }
+
     .wg-table thead {
         display: table-header-group;
         vertical-align: middle;
         border-color: inherit;
     }
+
     .wg-table tbody {
         display: table-row-group;
         vertical-align: middle;
         border-color: inherit;
     }
+
     table.wg-table {
         display: table;
         border-collapse: separate;
@@ -364,16 +396,21 @@
         border-spacing: 2px;
         border-color: gray;
     }
-    table.wg-table,table.wg-table td, table.wg-table tr{
+
+    table.wg-table,
+    table.wg-table td,
+    table.wg-table tr {
         border-top: 0px solid #dee2e6 !important;
     }
+
     .wg-table tr {
         display: table-row;
         vertical-align: inherit;
         border-color: inherit;
     }
+
     .wg-table td {
-        padding: var(--primary-padding) !important; 
+        padding: var(--primary-padding) !important;
         font-size: var(--primary-font-size);
         letter-spacing: 0;
         line-height: var(--primary-line-height);
@@ -386,25 +423,32 @@
     .wg_width_20 {
         width: 20px;
     }
+
     .wg_width_90 {
         width: 90px;
     }
+
     .wg_bolder {
         font-weight: 700;
     }
+
     .wg_bolder {
         font-weight: 700;
     }
+
     .wg_text_center {
         text-align: center;
     }
+
     .wg_nowrap {
         white-space: nowrap;
     }
+
     .wg_logo {
         width: var(--teams-logo-size);
         vertical-align: middle;
     }
+
     .wg-table img {
         overflow-clip-margin: content-box;
         overflow: clip;
@@ -428,12 +472,15 @@
         position: relative;
         color: #fff;
     }
+
     .wg_form_lose {
         background: var(--color-red);
     }
+
     .wg_form_win {
         background: var(--color-green);
     }
+
     .wg_form_draw {
         background: var(--color-yellow);
     }
@@ -480,6 +527,7 @@
         display: none;
         z-index: 99999;
     }
+
     .wg_info {
         display: inline-block;
         border-radius: 14px;
@@ -493,24 +541,93 @@
         color: #fff;
         background: var(--background-color-header);
     }
+
     .wg_flag {
         width: var(--flags-size);
         vertical-align: middle;
     }
 
-    @media  only screen and (max-width: 482px) {
-        .wg_hide_xs{
+    @media only screen and (max-width: 482px) {
+        .wg_hide_xs {
             display: none;
         }
     }
-    @media  only screen and (max-width: 320px) {
-        .wg_hide_xxs{
+
+    @media only screen and (max-width: 320px) {
+        .wg_hide_xxs {
             display: none;
         }
     }
-                
+
+    .player-stats {
+        cursor: pointer;
+    }
+
     /* end Styles for the standings table */
+
+    .bg-12{
+        background: #F6F8FA;
+    }
+
+    .bg-gre{
+        background: #DCF0E5;
+    }
+
+    .table-row{
+        width: 100%;
+        float: left;
+        border: 1px solid #E1E1E1;
+    }
+
+    .table-row h2{
+        font-size: 12px;
+        color: #747476;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin: 0;
+    }
+
+    .font-number{
+        font-weight: 700;
+    }
+
+    .table-12{
+        margin-top: 35px;
+    }
+
+    .table-row table th{
+        font-size: 15px;
+  color: #747476;
+  font-weight: 600;
+    }
+
+    .table-row table tr td:first-child,
+    .table-row table tr td:nth-child(4){
+        font-weight: 700;
+    }
+
+    @media only screen and (min-width:200px) and (max-width:767px){
+        .col-right-x {
+            text-align: left !important;
+            margin-top: 20px;
+        }
+
+        .table-row .col-md-6 img{
+            width: 30px !important;
+            height: 30px !important;
+        }
+
+        .table-row table{
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+        }
+    }
 </style>
+
+
+
+
 <div class="sub_view_btn">
     <div class="container">
         <nav>
@@ -530,16 +647,16 @@
             <div class="tab-pane fade show active" id="nav-summary{{ $fixture->id }}" role="tabpanel"
                 aria-labelledby="nav-summary-tab">
 
-                 {{-- recent form --}}
-                 <div class="mb-2">
+                {{-- recent form --}}
+                <div class="mb-2">
                     <div class="card align-middle bg-dark text-white">
                         <h5 class="text-left p-2">Previous Fixtures</h5>
                     </div>
                     <div class="row my-3 text-left">
-                        <div class="col-md-6 mb-2">
+                        <div class="col-md-6 mb-2 pr-1">
                             <div class="card">
-                                <div class="card-body table-responsive">
-                                    <h6 class="card-title">{{ $teams->home->name }}</h6>
+                                <div class="card-body p-0 table-responsive">
+                                    <h6 class="card-title mb-0 px-3 py-2">{{ $teams->home->name }}</h6>
                                     <table class="table" style="width: 100%;">
                                         <tbody>
                                             @forelse ($form["home"] as $home_fixture)
@@ -572,8 +689,7 @@
                                                             {{ $home_fixture->teams->home->name }}
                                                         </a>
                                                     </td>
-                                                    <td style="white-space: nowrap; centered-links"
-                                                        align="center">
+                                                    <td style="white-space: nowrap; centered-links" align="center">
                                                         <p>{{ $home_fixture->goals->home }}-{{ $home_fixture->goals->away }}
                                                         </p>
                                                     </td>
@@ -612,10 +728,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3 pl-1">
                             <div class="card">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{ $teams->away->name }}</h6>
+                                <div class="card-body p-0 table-responsive">
+                                    <h6 class="card-title mb-0 px-3 py-2">{{ $teams->away->name }}</h6>
                                     <table class="table" style="width: 100%;">
                                         <tbody>
                                             @forelse ($form["away"] as $away_fixture)
@@ -647,8 +763,7 @@
                                                             {{ $away_fixture->teams->home->name }}
                                                         </a>
                                                     </td>
-                                                    <td style="white-space: nowrap; centered-links"
-                                                        align="center">
+                                                    <td style="white-space: nowrap; centered-links" align="center">
                                                         <p>{{ $away_fixture->goals->home }}-{{ $away_fixture->goals->away }}
                                                         </p>
                                                     </td>
@@ -688,7 +803,7 @@
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
                 {{-- end of recent form --}}
 
                 {{-- h2h --}}
@@ -730,7 +845,7 @@
                                             </td>
                                             <td style="white-space: nowrap centered-links" align="center">
                                                 <p>{{ $h2h_single->goals->home }}-{{ $h2h_single->goals->away }}</p>
-                                        
+
                                             </td>
                                             <td class="text-right">
                                                 <a class="no-underline"
@@ -777,1034 +892,936 @@
                         <div class="">
                             <div class="table-responsive">
                                 @forelse ($standings as $single_standing)
-                                <table class="table wg-table">
-                                    <thead></thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="wg_header" colspan="11" style="text-align: left;">
-                                                <img class="wg_flag" src="{{ $league->flag }}" loading="lazy">
-                                                {{ $league->country }}: {{ $league->name }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td class="wg_header" colspan="2"></td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                data-toggle="tooltip" data-placement="left" title="MATCHES PLAYED">
-                                                MP</td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                data-toggle="tooltip" data-placement="left" title="WIN">W</td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                data-toggle="tooltip" data-placement="left" title="DRAW">D</td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                data-toggle="tooltip" data-placement="left" title="LOSE">L</td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xxs"
-                                                data-toggle="tooltip" data-placement="left"
-                                                title="GOALS FOR:GOALS AGAINST">G</td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xs"
-                                                data-toggle="tooltip" data-placement="left" title="DIFFERENCE">
-                                                +/-</td>
-                                            <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                data-toggle="tooltip" data-placement="left" title="POINTS">P</td>
-                                            <td class="wg_header wg_hide_xs" colspan="2"></td>
-                                        </tr>
-                                        @forelse ($single_standing as $standing)
-                                            @php
-                                                $rowColor = '';
-                                                if (isset($standing->description) && !empty($standing->description)) {
-                                                    $rowColor = 'lightblue';
-                                                }
-                                            @endphp
-                                            <tr>
-                                                <td class="wg_text_center wg_bolder wg_width_20"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->rank }}
-                                                </td>
-                                                <td class="wg_nowrap"
-                                                    style="text-align: left; background-color:{{ $rowColor }};">
-                                                    <img class="wg_logo" src="{{ $standing->team->logo }}"
-                                                        alt="">
-                                                    {{ $standing->team->name }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->all->played }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->all->win }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->all->draw }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->all->lose }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20 wg_hide_xxs"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->all->goals->for }}:{{ $standing->all->goals->against }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20 wg_hide_xs"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    {{ $standing->goalsDiff }}
-                                                </td>
-                                                <td class="wg_text_center wg_width_20"
-                                                    style="background-color: {{ $rowColor }};">
-                                                    <span class="<?php echo isset($standing->description) && !empty($standing->description) ? 'wg_tooltip wg_tooltip_left' : ''; ?>" data-toggle="tooltip"
-                                                        data-placement="left"
-                                                        title="{{ $standing->description }}">
-                                                        {{ $standing->points }}
-                                                    </span>
-                                                </td>
-                                                <td class="wg_text_center wg_width_90 wg_hide_xs"
-                                                    style="text-align: left; background-color: {{ $rowColor }};">
-                                                    @php
-                                                        $str = $standing->form;
-                                                        $strCount = strlen($str);
-                                                    @endphp
-                                                    @if ($strCount > 0)
-                                                        @for ($i = 0; $i < $strCount; $i++)
-                                                            @switch($str[$i])
-                                                                @case('W')
-                                                                    <span class="wg_form wg_form_win">W</span>
-                                                                @break
-
-                                                                @case('L')
-                                                                    <span class="wg_form wg_form_lose">L</span>
-                                                                @break
-
-                                                                @case('D')
-                                                                    <span class="wg_form wg_form_draw">D</span>
-                                                                @break
-
-                                                                @default
-                                                            @endswitch
-                                                        @endfor
-                                                    @endif
-                                                </td>
-                                                <td class="wg_text_center wg_width_20 wg_hide_xs">
-                                                    @if (isset($standing->description) && !empty($standing->description))
-                                                        <span class="wg_info wg_tooltip wg_tooltip_left"
-                                                            data-toggle="tooltip" data-placement="left"
-                                                            title="{{ $standing->description }}">?</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="11">
-                                                        No information Available
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                </table>
-                                @empty
                                     <table class="table wg-table">
                                         <thead></thead>
                                         <tbody>
                                             <tr>
-                                                <td colspan="11">
-                                                    No Standings Available
+                                                <td class="wg_header" colspan="11" style="text-align: left;">
+                                                    <img class="wg_flag" src="{{ $league->flag }}" loading="lazy">
+                                                    {{ $league->country }}: {{ $league->name }}
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                @endforelse
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- end league table --}}
+                                            <tr>
 
-                {{-- predictions --}}
-                <div class="mb-2">
-                    <div class="card align-middle bg-dark text-white">
-                        <h5 class="text-left p-2">Predictions</h5>
-                    </div>
-                    <div class="card">
-                        <div class="card-body table-responsive">
-                            <div class="row">
-                                {{-- <div class="col-md-6">
-                                    <canvas id="predictionChart"></canvas>
-                                </div> --}}
-                                <div class="col-md-6">
-                                    <table class="table" style="width: 100%;">
-                                        <thead>
-                                            <th>
-                                                {{ $teams->home->name }}
-                                            </th>
-                                            <th></th>
-                                            <th>
-                                                {{ $teams->away->name }}
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $text_array = ['form' => 'Strength', 'att' => 'Attacking Potential', 'def' => 'Defensive Potential', 'poisson_distribution' => 'Poisson Distribution', 'h2h' => 'Strength H2H', 'goals' => 'Goals H2H', 'total' => 'Wins the Game'];
-                                            @endphp
-                                            @foreach ($predictions['predictions'][0]->comparison as $key => $comparison)
+                                                <td class="wg_header" colspan="2"></td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
+                                                    data-toggle="tooltip" data-placement="left"
+                                                    title="MATCHES PLAYED">
+                                                    MP</td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
+                                                    data-toggle="tooltip" data-placement="left" title="WIN">W</td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
+                                                    data-toggle="tooltip" data-placement="left" title="DRAW">D</td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
+                                                    data-toggle="tooltip" data-placement="left" title="LOSE">L</td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xxs"
+                                                    data-toggle="tooltip" data-placement="left"
+                                                    title="GOALS FOR:GOALS AGAINST">G</td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xs"
+                                                    data-toggle="tooltip" data-placement="left" title="DIFFERENCE">
+                                                    +/-</td>
+                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
+                                                    data-toggle="tooltip" data-placement="left" title="POINTS">P</td>
+                                                <td class="wg_header wg_hide_xs" colspan="2"></td>
+                                            </tr>
+                                            @forelse ($single_standing as $standing)
+                                                @php
+                                                    $rowColor = '';
+                                                    if (isset($standing->description) && !empty($standing->description)) {
+                                                        $rowColor = 'lightblue';
+                                                    }
+                                                @endphp
                                                 <tr>
-                                                    <td class="text-center">
-                                                        <span
-                                                            class="badge badge-newinfo">{{ $comparison->home }}</span>
+                                                    <td class="wg_text_center wg_bolder wg_width_20"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->rank }}
                                                     </td>
-                                                    <td class="text-center">
-                                                        {{ $text_array[$key] }}
+                                                    <td class="wg_nowrap"
+                                                        style="text-align: left; background-color:{{ $rowColor }};">
+                                                        <img class="wg_logo" src="{{ $standing->team->logo }}"
+                                                            alt="">
+                                                        {{ $standing->team->name }}
                                                     </td>
-                                                    <td class="text-center">
-                                                        <span
-                                                            class="badge badge-danger">{{ $comparison->away }}</span>
+                                                    <td class="wg_text_center wg_width_20"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->all->played }}
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->all->win }}
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->all->draw }}
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->all->lose }}
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20 wg_hide_xxs"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->all->goals->for }}:{{ $standing->all->goals->against }}
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20 wg_hide_xs"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        {{ $standing->goalsDiff }}
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20"
+                                                        style="background-color: {{ $rowColor }};">
+                                                        <span class="<?php echo isset($standing->description) && !empty($standing->description) ? 'wg_tooltip wg_tooltip_left' : ''; ?>" data-toggle="tooltip"
+                                                            data-placement="left"
+                                                            title="{{ $standing->description }}">
+                                                            {{ $standing->points }}
+                                                        </span>
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_90 wg_hide_xs"
+                                                        style="text-align: left; background-color: {{ $rowColor }};">
+                                                        @php
+                                                            $str = $standing->form;
+                                                            $strCount = strlen($str);
+                                                        @endphp
+                                                        @if ($strCount > 0)
+                                                            @for ($i = 0; $i < $strCount; $i++)
+                                                                @switch($str[$i])
+                                                                    @case('W')
+                                                                        <span class="wg_form wg_form_win">W</span>
+                                                                    @break
+
+                                                                    @case('L')
+                                                                        <span class="wg_form wg_form_lose">L</span>
+                                                                    @break
+
+                                                                    @case('D')
+                                                                        <span class="wg_form wg_form_draw">D</span>
+                                                                    @break
+
+                                                                    @default
+                                                                @endswitch
+                                                            @endfor
+                                                        @endif
+                                                    </td>
+                                                    <td class="wg_text_center wg_width_20 wg_hide_xs">
+                                                        @if (isset($standing->description) && !empty($standing->description))
+                                                            <span class="wg_info wg_tooltip wg_tooltip_left"
+                                                                data-toggle="tooltip" data-placement="left"
+                                                                title="{{ $standing->description }}">?</span>
+                                                        @endif
                                                     </td>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- End of predictions --}}
-
-            </div>
-
-
-            <!-- Team stats tab content -->
-            <div class="tab-pane fade" id="nav-stats{{ $fixture->id }}" role="tabpanel" aria-labelledby="nav-stats-tab">
-
-                <div class="row">
-                    {{-- team stats --}}
-                    <div class="">
-                        <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">Team Statistics</h5>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row my-3 text-left">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->home->name }} Goals</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->home->name }} have scored
-                                                    <strong>{{ $team_statistics['home']->goals->for->total->total }}</strong>
-                                                    goals from
-                                                    <strong>{{ $team_statistics['home']->fixtures->played->total }}</strong>
-                                                    matches. This gives
-                                                    us an
-                                                    average of
-                                                    <strong>{{ $team_statistics['home']->goals->for->average->total }}</strong>
-                                                    total
-                                                    goals scored. {{ $teams->home->name }} have conceded
-                                                    <strong>{{ $team_statistics['home']->goals->against->total->total }}</strong>
-                                                    goals
-                                                    which works out an average of
-                                                    <strong>{{ $team_statistics['home']->goals->against->average->total }}</strong>
-                                                    goals
-                                                    conceded per match.
-                                                </small>
-                                                <canvas id="home_goals_bar" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->away->name }} Goals</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->away->name }} have scored
-                                                    <strong>{{ $team_statistics['away']->goals->for->total->total }}</strong>
-                                                    goals from
-                                                    <strong>{{ $team_statistics['away']->fixtures->played->total }}</strong>
-                                                    matches. This gives
-                                                    us an
-                                                    average of
-                                                    <strong>{{ $team_statistics['away']->goals->for->average->total }}</strong>
-                                                    total
-                                                    goals scored. {{ $teams->away->name }} have conceded
-                                                    <strong>{{ $team_statistics['away']->goals->against->total->total }}</strong>
-                                                    goals
-                                                    which works out an average of
-                                                    <strong>{{ $team_statistics['away']->goals->against->average->total }}</strong>
-                                                    goals
-                                                    conceded per match.
-                                                </small>
-                                                <canvas id="away_goals_bar" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-3 text-left">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->home->name }} Home Goals</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->home->name }} have scored
-                                                    <strong>{{ $team_statistics['home']->goals->for->total->home }}</strong>
-                                                    goals from
-                                                    <strong>{{ $team_statistics['home']->fixtures->played->home }}</strong>
-                                                    home matches. This gives
-                                                    us an
-                                                    average of
-                                                    <strong>{{ $team_statistics['home']->goals->for->average->home }}</strong>
-                                                    home goals scored. {{ $teams->home->name }} have conceded
-                                                    <strong>{{ $team_statistics['home']->goals->against->total->home }}</strong>
-                                                    goals
-                                                    which works out an average of
-                                                    <strong>{{ $team_statistics['home']->goals->against->average->home }}</strong>
-                                                    goals
-                                                    conceded per match.
-                                                </small>
-                                                <canvas id="h_home_goals_bar" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->away->name }} Away Goals</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->away->name }} have scored
-                                                    <strong>{{ $team_statistics['away']->goals->for->total->away }}</strong>
-                                                    goals from
-                                                    <strong>{{ $team_statistics['away']->fixtures->played->away }}</strong>
-                                                    away matches. This gives
-                                                    us an
-                                                    average of
-                                                    <strong>{{ $team_statistics['away']->goals->for->average->away }}</strong>
-                                                    away goals scored. {{ $teams->away->name }} have conceded
-                                                    <strong>{{ $team_statistics['away']->goals->against->total->away }}</strong>
-                                                    goals
-                                                    which works out an average of
-                                                    <strong>{{ $team_statistics['away']->goals->against->average->away }}</strong>
-                                                    goals
-                                                    conceded per match.
-                                                </small>
-                                                <canvas id="a_away_goals_bar" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row text-left">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->home->name }} Results</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->home->name }} have won
-                                                    <strong>{{ $team_statistics['home']->fixtures->wins->total }}</strong>
-                                                    matches drawn
-                                                    <strong>{{ $team_statistics['home']->fixtures->draws->total }}</strong>
-                                                    and
-                                                    lost
-                                                    <strong>{{ $team_statistics['home']->fixtures->loses->total }}</strong>
-                                                    from
-                                                    <strong>{{ $team_statistics['home']->fixtures->played->total }}</strong>
-                                                    matches.
-                                                </small>
-                                                <canvas id="h_home_res_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->away->name }} Results</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->away->name }} have won
-                                                    <strong>{{ $team_statistics['away']->fixtures->wins->total }}</strong>
-                                                    matches drawn
-                                                    <strong>{{ $team_statistics['away']->fixtures->draws->total }}</strong>
-                                                    and
-                                                    lost
-                                                    <strong>{{ $team_statistics['away']->fixtures->loses->total }}</strong>
-                                                    from
-                                                    <strong>{{ $team_statistics['away']->fixtures->played->total }}</strong>
-                                                    matches.
-                                                </small>
-                                                <canvas id="a_away_res_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row text-left my-2">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->home->name }} Home Results</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->home->name }} have won
-                                                    <strong>{{ $team_statistics['home']->fixtures->wins->home }}</strong>
-                                                    matches drawn
-                                                    <strong>{{ $team_statistics['home']->fixtures->draws->home }}</strong> and
-                                                    lost
-                                                    <strong>{{ $team_statistics['home']->fixtures->loses->home }}</strong>
-                                                    matches at home.
-                                                </small>
-                                                <canvas id="home_res_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->away->name }} Away Results</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->away->name }} have won
-                                                    <strong>{{ $team_statistics['away']->fixtures->wins->away }}</strong>
-                                                    matches drawn
-                                                    <strong>{{ $team_statistics['away']->fixtures->draws->away }}</strong> and
-                                                    lost
-                                                    <strong>{{ $team_statistics['away']->fixtures->loses->away }}</strong>
-                                                    matches away.
-                                                </small>
-                                                <canvas id="away_res_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row text-left my-2">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->home->name }} Clean Sheet</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->home->name }} home
-                                                    <strong>{{ !empty($team_statistics['home']->clean_sheet->home) ? $team_statistics['home']->clean_sheet->home : 0 }}</strong>
-                                                    away
-                                                    <strong>{{ !empty($team_statistics['home']->clean_sheet->away) ? $team_statistics['home']->clean_sheet->away : 0 }}</strong>
-                                                    and
-                                                    total
-                                                    <strong>{{ !empty($team_statistics['home']->clean_sheet->total) ? $team_statistics['home']->clean_sheet->total : 0 }}</strong>
-
-                                                </small>
-                                                <canvas id="home_clean_sheet_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->away->name }} Clean Sheet</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->away->name }} home
-                                                    <strong>{{ !empty($team_statistics['away']->clean_sheet->home) ? $team_statistics['away']->clean_sheet->home : 0 }}</strong>
-                                                    away
-                                                    <strong>{{ !empty($team_statistics['away']->clean_sheet->away) ? $team_statistics['away']->clean_sheet->away : 0 }}</strong>
-                                                    and
-                                                    total
-                                                    <strong>{{ !empty($team_statistics['away']->clean_sheet->total) ? $team_statistics['away']->clean_sheet->total : 0 }}</strong>
-
-                                                </small>
-                                                <canvas id="away_clean_sheet_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row text-left my-2">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->home->name }} Failed to Score</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->home->name }} home
-                                                    <strong>{{ !empty($team_statistics['home']->failed_to_score->home) ? $team_statistics['home']->failed_to_score->home : 0 }}</strong>
-                                                    away
-                                                    <strong>{{ !empty($team_statistics['home']->failed_to_score->away) ? $team_statistics['home']->failed_to_score->away : 0 }}</strong>
-                                                    and
-                                                    total
-                                                    <strong>{{ !empty($team_statistics['home']->failed_to_score->total) ? $team_statistics['home']->failed_to_score->total : 0 }}</strong>
-
-                                                </small>
-                                                <canvas id="home_failed_to_score_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h6 class="card-title">{{ $teams->away->name }} Failed to Score</h6>
-                                                <small class="card-text my-2">
-                                                    {{ $teams->away->name }} home
-                                                    <strong>{{ !empty($team_statistics['away']->failed_to_score->home) ? $team_statistics['away']->failed_to_score->home : 0 }}</strong>
-                                                    away
-                                                    <strong>{{ !empty($team_statistics['away']->failed_to_score->away) ? $team_statistics['away']->failed_to_score->away : 0 }}</strong>
-                                                    and
-                                                    total
-                                                    <strong>{{ !empty($team_statistics['away']->failed_to_score->total) ? $team_statistics['away']->failed_to_score->total : 0 }}</strong>
-
-                                                </small>
-                                                <canvas id="away_failed_to_score_pie" class="mt-2"></canvas>
-                                            </div>
-                                        </div>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="11">
+                                                            No information Available
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                        @empty
+                                            <table class="table wg-table">
+                                                <thead></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="11">
+                                                            No Standings Available
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        {{-- end league table --}}
+
+                        
                     </div>
 
 
-                    {{-- End of team stats --}}
-                </div>
 
-            </div>
+                    <!-- Team stats tab content -->
+                    <div class="tab-pane fade" id="nav-stats{{ $fixture->id }}" role="tabpanel"
+                        aria-labelledby="nav-stats-tab">
 
-            <!-- Player tab content -->
-            <div class="tab-pane fade" id="nav-Player{{ $fixture->id }}" role="tabpanel" aria-labelledby="nav-Player-tab">
-
-                <div class="row">
-                    {{-- Top home --}}
-                    <div class="col-md-6 mb-2">
-                        <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">
-                                <img src="{{ $teams->home->logo }}" alt="team-logo" class="img img-fluid"
-                                    style="width:30px; height:30px;">
-                                {{ $teams->home->name }}
-                            </h5>
-                        </div>
-                        <div class="card">
-                            <div class="card-body table-responsive" id="accordionExample">
-
-                                {{--  --}}
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-goals-total" data-toggle="collapse"
-                                        data-target="#collapse-top-goals-total" aria-expanded="true"
-                                        aria-controls="collapse-top-goals-total">
-                                        Top Goals Total
+                        <div class="row table-row m-0">
+                            <div class="col-md-12 bg-12 py-2 px-0">
+                                <div class="row m-0">
+                                    <div class="col-md-6 col-left-x text-left">
+                                      <h2><img class="team-logo-h2h" src="{{ $teams->home->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->home->name }}  overall stats </h2>
                                     </div>
-
-                                    <div id="collapse-top-goals-total" class="collapse" aria-labelledby="heading-top-goals-total"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_goals_total'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle" width="70">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->goals->total }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
+                                    <div class="col-md-6 col-right-x text-right">
+                                       <h2><img class="team-logo-h2h" src="{{ $teams->away->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->away->name }} overall stats </h2>
                                     </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-goals-assists" data-toggle="collapse"
-                                        data-target="#collapse-top-goals-assists" aria-expanded="true"
-                                        aria-controls="collapse-top-goals-assists">
-                                        Top Goals Assists
-                                    </div>
-
-                                    <div id="collapse-top-goals-assists" class="collapse"
-                                        aria-labelledby="heading-top-goals-assists" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_goals_assists'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle" width="70">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->goals->assists }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-shots-total" data-toggle="collapse"
-                                        data-target="#collapse-top-shots-total" aria-expanded="true"
-                                        aria-controls="collapse-top-shots-total">
-                                        Top Shots Total
-                                    </div>
-
-                                    <div id="collapse-top-shots-total" class="collapse" aria-labelledby="heading-top-shots-total"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_shots_total'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle" width="70">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->shots->total }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-shots-on" data-toggle="collapse"
-                                        data-target="#collapse-top-shots-on" aria-expanded="true"
-                                        aria-controls="collapse-top-shots-on">
-                                        Top Shots On
-                                    </div>
-
-                                    <div id="collapse-top-shots-on" class="collapse" aria-labelledby="heading-top-shots-on"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_shots_on'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->shots->on }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-games-rating" data-toggle="collapse"
-                                        data-target="#collapse-top-games-rating" aria-expanded="true"
-                                        aria-controls="collapse-top-games-rating">
-                                        Top Games Rating
-                                    </div>
-
-                                    <div id="collapse-top-games-rating" class="collapse"
-                                        aria-labelledby="heading-top-games-rating" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_games_rating'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->games->rating }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-passes-key" data-toggle="collapse"
-                                        data-target="#collapse-top-passes-key" aria-expanded="true"
-                                        aria-controls="collapse-top-passes-key">
-                                        Top Passes Key
-                                    </div>
-
-                                    <div id="collapse-top-passes-key" class="collapse" aria-labelledby="heading-top-passes-key"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_passes_key'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->passes->key }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-tackles-total" data-toggle="collapse"
-                                        data-target="#collapse-top-tackles-total" aria-expanded="true"
-                                        aria-controls="collapse-top-tackles-total">
-                                        Top Tackles Total
-                                    </div>
-
-                                    <div id="collapse-top-tackles-total" class="collapse"
-                                        aria-labelledby="heading-top-tackles-total" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_tackles_total'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->tackles->total }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-fouls-committed" data-toggle="collapse"
-                                        data-target="#collapse-top-fouls-committed" aria-expanded="true"
-                                        aria-controls="collapse-top-fouls-committed">
-                                        Top Fouls Committed
-                                    </div>
-
-                                    <div id="collapse-top-fouls-committed" class="collapse"
-                                        aria-labelledby="heading-top-fouls-committed" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_fouls_committed'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->fouls->committed }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-cards-yellow" data-toggle="collapse"
-                                        data-target="#collapse-top-cards-yellow" aria-expanded="true"
-                                        aria-controls="collapse-top-cards-yellow">
-                                        Top Cards Yellow
-                                    </div>
-
-                                    <div id="collapse-top-cards-yellow" class="collapse"
-                                        aria-labelledby="heading-top-cards-yellow" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            @forelse ($players['home']['top_cards_yellow'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->cards->yellow }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-                                {{--  --}}
+                                  </div>
                             </div>
-                        </div>
-                    </div>
-                    {{-- End of Top home --}}
-
-                    {{-- Top away --}}
-                    <div class="col-md-6 mb-2">
-                        <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">
-                                <img src="{{ $teams->away->logo }}" alt="team-logo" class="img img-fluid"
-                                    style="width:30px; height:30px;">
-                                {{ $teams->away->name }}
-                            </h5>
-                        </div>
-                        <div class="card">
-                            <div class="card-body table-responsive" id="accordionExample2">
-                                {{--  --}}
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-goals-total2" data-toggle="collapse"
-                                        data-target="#collapse-top-goals-total2" aria-expanded="true"
-                                        aria-controls="collapse-top-goals-total2">
-                                        Top Goals Total
-                                    </div>
-
-                                    <div id="collapse-top-goals-total2" class="collapse"
-                                        aria-labelledby="heading-top-goals-total2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_goals_total'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->goals->total }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-goals-assists2" data-toggle="collapse"
-                                        data-target="#collapse-top-goals-assists2" aria-expanded="true"
-                                        aria-controls="collapse-top-goals-assists2">
-                                        Top Goals Assists
-                                    </div>
-
-                                    <div id="collapse-top-goals-assists2" class="collapse"
-                                        aria-labelledby="heading-top-goals-assists2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_goals_assists'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->goals->assists }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-shots-total2" data-toggle="collapse"
-                                        data-target="#collapse-top-shots-total2" aria-expanded="true"
-                                        aria-controls="collapse-top-shots-total2">
-                                        Top Shots Total
-                                    </div>
-
-                                    <div id="collapse-top-shots-total2" class="collapse"
-                                        aria-labelledby="heading-top-shots-total2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_shots_total'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->shots->total }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-shots-on2" data-toggle="collapse"
-                                        data-target="#collapse-top-shots-on2" aria-expanded="true"
-                                        aria-controls="collapse-top-shots-on2">
-                                        Top Shots On
-                                    </div>
-
-                                    <div id="collapse-top-shots-on2" class="collapse" aria-labelledby="heading-top-shots-on2"
-                                        data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_shots_on'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->shots->on }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-games-rating2" data-toggle="collapse"
-                                        data-target="#collapse-top-games-rating2" aria-expanded="true"
-                                        aria-controls="collapse-top-games-rating2">
-                                        Top Games Rating
-                                    </div>
-
-                                    <div id="collapse-top-games-rating2" class="collapse"
-                                        aria-labelledby="heading-top-games-rating2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_games_rating'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->games->rating }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-passes-key2" data-toggle="collapse"
-                                        data-target="#collapse-top-passes-key2" aria-expanded="true"
-                                        aria-controls="collapse-top-passes-key2">
-                                        Top Passes Key
-                                    </div>
-
-                                    <div id="collapse-top-passes-key2" class="collapse" aria-labelledby="heading-top-passes-key2"
-                                        data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_passes_key'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->passes->key }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-tackles-total2" data-toggle="collapse"
-                                        data-target="#collapse-top-tackles-total2" aria-expanded="true"
-                                        aria-controls="collapse-top-tackles-total2">
-                                        Top Tackles Total
-                                    </div>
-
-                                    <div id="collapse-top-tackles-total2" class="collapse"
-                                        aria-labelledby="heading-top-tackles-total2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_tackles_total'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->tackles->total }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-fouls-committed2"
-                                        data-toggle="collapse" data-target="#collapse-top-fouls-committed2" aria-expanded="true"
-                                        aria-controls="collapse-top-fouls-committed2">
-                                        Top Fouls Committed
-                                    </div>
-
-                                    <div id="collapse-top-fouls-committed2" class="collapse"
-                                        aria-labelledby="heading-top-fouls-committed2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_fouls_committed'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->fouls->committed }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-2">
-                                    <div class="player-stats card-header text-white" id="heading-top-cards-yellow2" data-toggle="collapse"
-                                        data-target="#collapse-top-cards-yellow2" aria-expanded="true"
-                                        aria-controls="collapse-top-cards-yellow2">
-                                        Top Cards Yellow
-                                    </div>
-
-                                    <div id="collapse-top-cards-yellow2" class="collapse"
-                                        aria-labelledby="heading-top-cards-yellow2" data-parent="#accordionExample2">
-                                        <div class="card-body">
-                                            @forelse ($players['away']['top_cards_yellow'] as $k=>$v)
-                                                <div class="media">
-                                                    <img src="{{ $v->player->photo }}" alt="User Image"
-                                                        class="mr-3 user-image rounded-circle">
-                                                    <div class="media-body">
-                                                        <h5 class="mt-0">{{ $v->player->name }}</h5>
-                                                        <p>{{ $v->statistics[0]->cards->yellow }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            @empty
-                                                <h5>No Data</h5>
-                                            @endforelse
-
-                                        </div>
-                                    </div>
-                                </div>
-                                {{--  --}}
+                            {{--  <div class="col-md-12 text-center py-2">
+                                <h2>Played: <span class="font-number">10</span></h2>
                             </div>
+                            <div class="col-md-12 text-center p-0 bg-12">
+                                <div class="row m-0">
+                                    <div class="col-md-4 text-center bg-gre py-2">
+                                      <h2>Wins<br><span class="font-number">8</span></h2>
+                                    </div>
+                                    <div class="col-md-4 text-center py-2">
+                                        <h2>Draws<br><span class="font-number">1</span></h2>
+                                    </div>
+                                    <div class="col-md-4 text-center py-2">
+                                        <h2>Wins<br><span class="font-number">1</span></h2>
+                                    </div>
+                                </div>
+                            </div>  --}} 
+
+
+                            {{--  <?php print_r($team_statistics['home_team_x']); ?>   --}}
+                            <div class="col-md-12 p-0 table-12">
+                                <table class="table table-striped table-hover">
+                                    <thead class="bg-12">
+                                        <tr>
+                                            <th>Total</th>
+                                            <th>Per Match</th>
+                                            <th></th>
+                                            <th>Per Macth</th>
+                                            <th>Total</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->played->total }}</td>
+                                            <td>-</td>
+                                            <td>Total Match</td>
+                                            <td>{{ $team_statistics['away']->fixtures->played->total }}</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->wins->total }}</td>
+                                            <td>-</td>
+                                            <td>Total Win</td>
+                                            <td>{{ $team_statistics['away']->fixtures->wins->total }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->loses->total }}</td>
+                                            <td>-</td>
+                                            <td>Total lost</td>
+                                            <td>{{ $team_statistics['away']->fixtures->loses->total }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->draws->total }}</td>
+                                            <td>-</td>
+                                            <td>Total draw</td>
+                                            <td>{{ $team_statistics['away']->fixtures->draws->total }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->goals->for->total->total }}</td>
+                                            <td>{{ $team_statistics['home']->goals->for->average->total }}</td>
+                                            <td>Goals</td>
+                                            <td>{{ $team_statistics['away']->goals->for->average->total }}</td>
+                                            <td>{{ $team_statistics['away']->goals->for->total->total }}</td>
+                                        </tr>
+
+                                       
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->goals->against->total->total }}</td>
+                                            <td>{{ $team_statistics['home']->goals->against->average->total }}</td>
+                                            <td>Goals Conceded</td>
+                                            <td>{{ $team_statistics['away']->goals->against->average->total }}</td>
+                                            <td>{{ $team_statistics['away']->goals->against->total->total }}</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>{{ !empty($team_statistics['home']->clean_sheet->home) ? $team_statistics['home']->clean_sheet->home : 0 }}</td>
+                                            <td>-</td>
+                                            <td>Clean Sheets</td>
+                                            <td>{{ !empty($team_statistics['away']->clean_sheet->home) ? $team_statistics['away']->clean_sheet->home : 0 }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                                endforeach;
+                                            endif;
+                                            ?>
+
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        
+                        </div> 
+
+                        <h2 class="mt-3">Home & away stats</h2>
+                        <div class="row table-row m-0">
+                            <div class="col-md-12 bg-12 py-2 px-0">
+                                
+                                <div class="row m-0">
+                                    <div class="col-md-6 col-left-x text-left">
+                                      <h2><img class="team-logo-h2h" src="{{ $teams->home->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->home->name }} Home stats</h2>
+                                    </div>
+                                    <div class="col-md-6 col-right-x text-right">
+                                       <h2><img class="team-logo-h2h" src="{{ $teams->away->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->away->name }} Away stats</h2>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-md-12 p-0 table-12">
+                                <table class="table table-striped table-hover">
+                                    <thead class="bg-12">
+                                        <tr>
+                                            <th>Total</th>
+                                            <th>Per Match</th>
+                                            <th></th>
+                                            <th>Per Macth</th>
+                                            <th>Total</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->played->home }}</td>
+                                            <td>-</td>
+                                            <td>Total Match</td>
+                                            <td>{{ $team_statistics['away']->fixtures->played->away }}</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->wins->home }}</td>
+                                            <td>-</td>
+                                            <td>Total Win</td>
+                                            <td>{{ $team_statistics['away']->fixtures->wins->away }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->loses->home }}</td>
+                                            <td>-</td>
+                                            <td>Total lost</td>
+                                            <td>{{ $team_statistics['away']->fixtures->loses->away }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->fixtures->draws->home }}</td>
+                                            <td>-</td>
+                                            <td>Total draw</td>
+                                            <td>{{ $team_statistics['away']->fixtures->draws->away }}</td>
+                                            <td>-</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->goals->for->total->home }}</td>
+                                            <td>{{ $team_statistics['home']->goals->for->average->home }}</td>
+                                            <td>Goals</td>
+                                            <td>{{ $team_statistics['away']->goals->for->average->away }}</td>
+                                            <td>{{ $team_statistics['away']->goals->for->total->away }}</td>
+                                        </tr>
+
+                                       
+                                        <tr>
+                                            <td>{{ $team_statistics['home']->goals->against->total->home }}</td>
+                                            <td>{{ $team_statistics['home']->goals->against->average->home }}</td>
+                                            <td>Goals Conceded</td>
+                                            <td>{{ $team_statistics['away']->goals->against->average->away }}</td>
+                                            <td>{{ $team_statistics['away']->goals->against->total->away }}</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>{{ !empty($team_statistics['home']->clean_sheet->home) ? $team_statistics['home']->clean_sheet->home : 0 }}</td>
+                                            <td>-</td>
+                                            <td>Clean Sheets</td>
+                                            <td>{{ !empty($team_statistics['away']->clean_sheet->away) ? $team_statistics['away']->clean_sheet->away : 0 }}</td>
+                                            <td>-</td>
+                                        </tr>
+                                       
+                                                endforeach;
+                                            endif;
+                                            ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        
                         </div>
                     </div>
-                    {{-- End of top away --}}
+
+                    <!-- Player tab content -->
+                    <div class="tab-pane fade" id="nav-Player{{ $fixture->id }}" role="tabpanel"
+                        aria-labelledby="nav-Player-tab">
+
+                        <div class="row">
+                            {{-- Top home --}}
+                            <div class="col-md-6 mb-2">
+                                <div class="card align-middle bg-dark text-white">
+                                    <h5 class="text-left p-2">
+                                        <img src="{{ $teams->home->logo }}" alt="team-logo" class="img img-fluid"
+                                            style="width:30px; height:30px;">
+                                        {{ $teams->home->name }}
+                                    </h5>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body table-responsive" id="accordionExample">
+
+                                        {{--  --}}
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-goals-total"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-goals-total{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-goals-total">
+                                                Top Goals Total
+                                            </div>
+
+                                            <div id="collapse-top-goals-total{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-goals-total" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_goals_total'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle" width="70">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->goals->total }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-goals-assists"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-goals-assists{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-goals-assists">
+                                                Top Goals Assists
+                                            </div>
+
+                                            <div id="collapse-top-goals-assists{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-goals-assists" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_goals_assists'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle" width="70">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->goals->assists }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-shots-total"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-shots-total{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-shots-total">
+                                                Top Shots Total
+                                            </div>
+
+                                            <div id="collapse-top-shots-total{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-shots-total" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_shots_total'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle" width="70">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->shots->total }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-shots-on"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-shots-on{{ $fixture->id }}" aria-expanded="true"
+                                                aria-controls="collapse-top-shots-on">
+                                                Top Shots On
+                                            </div>
+
+                                            <div id="collapse-top-shots-on{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-shots-on" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_shots_on'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->shots->on }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-games-rating"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-games-rating{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-games-rating">
+                                                Top Games Rating
+                                            </div>
+
+                                            <div id="collapse-top-games-rating{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-games-rating" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_games_rating'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->games->rating }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-passes-key"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-passes-key{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-passes-key">
+                                                Top Passes Key
+                                            </div>
+
+                                            <div id="collapse-top-passes-key{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-passes-key" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_passes_key'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->passes->key }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-tackles-total"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-tackles-total{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-tackles-total">
+                                                Top Tackles Total
+                                            </div>
+
+                                            <div id="collapse-top-tackles-total{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-tackles-total" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_tackles_total'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->tackles->total }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-fouls-committed"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-fouls-committed{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-fouls-committed">
+                                                Top Fouls Committed
+                                            </div>
+
+                                            <div id="collapse-top-fouls-committed{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-fouls-committed" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_fouls_committed'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->fouls->committed }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-cards-yellow"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-cards-yellow{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-cards-yellow">
+                                                Top Cards Yellow
+                                            </div>
+
+                                            <div id="collapse-top-cards-yellow{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-cards-yellow" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    @forelse ($players['home']['top_cards_yellow'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->cards->yellow }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{--  --}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- End of Top home --}}
+
+                            {{-- Top away --}}
+                            <div class="col-md-6 mb-2">
+                                <div class="card align-middle bg-dark text-white">
+                                    <h5 class="text-left p-2">
+                                        <img src="{{ $teams->away->logo }}" alt="team-logo" class="img img-fluid"
+                                            style="width:30px; height:30px;">
+                                        {{ $teams->away->name }}
+                                    </h5>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body table-responsive" id="accordionExample2">
+                                        {{--  --}}
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-goals-total2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-goals-total2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-goals-total2">
+                                                Top Goals Total
+                                            </div>
+
+                                            <div id="collapse-top-goals-total2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-goals-total2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_goals_total'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->goals->total }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-goals-assists2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-goals-assists2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-goals-assists2">
+                                                Top Goals Assists
+                                            </div>
+
+                                            <div id="collapse-top-goals-assists2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-goals-assists2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_goals_assists'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->goals->assists }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-shots-total2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-shots-total2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-shots-total2">
+                                                Top Shots Total
+                                            </div>
+
+                                            <div id="collapse-top-shots-total2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-shots-total2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_shots_total'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->shots->total }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-shots-on2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-shots-on2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-shots-on2">
+                                                Top Shots On
+                                            </div>
+
+                                            <div id="collapse-top-shots-on2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-shots-on2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_shots_on'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->shots->on }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-games-rating2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-games-rating2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-games-rating2">
+                                                Top Games Rating
+                                            </div>
+
+                                            <div id="collapse-top-games-rating2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-games-rating2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_games_rating'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->games->rating }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-passes-key2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-passes-key2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-passes-key2">
+                                                Top Passes Key
+                                            </div>
+
+                                            <div id="collapse-top-passes-key2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-passes-key2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_passes_key'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->passes->key }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-tackles-total2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-tackles-total2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-tackles-total2">
+                                                Top Tackles Total
+                                            </div>
+
+                                            <div id="collapse-top-tackles-total2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-tackles-total2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_tackles_total'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->tackles->total }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-fouls-committed2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-fouls-committed2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-fouls-committed2">
+                                                Top Fouls Committed
+                                            </div>
+
+                                            <div id="collapse-top-fouls-committed2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-fouls-committed2"
+                                                data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_fouls_committed'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->fouls->committed }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mt-2">
+                                            <div class="player-stats card-header text-white" id="heading-top-cards-yellow2"
+                                                data-toggle="collapse"
+                                                data-target="#collapse-top-cards-yellow2{{ $fixture->id }}"
+                                                aria-expanded="true" aria-controls="collapse-top-cards-yellow2">
+                                                Top Cards Yellow
+                                            </div>
+
+                                            <div id="collapse-top-cards-yellow2{{ $fixture->id }}" class="collapse"
+                                                aria-labelledby="heading-top-cards-yellow2" data-parent="#accordionExample2">
+                                                <div class="card-body">
+                                                    @forelse ($players['away']['top_cards_yellow'] as $k=>$v)
+                                                        <div class="media">
+                                                            <img src="{{ $v->player->photo }}" alt="User Image"
+                                                                class="mr-3 user-image rounded-circle">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">{{ $v->player->name }}</h5>
+                                                                <p>{{ $v->statistics[0]->cards->yellow }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    @empty
+                                                        <h5>No Data</h5>
+                                                    @endforelse
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{--  --}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- End of top away --}}
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
-
-        </div>
-
-        </div>
         </div>
 
         <script>
@@ -1812,6 +1829,7 @@
             // retrieveSelected();
             barCharts();
             pieCharts();
+            predictionChart();
 
             $('.nav-link').on('click', function() {
                 localStorage.setItem("tagSelectedFixture", this.id);
@@ -2019,22 +2037,22 @@
 
 
                 var homeChartDiagram = new Chart(
-                    document.getElementById('home_goals_bar'),
+                    document.getElementById('home_goals_bar{{ $fixture->id }}'),
                     home_config
                 );
 
                 var h_homeChartDiagram = new Chart(
-                    document.getElementById('h_home_goals_bar'),
+                    document.getElementById('h_home_goals_bar{{ $fixture->id }}'),
                     h_home_config
                 );
 
                 var awayChartDiagram = new Chart(
-                    document.getElementById('away_goals_bar'),
+                    document.getElementById('away_goals_bar{{ $fixture->id }}'),
                     away_config
                 );
 
                 var a_awayChartDiagram = new Chart(
-                    document.getElementById('a_away_goals_bar'),
+                    document.getElementById('a_away_goals_bar{{ $fixture->id }}'),
                     a_away_config
                 );
             }
@@ -2235,45 +2253,93 @@
 
 
                 var homeChartDiagram = new Chart(
-                    document.getElementById('home_res_pie'),
+                    document.getElementById('home_res_pie{{ $fixture->id }}'),
                     home_config
                 );
 
                 var awayChartDiagram = new Chart(
-                    document.getElementById('away_res_pie'),
+                    document.getElementById('away_res_pie{{ $fixture->id }}'),
                     away_config
                 );
 
                 var h_homeChartDiagram = new Chart(
-                    document.getElementById('h_home_res_pie'),
+                    document.getElementById('h_home_res_pie{{ $fixture->id }}'),
                     h_home_config
                 );
 
                 var a_awayChartDiagram = new Chart(
-                    document.getElementById('a_away_res_pie'),
+                    document.getElementById('a_away_res_pie{{ $fixture->id }}'),
                     a_away_config
                 );
 
                 var home_clean_sheetChartDiagram = new Chart(
-                    document.getElementById('home_clean_sheet_pie'),
+                    document.getElementById('home_clean_sheet_pie{{ $fixture->id }}'),
                     home_clean_sheet_config
                 );
 
                 var away_clean_sheetChartDiagram = new Chart(
-                    document.getElementById('away_clean_sheet_pie'),
+                    document.getElementById('away_clean_sheet_pie{{ $fixture->id }}'),
                     away_clean_sheet_config
                 );
 
                 var home_failed_to_scoreChartDiagram = new Chart(
-                    document.getElementById('home_failed_to_score_pie'),
+                    document.getElementById('home_failed_to_score_pie{{ $fixture->id }}'),
                     home_failed_to_score_config
                 );
 
                 var away_failed_to_scoreChartDiagram = new Chart(
-                    document.getElementById('away_failed_to_score_pie'),
+                    document.getElementById('away_failed_to_score_pie{{ $fixture->id }}'),
                     away_failed_to_score_config
                 );
 
+            }
+
+
+            function predictionChart() {
+
+                const labels = ['Strength', 'Attacking Potential', 'Defensive Potential', 'Poisson Distribution',
+                    'Strength H2H',
+                    'Goals H2H', 'Wins the Game'
+                ];
+
+                var home_data = @json($predictions['predictions_array']['home']);
+                var away_data = @json($predictions['predictions_array']['away']);
+
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                            label: "{{ $predictions['predictions'][0]->teams->home->name }}",
+                            data: home_data,
+                            borderColor: '#12e5fa',
+                            backgroundColor: 'rgba(18, 229, 250, 0.5)',
+                        },
+                        {
+                            label: '{{ $predictions['predictions'][0]->teams->away->name }}',
+                            data: away_data,
+                            borderColor: '#dc3545',
+                            backgroundColor: 'rgba(220, 53, 69, 0.5)',
+                        }
+                    ]
+                };
+
+                const config = {
+                    type: 'radar',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: false,
+                                text: ''
+                            }
+                        }
+                    },
+                };
+
+                var predictionChartDiagram = new Chart(
+                    document.getElementById("predictionChart{{ $fixture->id }}"),
+                    config
+                );
             }
 
             $(document).on("click", ".team-link", function(e) {

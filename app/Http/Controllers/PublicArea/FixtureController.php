@@ -59,13 +59,13 @@ class FixtureController extends Controller
         $response['league'] = $data['league'];
         $response['teams'] = $data['teams'];
         $response['goals'] = $data['goals'];
-        // $response['score'] = $data['score'];
+        $response['score'] = $data['score'];
         // $response['events'] = $data['events'];
-        // $response['lineups'] = $data['lineups'];
-        // $response['match_statistics'] = $data['match_statistics'];
+        $response['lineups'] = $data['lineups'];
+        $response['match_statistics'] = $data['match_statistics'];
         // $response['team_statistics'] = $data['team_statistics'];
         // $response['h2h'] = $data['h2h'];
-        // $response['predictions'] = $data['predictions'];
+        $response['predictions'] = $data['predictions'];
         // $response['standings'] = $data['standings'];
         // $response['form'] = $data['form'];
         $response['timezone'] = get_local_time();
@@ -93,7 +93,7 @@ class FixtureController extends Controller
 
     public function getMatchPreviewAjax(int $id)
     {
-        $data = FixtureCaller::getFixture($id);
+        $data = FixtureCaller::getMatchFixture($id);
 
         if (!$data['status']) {
             return '<div class="col-md-12 mb-2">No results found</div>';
@@ -125,7 +125,7 @@ class FixtureController extends Controller
         $home_id = request("home_id");
         $away_id = request("away_id");
 
-        $data['teamstats'] = FixtureCaller::getTeamStats($league_id, $season, $home_id, $away_id);
+        $data['teamstats'] = FixtureCaller::getH2HTeamStats($league_id, $season, $home_id, $away_id);
         
         return view('PublicArea.pages.fixtures.team-stats-ajax')->with($data); 
 
