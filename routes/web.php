@@ -23,8 +23,8 @@ use App\Http\Controllers\PublicArea\PlanController;
 
 
 
-// terminal routs 
-Route::get('/clear', function () { 
+// terminal routs
+Route::get('/clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
     Artisan::call('config:clear');
@@ -42,7 +42,7 @@ Route::get('/terminal/{command}', function ($command) {
 
 
 //*****************************************************************
-        // guest middeleare 
+        // guest middeleare
 //*****************************************************************
 
 Route::group(['middleware'=>'userxMiddlewar'], function(){
@@ -61,6 +61,7 @@ Route::get('/user-logout', [RegistrationController::class, 'user_logout'])->name
 Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function () {
 
     // routes for fixtures
+    Route::get('/fixture/player-stats/ajax/{id}', 'FixtureController@getPlayerStats')->name('public.playerstats');
     Route::get('/fixture/team-stats/ajax/{id}', 'FixtureController@getTeamStats')->name('public.teamstats');
     Route::get('/fixture/match-stats/ajax/{id}', 'FixtureController@getMatchStats')->name('public.matchstats');
     Route::get('/', 'FixtureController@fixtures')->name('public.fixtures');
@@ -79,7 +80,7 @@ Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function
     Route::get('/team/{nation}/{club}/{id}', 'TeamsController@getTeam')->name('public.team.get');
     Route::get('/team/ajax/{id}', 'TeamsController@getTeamAjax')->name('public.team.get.ajax');
     Route::get('/team/player/transfers/{team}/{player}', 'TeamsController@getTeamPlayerTransfers')->name('public.team.player.transfers.get');
-    
+
 
     // routes for articles
     Route::get('/articles', 'ArticleController@allArticles')->name('public.articles.all');
@@ -148,4 +149,3 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\AdminArea')->group(func
     Route::get('/user-account/reset-password', [UserAccountController::class, 'reset_password'])->name('reset-password');
     Route::post('/user-account/reset-password', [UserAccountController::class, 'reset_password_add'])->name('reset-password');
 });
- 

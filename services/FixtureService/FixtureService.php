@@ -5,6 +5,7 @@ namespace services\FixtureService;
 use Carbon\Carbon;
 use services\Callers\CurlCaller;
 use services\Callers\LeagueCaller;
+use Illuminate\Support\Facades\Cache;
 
 class FixtureService
 {
@@ -297,8 +298,6 @@ class FixtureService
         return $players;
     }
 
-
-
     public function getInjuries($response)
     {
         $injuries = [];
@@ -351,6 +350,170 @@ class FixtureService
         // }
 
         return $injuries;
+    }
+
+    public function getSingleFixture(int $id)
+    {
+        $url = self::URL . '/fixtures?id=' . $id;
+        $resp = CurlCaller::get($url, []);
+
+        $response = [];
+        $fixture = null;
+        $league = null;
+        $teams = null;
+        $goals = null;
+        $score = null;
+        $events = null;
+        $lineups = null;
+        $match_statistics = null;
+        // $team_statistics = [];
+        // $h2h = [];
+        $predictions = [];
+        // $standings = [];
+        // $injuries = [];
+        // $players = [];
+
+        if ($resp) {
+            if ($resp->results == 0) {
+                return ['status' => false];
+            }
+
+
+            $response = $resp->response[0];
+            $fixture = $resp->response[0]->fixture;
+            Cache::put("fixture-$fixture->id", $resp);
+            $league = $resp->response[0]->league;
+            $teams = $resp->response[0]->teams;
+            $goals = $resp->response[0]->goals;
+            $score = $resp->response[0]->score;
+            $events = $resp->response[0]->events;
+            $lineups = $resp->response[0]->lineups;
+            $match_statistics = $resp->response[0]->statistics;
+
+            // $team_statistics = $this->getTeamStatistics($response,$id);
+            // $h2h = $this->getH2H($response);
+            $predictions = $this->getPredictions($id);
+            // $standings = LeagueCaller::getStandings($league->id, $league->season);
+            // $form = $this->getTeamForm($response);
+            // $injuries =  $this->getInjuries($response);
+
+            // $fixtureLeague = $response->league->id;
+            // $fixtureSeason = $response->league->season;
+            // $home_team = $response->teams->home->id;
+            // $away_team = $response->teams->away->id;
+
+            // $home_players = $this->getPlayers($home_team, $fixtureLeague, $fixtureSeason, 1, []);
+            // $players['home'] = $this->sortPlayersByTop($home_players);
+
+            // $away_players = $this->getPlayers($away_team, $fixtureLeague, $fixtureSeason, 1, []);
+            // $players['away'] = $this->sortPlayersByTop($away_players);
+            // $players['away'] = $this->sortPlayersByTop($this->getPlayers($away_team, $away_league, $away_season, 1, []));
+        }
+        //  else {
+        //     return $this->getFixture($id);
+        // }
+
+        return [
+            'status' => true,
+            'fixture' => $fixture,
+            'league' => $league,
+            'teams' => $teams,
+            'goals' => $goals,
+            'score' => $score,
+            'events' => $events,
+            'lineups' => $lineups,
+            'match_statistics' => $match_statistics,
+            // 'team_statistics' => $team_statistics,
+            // 'h2h' => $h2h,
+            'predictions' => $predictions,
+            // 'standings' => $standings,
+            // 'form' => $form,
+            // 'injuries'=> $injuries,
+            // 'players'=>$players
+        ];
+    }
+
+    public function getMatchFixture(int $id)
+    {
+        $resp = Cache::get("fixture-$id");
+
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
+
+        $response = [];
+        $fixture = null;
+        $league = null;
+        $teams = null;
+        $goals = null;
+        $score = null;
+        $events = null;
+        $lineups = null;
+        $match_statistics = null;
+        // $team_statistics = [];
+        $h2h = [];
+        // $predictions = [];
+        $standings = [];
+        // $injuries = [];
+        // $players = [];
+
+        if ($resp) {
+            if ($resp->results == 0) {
+                return ['status' => false];
+            }
+
+            $response = $resp->response[0];
+            $fixture = $resp->response[0]->fixture;
+            $league = $resp->response[0]->league;
+            $teams = $resp->response[0]->teams;
+            $goals = $resp->response[0]->goals;
+            $score = $resp->response[0]->score;
+            $events = $resp->response[0]->events;
+            $lineups = $resp->response[0]->lineups;
+            $match_statistics = $resp->response[0]->statistics;
+
+            // $team_statistics = $this->getTeamStatistics($response,$id);
+            $h2h = $this->getH2H($response);
+            // $predictions = $this->getPredictions($id);
+            $standings = LeagueCaller::getStandings($league->id, $league->season);
+            $form = $this->getTeamForm($response);
+            // $injuries =  $this->getInjuries($response);
+
+            // $fixtureLeague = $response->league->id;
+            // $fixtureSeason = $response->league->season;
+            // $home_team = $response->teams->home->id;
+            // $away_team = $response->teams->away->id;
+
+            // $home_players = $this->getPlayers($home_team, $fixtureLeague, $fixtureSeason, 1, []);
+            // $players['home'] = $this->sortPlayersByTop($home_players);
+
+            // $away_players = $this->getPlayers($away_team, $fixtureLeague, $fixtureSeason, 1, []);
+            // $players['away'] = $this->sortPlayersByTop($away_players);
+            // $players['away'] = $this->sortPlayersByTop($this->getPlayers($away_team, $away_league, $away_season, 1, []));
+        }
+        //  else {
+        //     return $this->getFixture($id);
+        // }
+
+        return [
+            'status' => true,
+            'fixture' => $fixture,
+            'league' => $league,
+            'teams' => $teams,
+            'goals' => $goals,
+            'score' => $score,
+            'events' => $events,
+            'lineups' => $lineups,
+            'match_statistics' => $match_statistics,
+            // 'team_statistics' => $team_statistics,
+            'h2h' => $h2h,
+            // 'predictions' => $predictions,
+            'standings' => $standings,
+            'form' => $form,
+            // 'injuries'=> $injuries,
+            // 'players'=>$players
+        ];
     }
 
     public function getFixture(int $id)
@@ -847,4 +1010,73 @@ class FixtureService
 
     }
 
+    public function getPlayerStats($league_id, $season, $home_id, $away_id){
+
+        $url = self::URL . '/fixtures?id=' . $id;
+
+        $resp = CurlCaller::get($url, []);
+
+        $response = [];
+        $fixture = null;
+        $league = null;
+        $teams = null;
+        $goals = null;
+        $score = null;
+        $events = null;
+        $lineups = null;
+        $match_statistics = null;
+        // $team_statistics = [];
+        // $h2h = [];
+        $predictions = [];
+        // $standings = [];
+        // $injuries = [];
+        // $players = [];
+
+        if ($resp) {
+            if ($resp->results == 0) {
+                return ['status' => false];
+            }
+
+            $response = $resp->response[0];
+            $fixture = $resp->response[0]->fixture;
+            $league = $resp->response[0]->league;
+            $teams = $resp->response[0]->teams;
+            $goals = $resp->response[0]->goals;
+            $score = $resp->response[0]->score;
+            $events = $resp->response[0]->events;
+            $lineups = $resp->response[0]->lineups;
+            $match_statistics = $resp->response[0]->statistics;
+
+            $fixtureLeague = $response->league->id;
+            $fixtureSeason = $response->league->season;
+            $home_team = $response->teams->home->id;
+            $away_team = $response->teams->away->id;
+
+            $home_players = $this->getPlayers($home_team, $fixtureLeague, $fixtureSeason, 1, []);
+            $players['home'] = $this->sortPlayersByTop($home_players);
+
+            $away_players = $this->getPlayers($away_team, $fixtureLeague, $fixtureSeason, 1, []);
+            $players['away'] = $this->sortPlayersByTop($away_players);
+
+        }
+
+        return [
+            'status' => true,
+            'fixture' => $fixture,
+            'league' => $league,
+            'teams' => $teams,
+            'goals' => $goals,
+            'score' => $score,
+            'events' => $events,
+            'lineups' => $lineups,
+            'match_statistics' => $match_statistics,
+            // 'team_statistics' => $team_statistics,
+            // 'h2h' => $h2h,
+            'predictions' => $predictions,
+            // 'standings' => $standings,
+            // 'form' => $form,
+            // 'injuries'=> $injuries,
+            'players'=>$players
+        ];
+    }
 }

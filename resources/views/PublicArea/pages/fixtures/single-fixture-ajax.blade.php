@@ -45,7 +45,7 @@
 
                 <!-- overview tab content -->
                 <div class="tab-pane fade show active" id="nav-overview{{$fixture->id}}" role="tabpanel" aria-labelledby="nav-overview-tab">
-                
+
                     {{-- predictions --}}
                     <div class="mb-2">
                         <div class="card align-middle bg-dark text-white">
