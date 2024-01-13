@@ -39,10 +39,10 @@
 
     /* Set black background color, white text and some padding */
     footer {
-        background-color: rgba(0, 0, 0, .8);
+        background-color: #1E0E52; (0, 0, 0, .8);
         color: white;
         padding: 15px;
-        border-top: 3px solid #12e5fa;
+        border-top: 3px solid #1E0E52;
 
     }
 

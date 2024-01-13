@@ -3,8 +3,6 @@
 Football-Today | Article
 @endsection
 @section('content')
-
-
 <div class="row mt-3">
     <div class="col-md-12">
         <div class="card align-middle title-band text-white">

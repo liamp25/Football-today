@@ -2,6 +2,36 @@
     .standing-table img {
         width: 20px;
     }
+    
+    .msrd{
+        background: #D63A4B;
+  color: #fff;
+        display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    
+    .msblu{
+        background: #299FB4;
+  color: #fff;
+        display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
 
     /* Styles for the standings table */
     :root {
@@ -163,11 +193,7 @@
         text-transform: var(--header-text-transform);
     }
 
-    .sub_view_btn,
-    .collapse.show{
-        width: 100%;
-        float: left;
-    }
+   
 
     .standing-table .wg_tooltip {
         cursor: pointer;
@@ -635,8 +661,9 @@
                 <a class="nav-item nav-link active" id="nav-summary-tab" data-toggle="tab"
                     href="#nav-summary{{ $fixture->id }}" role="tab" aria-controls="nav-summary"
                     aria-selected="true">summary</a>
-                <a class="nav-item nav-link" id="nav-stats-tab" data-toggle="tab" href="#nav-stats{{ $fixture->id }}"
-                    role="tab" aria-controls="nav-stats" aria-selected="false">Team stats</a>
+                <a class="nav-item nav-link match-stats-tab" id="nav-stats-tab" data-toggle="tab" href="#nav-stats{{ $fixture->id }}"
+                    role="tab" aria-controls="nav-stats" aria-selected="false" data-id="{{ $fixture->id }}"
+                        data-route="{{ route('public.matchstats', ['id' => $league->id, 'season' => $league->season, 'home_id' => $teams->home->id, 'away_id' => $teams->away->id]) }}">Team stats</a>
                 <a class="nav-item nav-link" id="nav-Player-tab" data-toggle="tab" href="#nav-Player{{ $fixture->id }}"
                     role="tab" aria-controls="nav-Player" aria-selected="false">Player stats</a>
             </div>
@@ -1041,214 +1068,15 @@
 
 
                     <!-- Team stats tab content -->
+                    
                     <div class="tab-pane fade" id="nav-stats{{ $fixture->id }}" role="tabpanel"
                         aria-labelledby="nav-stats-tab">
 
-                        <div class="row table-row m-0">
-                            <div class="col-md-12 bg-12 py-2 px-0">
-                                <div class="row m-0">
-                                    <div class="col-md-6 col-left-x text-left">
-                                      <h2><img class="team-logo-h2h" src="{{ $teams->home->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->home->name }}  overall stats </h2>
-                                    </div>
-                                    <div class="col-md-6 col-right-x text-right">
-                                       <h2><img class="team-logo-h2h" src="{{ $teams->away->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->away->name }} overall stats </h2>
-                                    </div>
-                                  </div>
-                            </div>
-                            {{--  <div class="col-md-12 text-center py-2">
-                                <h2>Played: <span class="font-number">10</span></h2>
-                            </div>
-                            <div class="col-md-12 text-center p-0 bg-12">
-                                <div class="row m-0">
-                                    <div class="col-md-4 text-center bg-gre py-2">
-                                      <h2>Wins<br><span class="font-number">8</span></h2>
-                                    </div>
-                                    <div class="col-md-4 text-center py-2">
-                                        <h2>Draws<br><span class="font-number">1</span></h2>
-                                    </div>
-                                    <div class="col-md-4 text-center py-2">
-                                        <h2>Wins<br><span class="font-number">1</span></h2>
-                                    </div>
-                                </div>
-                            </div>  --}} 
-
-
-                            {{--  <?php print_r($team_statistics['home_team_x']); ?>   --}}
-                            <div class="col-md-12 p-0 table-12">
-                                <table class="table table-striped table-hover">
-                                    <thead class="bg-12">
-                                        <tr>
-                                            <th>Total</th>
-                                            <th>Per Match</th>
-                                            <th></th>
-                                            <th>Per Macth</th>
-                                            <th>Total</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                        
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->played->total }}</td>
-                                            <td>-</td>
-                                            <td>Total Match</td>
-                                            <td>{{ $team_statistics['away']->fixtures->played->total }}</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->wins->total }}</td>
-                                            <td>-</td>
-                                            <td>Total Win</td>
-                                            <td>{{ $team_statistics['away']->fixtures->wins->total }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->loses->total }}</td>
-                                            <td>-</td>
-                                            <td>Total lost</td>
-                                            <td>{{ $team_statistics['away']->fixtures->loses->total }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->draws->total }}</td>
-                                            <td>-</td>
-                                            <td>Total draw</td>
-                                            <td>{{ $team_statistics['away']->fixtures->draws->total }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->goals->for->total->total }}</td>
-                                            <td>{{ $team_statistics['home']->goals->for->average->total }}</td>
-                                            <td>Goals</td>
-                                            <td>{{ $team_statistics['away']->goals->for->average->total }}</td>
-                                            <td>{{ $team_statistics['away']->goals->for->total->total }}</td>
-                                        </tr>
-
-                                       
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->goals->against->total->total }}</td>
-                                            <td>{{ $team_statistics['home']->goals->against->average->total }}</td>
-                                            <td>Goals Conceded</td>
-                                            <td>{{ $team_statistics['away']->goals->against->average->total }}</td>
-                                            <td>{{ $team_statistics['away']->goals->against->total->total }}</td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>{{ !empty($team_statistics['home']->clean_sheet->home) ? $team_statistics['home']->clean_sheet->home : 0 }}</td>
-                                            <td>-</td>
-                                            <td>Clean Sheets</td>
-                                            <td>{{ !empty($team_statistics['away']->clean_sheet->home) ? $team_statistics['away']->clean_sheet->home : 0 }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                                endforeach;
-                                            endif;
-                                            ?>
-
-                                    </tbody>
-                                </table>
+                        <div class="text-center my-3" id="fixture-spinner">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
                                 
                             </div>
-                        
-                        </div> 
-
-                        <h2 class="mt-3">Home & away stats</h2>
-                        <div class="row table-row m-0">
-                            <div class="col-md-12 bg-12 py-2 px-0">
-                                
-                                <div class="row m-0">
-                                    <div class="col-md-6 col-left-x text-left">
-                                      <h2><img class="team-logo-h2h" src="{{ $teams->home->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->home->name }} Home stats</h2>
-                                    </div>
-                                    <div class="col-md-6 col-right-x text-right">
-                                       <h2><img class="team-logo-h2h" src="{{ $teams->away->logo }}" alt="home" style="width:50px;height:50px"> {{ $teams->away->name }} Away stats</h2>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-md-12 p-0 table-12">
-                                <table class="table table-striped table-hover">
-                                    <thead class="bg-12">
-                                        <tr>
-                                            <th>Total</th>
-                                            <th>Per Match</th>
-                                            <th></th>
-                                            <th>Per Macth</th>
-                                            <th>Total</th>
-                                           
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->played->home }}</td>
-                                            <td>-</td>
-                                            <td>Total Match</td>
-                                            <td>{{ $team_statistics['away']->fixtures->played->away }}</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->wins->home }}</td>
-                                            <td>-</td>
-                                            <td>Total Win</td>
-                                            <td>{{ $team_statistics['away']->fixtures->wins->away }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->loses->home }}</td>
-                                            <td>-</td>
-                                            <td>Total lost</td>
-                                            <td>{{ $team_statistics['away']->fixtures->loses->away }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->fixtures->draws->home }}</td>
-                                            <td>-</td>
-                                            <td>Total draw</td>
-                                            <td>{{ $team_statistics['away']->fixtures->draws->away }}</td>
-                                            <td>-</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->goals->for->total->home }}</td>
-                                            <td>{{ $team_statistics['home']->goals->for->average->home }}</td>
-                                            <td>Goals</td>
-                                            <td>{{ $team_statistics['away']->goals->for->average->away }}</td>
-                                            <td>{{ $team_statistics['away']->goals->for->total->away }}</td>
-                                        </tr>
-
-                                       
-                                        <tr>
-                                            <td>{{ $team_statistics['home']->goals->against->total->home }}</td>
-                                            <td>{{ $team_statistics['home']->goals->against->average->home }}</td>
-                                            <td>Goals Conceded</td>
-                                            <td>{{ $team_statistics['away']->goals->against->average->away }}</td>
-                                            <td>{{ $team_statistics['away']->goals->against->total->away }}</td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>{{ !empty($team_statistics['home']->clean_sheet->home) ? $team_statistics['home']->clean_sheet->home : 0 }}</td>
-                                            <td>-</td>
-                                            <td>Clean Sheets</td>
-                                            <td>{{ !empty($team_statistics['away']->clean_sheet->away) ? $team_statistics['away']->clean_sheet->away : 0 }}</td>
-                                            <td>-</td>
-                                        </tr>
-                                       
-                                                endforeach;
-                                            endif;
-                                            ?>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        
                         </div>
                     </div>
 

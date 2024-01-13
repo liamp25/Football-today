@@ -3,8 +3,10 @@
 Football-Today | Articles
 @endsection
 @section('content')
-
-
+@php
+    $hasPurchasedPlan = session('has_purchased_plan', false);
+@endphp
+@if($hasPurchasedPlan)
 <div class="row mt-3">
     <div class="col-md-12">
         <div class="card align-middle title-band text-white">
@@ -121,7 +123,15 @@ Football-Today | Articles
         </div>
     </div>
 </div>
-
+@else
+    <div class="overlay"></div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  Please purchase the membership for ads free, betting tips and to view our articles.
+  <a href="{{url('/')}}">
+    <span aria-hidden="true">&times;</span></a>
+</div>
+    
+@endif
 @endsection
 @section('js')
 <script>
@@ -149,6 +159,51 @@ Football-Today | Articles
 @endsection
 @section('css')
 <style>
+.alert a{
+    position: absolute;
+  right: 0;
+  top: 0;
+}
+.alert span{
+  font-size: 50px;
+  border: 3px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    .alert {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px 80px;
+        list-style: none;
+        font-family: Montserrat Alternates;
+        font-size: 22px;
+        font-weight: 700;
+        z-index: 1000; /* Ensure the alert is above other elements */
+        height: 250px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        background: #FFD23F;
+        color: #000;
+    }
+    
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color:rgba(84, 84, 84, 0.5) ;
+        z-index: 999; /* Ensure the overlay is above other elements, but below the alert */
+    }
+    
     .title-band {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url("{{asset('PublicArea/img/article_bg.jpg')}}");
@@ -203,6 +258,14 @@ Football-Today | Articles
 
         .article_title {
             font-size: 0.8rem !important;
+        }
+    }
+
+    @media only screen and (max-width:992px){
+        .alert{
+            width: 100%;
+            float: left;
+            padding: 20px !important;
         }
     }
 

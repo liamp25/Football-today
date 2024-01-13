@@ -60,14 +60,14 @@ class FixtureController extends Controller
         $response['teams'] = $data['teams'];
         $response['goals'] = $data['goals'];
         $response['score'] = $data['score'];
-        // $response['events'] = $data['events'];
+        $response['events'] = $data['events'];
         $response['lineups'] = $data['lineups'];
         $response['match_statistics'] = $data['match_statistics'];
-        // $response['team_statistics'] = $data['team_statistics'];
-        // $response['h2h'] = $data['h2h'];
+        $response['team_statistics'] = $data['team_statistics'];
+        $response['h2h'] = $data['h2h'];
         $response['predictions'] = $data['predictions'];
-        // $response['standings'] = $data['standings'];
-        // $response['form'] = $data['form'];
+        $response['standings'] = $data['standings'];
+        $response['form'] = $data['form'];
         $response['timezone'] = get_local_time();
 
         return view('PublicArea.pages.fixtures.single-fixture-ajax')->with($response);
@@ -93,7 +93,7 @@ class FixtureController extends Controller
 
     public function getMatchPreviewAjax(int $id)
     {
-        $data = FixtureCaller::getMatchFixture($id);
+        $data = FixtureCaller::getFixture($id);
 
         if (!$data['status']) {
             return '<div class="col-md-12 mb-2">No results found</div>';
@@ -118,16 +118,30 @@ class FixtureController extends Controller
 
         return view('PublicArea.pages.fixtures.single-match-preview-ajax')->with($response);
     }
-
+    
     public function getTeamStats($league_id){
 
         $season = request("season");
         $home_id = request("home_id");
         $away_id = request("away_id");
 
-        $data['teamstats'] = FixtureCaller::getH2HTeamStats($league_id, $season, $home_id, $away_id);
-        
-        return view('PublicArea.pages.fixtures.team-stats-ajax')->with($data); 
+        $data['teamstats'] = FixtureCaller::getTeamStats($league_id, $season, $home_id, $away_id);
+
+        return view('PublicArea.pages.fixtures.team-stats-ajax')->with($data);
+
+    }
+    
+    public function getMatchStats($league_id){
+
+        $season = request("season");
+        $home_id = request("home_id");
+        $away_id = request("away_id");
+
+        $data['overallstats'] = FixtureCaller::getTeamStats($league_id, $season, $home_id, $away_id);
+        $data['teamstats'] = FixtureCaller::getTeamMatchStats($league_id, $season, $home_id, $away_id);
+        $data['homestats'] = $data['teamstats']['home_stats'];
+        $data['awaystats'] = $data['teamstats']['away_stats'];
+        return view('PublicArea.pages.fixtures.team-stats-ajax-2')->with($data);
 
     }
 

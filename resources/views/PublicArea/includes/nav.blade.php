@@ -15,6 +15,9 @@
             <li class="nav-item nav-cus">
                 <a class="nav-link active" href="{{route('public.articles.all')}}">Articles</a>
             </li>
+            {{--  <li class="nav-item nav-cus">
+                <a class="nav-link active" href="{{url('plan')}}">Membership</a>
+            </li>  --}}
             @if (Auth::user())
             <li class="nav-item nav-cus">
                 <a class="nav-link active" href="{{route('admin.index')}}">Admin</a>

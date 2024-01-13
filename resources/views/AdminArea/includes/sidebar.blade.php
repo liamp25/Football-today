@@ -33,6 +33,30 @@
                         <span class="nav-text">Article</span>
                     </a>
                 </li>
+                <li
+                    class="has-sub expand
+                    {{ in_array($active_url, ['admin/all-plan', 'admin/add-plan']) ? 'active':''}}">
+                    <a class="sidenav-item-link" href="{{url('admin/all-plan')}}">
+                        <i class="mdi mdi-newspaper"></i>
+                        <span class="nav-text">Membership Plan</span>
+                    </a>
+                </li>
+                <li
+                class="has-sub expand
+                {{ in_array($active_url, ['admin/all-user']) ? 'active':''}}">
+                <a class="sidenav-item-link" href="{{url('admin/all-user')}}">
+                    <i class="mdi mdi-newspaper"></i>
+                    <span class="nav-text">View User</span>
+                </a>
+            </li>
+            <li
+                    class="has-sub expand
+                    {{ in_array($active_url, ['admin/all-stripe', 'admin/add-stripe']) ? 'active':''}}">
+                    <a class="sidenav-item-link" href="{{url('admin/all-stripe')}}">
+                        <i class="mdi mdi-newspaper"></i>
+                        <span class="nav-text">Stripe Account</span>
+                    </a>
+                </li>
                 <hr class="separator">
                 <li class="has-sub expand">
                     <a class="sidenav-item-link" href="{{route('public.fixtures')}}">

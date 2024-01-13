@@ -37,9 +37,9 @@ if(Session::has("fcm_token")){
 @section('js')
 <script src="{{asset('PublicArea/calendar/js/calendar.js')}}"></script>
 <script>
-    var intervalId = window.setInterval(function () {
-        getAllFixtures();
-    }, 300000);
+    // var intervalId = window.setInterval(function () {
+    //     getAllFixtures();
+    // }, 300000);
 
     $(document).ready(function () {
         getAllFixtures();
@@ -144,6 +144,7 @@ if(Session::has("fcm_token")){
 
         });
 
+
         $(document).on("click", ".navstatstab", function(){
 
             const collapsed = $(this).hasClass('collapsed');
@@ -159,8 +160,31 @@ if(Session::has("fcm_token")){
                     dataType: 'html',
                     success: function (response) {
                         // console.log(response);
+                        $('#nav-stats-main'+id).html(response);
+
+                    }
+                });
+            }
+
+        });
+
+        $(document).on("click", ".match-stats-tab", function(){
+
+            const collapsed = $(this).hasClass('collapsed');
+            if(collapsed == false){
+                const url = $(this).data('route');
+                const id = $(this).data('id');
+                $.ajax({
+                    url: url,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (response) {
+                        // console.log(response);
                         $('#nav-stats'+id).html(response);
-                    
+
                     }
                 });
             }
@@ -169,8 +193,6 @@ if(Session::has("fcm_token")){
 
     });
 </script>
-
-
 @endsection
 @section('css')
 <link rel="stylesheet" href="{{asset('PublicArea/calendar/css/style.css')}}">

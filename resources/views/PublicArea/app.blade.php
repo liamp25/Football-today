@@ -40,9 +40,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6504405400600762"
-     crossorigin="anonymous"></script>
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHJQBS3DG2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -63,19 +61,6 @@
 
     {{-- @include('PublicArea.includes.css') --}}
     @yield('css')
-    <style>
-    .logo__main{
-        transform: scale(1.2);
-    }
-        @media only screen and (max-width:992px){
-        li a.bg-danger{
-            width: max-content;
-            padding: 10px !important;
-            margin-bottom: 20px;
-            margin-left: 0 !important;
-          }
-        }
-    </style>
 </head>
 
 <body>
@@ -84,7 +69,7 @@
     <div class="cs_page">
         <header class="main__header">
             <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo__main" href="#">Live Football<br>today</a>
+            <a class="navbar-brand logo__main" href="#">Football<br>today</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 menu <span class="navbar-toggler-icon"></span>
             </button>
@@ -100,30 +85,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('public.articles.all')}}">Articles</a>
                     </li>
-                    
-                    @if (!session('userSession')) 
-                        <li class="nav-item nav-cus">
-                            <a class="nav-link active bg-danger ml-3" href="{{url('user-account')}}">Login</a>
-                        </li>
-                    @else
-                        <li class="nav-item nav-cus">
-                            <a class="nav-link active bg-danger ml-3" href="{{url('user-logout')}}">Logout</a>
-                        </li>
-                     @endif
+                    {{--  <li class="nav-item nav-cus">
+                        <a class="nav-link active" href="{{url('plan')}}">Membership</a>
+                    </li>  --}}
                     @if (Auth::user())
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
-                    </li>
-                    @endif
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                     @php
-                        $hasPurchasedPlan = session('has_purchased_plan', false);
-                        $hasPurchasedPlaned = session('has_purchased_planed_user', false);
-                    @endphp
-                    @if($hasPurchasedPlan || $hasPurchasedPlaned)
-                    <li class="nav-item float-right">
-                        <a class="nav-link bg-danger mr-2" href="{{url('card-detail')}}">Profile</a>
                     </li>
                     @endif
                 </ul>
@@ -249,9 +216,8 @@
                 </div>
             </div>
             <div class="footer_text">
-                <h2>LiveFootballToday
-                <p>Whether<br> you are a dedicated fan, aspiring analyst, or a fantasy football enthusiast,<br> we have the stats for you.</p>
-                We offer ads free mode for just £1 a month or £10.00 a year with acess to premium articles and betting tips.
+                <h2>Football <br> today</h2>
+                <p>Know the past to know the<br> future, Bet today to win<br> tomorrow.</p>
             </div>
         </div>
         </footer>

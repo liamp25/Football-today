@@ -55,7 +55,7 @@ class CurlService
      */
     public function get($url, $headers = [])
     {
-        $ch = curl_init();
+        $ch = curl_init(); 
         $postUrl = $url;
         curl_setopt($ch, CURLOPT_URL, $postUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
