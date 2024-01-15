@@ -48,31 +48,31 @@
                     <td><span class="badge badge-info">{{ $homestats->fixtures->played->total }}</span></td>
                     <td>-</td>
                     <td>Total Match</td>
-                    <td>{{ $awaystats->fixtures->played->total }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->played->total }}</span></td>
                 </tr>
                 <tr>
                     <td><span class="badge badge-info">{{ $homestats->fixtures->wins->total }}</span></td>
                     <td>-</td>
                     <td>Total Win</td>
-                    <td>{{ $awaystats->fixtures->wins->total }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->wins->total }}</span></td>
                 </tr>
 
                 <tr>
                     <td><span class="badge badge-info">{{ $homestats->fixtures->loses->total }}</span></td>
                     <td>-</td>
                     <td>Total lost</td>
-                    <td>{{ $awaystats->fixtures->loses->total }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->loses->total }}</span></td>
                 </tr>
 
                 <tr>
                     <td><span class="badge badge-info">{{ $homestats->fixtures->draws->total }}</span></td>
                     <td>-</td>
                     <td>Total draw</td>
-                    <td>{{ $awaystats->fixtures->draws->total }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->draws->total }}</span></td>
                 </tr>
 
                 <tr>
@@ -96,8 +96,8 @@
                     <td><span class="badge badge-info">{{ !empty($homestats->clean_sheet->home) ? $homestats->clean_sheet->home : 0 }}</span></td>
                     <td>-</td>
                     <td>Clean Sheets</td>
-                    <td>{{ !empty($awaystats->clean_sheet->home) ? $awaystats->clean_sheet->home : 0 }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ !empty($awaystats->clean_sheet->home) ? $awaystats->clean_sheet->home : 0 }}</span></td>
                 </tr>
 
 
@@ -159,31 +159,31 @@
                     <td><span class="badge badge-info">{{ $homestats->fixtures->played->home }}</span></td>
                     <td>-</td>
                     <td>Total Match</td>
-                    <td>{{ $awaystats->fixtures->played->away }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->played->away }}</span></td>
                 </tr>
                 <tr>
                     <td><span class="badge badge-info">{{ $homestats->fixtures->wins->home }}</span></td>
                     <td>-</td>
                     <td>Total Win</td>
-                    <td>{{ $awaystats->fixtures->wins->away }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->wins->away }}</span></td>
                 </tr>
 
                 <tr>
                     <td><span class="badge badge-info">{{ $homestats->fixtures->loses->home }}</span></td>
                     <td>-</td>
                     <td>Total lost</td>
-                    <td>{{ $awaystats->fixtures->loses->away }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->loses->away }}</span></td>
                 </tr>
 
                 <tr>
                     <td><span class="badge badge-info">{{ $homestats->fixtures->draws->home }}</span></td>
                     <td>-</td>
                     <td>Total draw</td>
-                    <td>{{ $awaystats->fixtures->draws->away }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ $awaystats->fixtures->draws->away }}</span></td>
                 </tr>
 
                 <tr>
@@ -207,8 +207,8 @@
                     <td><span class="badge badge-info">{{ !empty($homestats->clean_sheet->home) ? $homestats->clean_sheet->home : 0 }}</span></td>
                     <td>-</td>
                     <td>Clean Sheets</td>
-                    <td>{{ !empty($awaystats->clean_sheet->away) ? $awaystats->clean_sheet->away : 0 }}</td>
                     <td>-</td>
+                    <td><span class="badge badge-danger">{{ !empty($awaystats->clean_sheet->away) ? $awaystats->clean_sheet->away : 0 }}</span></td>
                 </tr>
 
                 @foreach ($teamstats['home'] as $key => $val)
