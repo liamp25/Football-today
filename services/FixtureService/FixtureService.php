@@ -752,8 +752,27 @@ class FixtureService
     }
 
 
-    public function getTeamStats($league_id, $season, $home_id, $away_id){
+    public function getTeamStats(int $id){
 
+        $cachedStats = Cache::get("teamstats-$id");
+        if($cachedStats){
+            return $cachedStats;
+        }
+
+        $resp = Cache::get("fixture-$id");
+
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
+
+        $league = $resp->response[0]->league;
+        $teams = $resp->response[0]->teams;
+
+        $league_id = $league->id;
+        $season = $league->season;
+        $home_id = $teams->home->id;
+        $away_id = $teams->away->id;
 
         $url = self::URL . "/fixtures?league=$league_id&season=$season&team=$home_id";
         $fixRes = CurlCaller::get($url, []);
@@ -879,14 +898,35 @@ class FixtureService
 
         }
 
+        $expiresAt = Carbon::now()->endOfDay();
+        Cache::put("teamstats-$id", $teamStats, $expiresAt);
         return $teamStats;
         // $match_statistics = $resp->response[0]->statistics;
 
     }
 
 
-    public function getTeamMatchStats($league_id, $season, $home_id, $away_id){
+    public function getTeamMatchStats(int $id){
 
+        $cachedStats = Cache::get("matchstats-$id");
+        if($cachedStats){
+            return $cachedStats;
+        }
+
+        $resp = Cache::get("fixture-$id");
+
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
+
+        $league = $resp->response[0]->league;
+        $teams = $resp->response[0]->teams;
+
+        $league_id = $league->id;
+        $season = $league->season;
+        $home_id = $teams->home->id;
+        $away_id = $teams->away->id;
 
         $url = self::URL . "/fixtures?league=$league_id&season=$season&team=$home_id";
         $fixRes = CurlCaller::get($url, []);
@@ -1005,16 +1045,27 @@ class FixtureService
 
         }
 
+        $expiresAt = Carbon::now()->endOfDay();
+        Cache::put("matchstats-$id", $teamStats, $expiresAt);
+
         return $teamStats;
         // $match_statistics = $resp->response[0]->statistics;
 
     }
 
-    public function getPlayerStats($league_id, $season, $home_id, $away_id){
+    public function getPlayerStats(int $id)
+    {
+        $cachedStats = Cache::get("playerstats-$id");
+        if($cachedStats){
+            return $cachedStats;
+        }
 
-        $url = self::URL . '/fixtures?id=' . $id;
+        $resp = Cache::get("fixture-$id");
 
-        $resp = CurlCaller::get($url, []);
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
 
         $response = [];
         $fixture = null;
@@ -1025,12 +1076,6 @@ class FixtureService
         $events = null;
         $lineups = null;
         $match_statistics = null;
-        // $team_statistics = [];
-        // $h2h = [];
-        $predictions = [];
-        // $standings = [];
-        // $injuries = [];
-        // $players = [];
 
         if ($resp) {
             if ($resp->results == 0) {
@@ -1060,6 +1105,64 @@ class FixtureService
 
         }
 
+        $playerstats = [
+            'status' => true,
+            'fixture' => $fixture,
+            'league' => $league,
+            'teams' => $teams,
+            'goals' => $goals,
+            'score' => $score,
+            'events' => $events,
+            'lineups' => $lineups,
+            'match_statistics' => $match_statistics,
+            'players'=>$players
+        ];
+
+        $expiresAt = Carbon::now()->endOfDay();
+        Cache::put("playerstats-$id", $playerstats, $expiresAt);
+
+        return $playerstats;
+    }
+
+    public function getForm(int $id)
+    {
+        $resp = Cache::get("fixture-$id");
+
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
+
+        $response = [];
+        $fixture = null;
+        $league = null;
+        $teams = null;
+        $goals = null;
+        $score = null;
+        $events = null;
+        $lineups = null;
+        $match_statistics = null;
+
+        if ($resp) {
+            if ($resp->results == 0) {
+                return ['status' => false];
+            }
+
+            $response = $resp->response[0];
+            $fixture = $resp->response[0]->fixture;
+            $league = $resp->response[0]->league;
+            $teams = $resp->response[0]->teams;
+            $goals = $resp->response[0]->goals;
+            $score = $resp->response[0]->score;
+            $events = $resp->response[0]->events;
+            $lineups = $resp->response[0]->lineups;
+            $match_statistics = $resp->response[0]->statistics;
+
+            $form = $this->getTeamForm($response);
+
+        }
+
+
         return [
             'status' => true,
             'fixture' => $fixture,
@@ -1070,13 +1173,133 @@ class FixtureService
             'events' => $events,
             'lineups' => $lineups,
             'match_statistics' => $match_statistics,
-            // 'team_statistics' => $team_statistics,
-            // 'h2h' => $h2h,
-            'predictions' => $predictions,
-            // 'standings' => $standings,
-            // 'form' => $form,
-            // 'injuries'=> $injuries,
-            'players'=>$players
+            'form' => $form,
         ];
+    }
+
+    public function getStandings(int $id)
+    {
+        $cachedStats = Cache::get("standings-$id");
+        if($cachedStats){
+            return $cachedStats;
+        }
+
+        $resp = Cache::get("fixture-$id");
+
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
+
+        $response = [];
+        $fixture = null;
+        $league = null;
+        $teams = null;
+        $goals = null;
+        $score = null;
+        $events = null;
+        $lineups = null;
+        $match_statistics = null;
+        $standings = [];
+
+        if ($resp) {
+            if ($resp->results == 0) {
+                return ['status' => false];
+            }
+
+            $response = $resp->response[0];
+            $fixture = $resp->response[0]->fixture;
+            $league = $resp->response[0]->league;
+            $teams = $resp->response[0]->teams;
+            $goals = $resp->response[0]->goals;
+            $score = $resp->response[0]->score;
+            $events = $resp->response[0]->events;
+            $lineups = $resp->response[0]->lineups;
+            $match_statistics = $resp->response[0]->statistics;
+
+            $standings = LeagueCaller::getStandings($league->id, $league->season);
+
+        }
+
+        $standingstats = [
+            'status' => true,
+            'fixture' => $fixture,
+            'league' => $league,
+            'teams' => $teams,
+            'goals' => $goals,
+            'score' => $score,
+            'events' => $events,
+            'lineups' => $lineups,
+            'match_statistics' => $match_statistics,
+            'standings' => $standings,
+        ];
+
+        $expiresAt = Carbon::now()->endOfDay();
+        Cache::put("standings-$id", $standingstats, $expiresAt);
+
+        return $standingstats;
+    }
+
+    public function getHeadToHead(int $id)
+    {
+        $cachedStats = Cache::get("h2h-$id");
+        if($cachedStats){
+            return $cachedStats;
+        }
+
+        $resp = Cache::get("fixture-$id");
+
+        if(!$resp){
+            $url = self::URL . '/fixtures?id=' . $id;
+            $resp = CurlCaller::get($url, []);
+        }
+
+        $response = [];
+        $fixture = null;
+        $league = null;
+        $teams = null;
+        $goals = null;
+        $score = null;
+        $events = null;
+        $lineups = null;
+        $match_statistics = null;
+        $h2h = [];
+
+        if ($resp) {
+            if ($resp->results == 0) {
+                return ['status' => false];
+            }
+
+            $response = $resp->response[0];
+            $fixture = $resp->response[0]->fixture;
+            $league = $resp->response[0]->league;
+            $teams = $resp->response[0]->teams;
+            $goals = $resp->response[0]->goals;
+            $score = $resp->response[0]->score;
+            $events = $resp->response[0]->events;
+            $lineups = $resp->response[0]->lineups;
+            $match_statistics = $resp->response[0]->statistics;
+
+            $h2h = $this->getH2H($response);
+
+        }
+
+        $h2h = [
+            'status' => true,
+            'fixture' => $fixture,
+            'league' => $league,
+            'teams' => $teams,
+            'goals' => $goals,
+            'score' => $score,
+            'events' => $events,
+            'lineups' => $lineups,
+            'match_statistics' => $match_statistics,
+            'h2h' => $h2h,
+        ];
+
+        $expiresAt = Carbon::now()->endOfDay();
+        Cache::put("h2h-$id", $h2h, $expiresAt);
+
+        return $h2h;
     }
 }

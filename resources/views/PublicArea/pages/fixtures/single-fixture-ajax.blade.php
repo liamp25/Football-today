@@ -653,3 +653,4 @@ var predictionChartDiagram = new Chart(
 );
 }
 </script>
+

@@ -113,6 +113,7 @@ if(Session::has("fcm_token")){
                     success: function (response) {
                         console.log(response);
                         $('#collapse'+id).html(response);
+                        getMatchPreview(id);
                     }
                 });
 
@@ -120,76 +121,120 @@ if(Session::has("fcm_token")){
 
         });
 
-        $(document).on("click", ".match-preview-btn", function(){
+        // $(document).on("click", ".match-preview-btn", function(){
 
-            const collapsed = $(this).hasClass('collapsed');
-            if(collapsed == false){
+        //     const collapsed = $(this).hasClass('collapsed');
+        //     if(collapsed == false){
 
-                const id = $(this).data('id');
+        //         const id = $(this).data('id');
 
-                $.ajax({
-                    url: "/fixture/match-preview/ajax/"+id,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (response) {
-                        console.log(response);
-                        $('#match_preivew'+id).html(response);
-                    }
-                });
+        //          getMatchPreview();
 
-            }
+        //     }
 
-        });
+        // });
+
+        function getMatchPreview(id){
+            $.ajax({
+                url: "/fixture/match-preview/ajax/"+id,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                dataType: 'html',
+                success: function (response) {
+                    console.log(response);
+                    $('#match_preivew'+id).html(response);
+                    getHeadToHead(id);
+                    getStandings(id);
+                    getMatchStats(id);
+                    getPlayerStats(id);
+                }
+            });
+        }
+
+        function getHeadToHead(id) {
+            $.ajax({
+                url: "/fixture/head-to-head/ajax/"+id,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                dataType: 'html',
+                success: function (response) {
+                    console.log(response);
+                    $(`#headtohead-${id}`).html(response);
+                }
+            });
+        }
+
+        function getStandings(id) {
+            $.ajax({
+                url: "/fixture/standings/ajax/"+id,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                dataType: 'html',
+                success: function (response) {
+                    console.log(response);
+                    $(`#standings-${id}`).html(response);
+                }
+            });
+        }
 
 
-        $(document).on("click", ".navstatstab", function(){
+        // $(document).on("click", ".match-stats-tab", function(){
 
-            const collapsed = $(this).hasClass('collapsed');
-            if(collapsed == false){
-                const url = $(this).data('route');
-                const id = $(this).data('id');
-                $.ajax({
-                    url: url,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (response) {
-                        // console.log(response);
-                        $('#nav-stats-main'+id).html(response);
+        //     const collapsed = $(this).hasClass('collapsed');
+        //     if(collapsed == false){
+        //         const id = $(this).data('id');
+        //         getMatchStats(id);
+        //     }
 
-                    }
-                });
-            }
+        // });
 
-        });
+        function getMatchStats(id){
+            $.ajax({
+                url: "/fixture/match-stats/ajax/"+id,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                dataType: 'html',
+                success: function (response) {
+                    // console.log(response);
+                    $('#nav-stats'+id).html(response);
 
-        $(document).on("click", ".match-stats-tab", function(){
+                }
+            });
+        }
 
-            const collapsed = $(this).hasClass('collapsed');
-            if(collapsed == false){
-                const url = $(this).data('route');
-                const id = $(this).data('id');
-                $.ajax({
-                    url: url,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (response) {
-                        // console.log(response);
-                        $('#nav-stats'+id).html(response);
+        // $(document).on("click", ".player-stats-tab", function(){
 
-                    }
-                });
-            }
+        //     const collapsed = $(this).hasClass('collapsed');
+        //     if(collapsed == false){
+        //         const id = $(this).data('id');
+        //         getPlayerStats();
+        //     }
 
-        });
+        // });
+
+        function getPlayerStats(id){
+            $.ajax({
+                url: "/fixture/player-stats/ajax/"+id,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                dataType: 'html',
+                success: function (response) {
+                    // console.log(response);
+                    $('#nav-Player'+id).html(response);
+
+                }
+            });
+        }
 
     });
 </script>

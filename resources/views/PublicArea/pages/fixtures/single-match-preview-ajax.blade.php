@@ -662,11 +662,9 @@
                     href="#nav-summary{{ $fixture->id }}" role="tab" aria-controls="nav-summary"
                     aria-selected="true">summary</a>
                 <a class="nav-item nav-link match-stats-tab" id="nav-stats-tab" data-toggle="tab" href="#nav-stats{{ $fixture->id }}"
-                    role="tab" aria-controls="nav-stats" aria-selected="false" data-id="{{ $fixture->id }}"
-                        data-route="{{ route('public.matchstats', ['id' => $league->id, 'season' => $league->season, 'home_id' => $teams->home->id, 'away_id' => $teams->away->id]) }}">Team stats</a>
-                <a class="nav-item nav-link" id="nav-Player-tab" data-toggle="tab" href="#nav-Player{{ $fixture->id }}"
-                    role="tab" aria-controls="nav-Player" aria-selected="false" data-id="{{ $fixture->id }}"
-                    data-route="{{ route('public.playerstats', ['id' => $league->id, 'season' => $league->season, 'home_id' => $teams->home->id, 'away_id' => $teams->away->id]) }}">Player stats</a>
+                    role="tab" aria-controls="nav-stats" aria-selected="false" data-id="{{ $fixture->id }}">Team stats</a>
+                <a class="nav-item nav-link player-stats-tab" id="nav-Player-tab" data-toggle="tab" href="#nav-Player{{ $fixture->id }}"
+                    role="tab" aria-controls="nav-Player" aria-selected="false" data-id="{{ $fixture->id }}">Player stats</a>
             </div>
         </nav>
         <div class="tab-content py-3 px-sm-0" id="nav-tabContent">
@@ -833,268 +831,40 @@
                     </div>
                 </div>
                 {{-- end of recent form --}}
+                <div id="headtohead-{{ $fixture->id }}">
 
-                {{-- h2h --}}
-                <div class="mb-2">
-                    <div class="card align-middle bg-dark text-white">
-                        <h5 class="text-left p-2">Head To Head</h5>
-                    </div>
-                    <div class="card">
-                        <div class="card-body table-responsive">
-                            <table class="h2h_table table" style="width: 100%;">
-                                <tbody>
-                                    @forelse ($h2h as $h2h_single)
-                                        <tr class="thead-light">
-                                            <th colspan="5">
-                                                {{ \carbon\carbon::parse($h2h_single->fixture->timestamp)->setTimezone($timezone)->format('d/m/Y') }}
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-left" style="width: 15%">
-                                                <a class="no-underline"
-                                                    href="{{ route('public.team.get', [
-                                                        'nation' => str_replace(' ', '_', $league->country),
-                                                        'id' => $h2h_single->teams->home->id,
-                                                        'club' => str_replace(' ', '_', $h2h_single->teams->home->name),
-                                                    ]) }}">
-                                                    <img class="team-logo-h2h"
-                                                        src="{{ $h2h_single->teams->home->logo }}" alt="home">
-                                                </a>
-                                            </td>
-                                            <td class="text-left">
-                                                <a class="no-underline"
-                                                    href="{{ route('public.team.get', [
-                                                        'nation' => str_replace(' ', '_', $league->country),
-                                                        'id' => $h2h_single->teams->home->id,
-                                                        'club' => str_replace(' ', '_', $h2h_single->teams->home->name),
-                                                    ]) }}">
-                                                    {{ $h2h_single->teams->home->name }}
-                                                </a>
-                                            </td>
-                                            <td style="white-space: nowrap centered-links" align="center">
-                                                <p>{{ $h2h_single->goals->home }}-{{ $h2h_single->goals->away }}</p>
+                </div>
+                <div id="standings-{{ $fixture->id }}">
 
-                                            </td>
-                                            <td class="text-right">
-                                                <a class="no-underline"
-                                                    href="{{ route('public.team.get', [
-                                                        'nation' => str_replace(' ', '_', $league->country),
-                                                        'id' => $h2h_single->teams->away->id,
-                                                        'club' => str_replace(' ', '_', $h2h_single->teams->away->name),
-                                                    ]) }}">
-                                                    {{ $h2h_single->teams->away->name }}
-                                                </a>
-                                            </td>
-                                            <td class="text-right" style="width: 15%">
-                                                <a class="no-underline"
-                                                    href="{{ route('public.team.get', [
-                                                        'nation' => str_replace(' ', '_', $league->country),
-                                                        'id' => $h2h_single->teams->away->id,
-                                                        'club' => str_replace(' ', '_', $h2h_single->teams->away->name),
-                                                    ]) }}">
-                                                    <img class="team-logo-h2h"
-                                                        src="{{ $h2h_single->teams->away->logo }}" alt="home">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="5" class="text-center">
-                                                No data available
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+            </div>
+
+            <!-- Team stats tab content -->
+            <div class="tab-pane fade" id="nav-stats{{ $fixture->id }}" role="tabpanel"
+                aria-labelledby="nav-stats-tab">
+
+                <div class="text-center my-3" id="fixture-spinner">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+
                     </div>
                 </div>
-                {{-- End of h2h --}}
+            </div>
 
-                {{-- league table --}}
-                <div>
-                    <div class="card align-middle bg-dark text-white">
-                        <h5 class="text-left p-2">Table</h5>
-                    </div>
-                    <div class="card standing-table">
-                        <div class="">
-                            <div class="table-responsive">
-                                @forelse ($standings as $single_standing)
-                                    <table class="table wg-table">
-                                        <thead></thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="wg_header" colspan="11" style="text-align: left;">
-                                                    <img class="wg_flag" src="{{ $league->flag }}" loading="lazy">
-                                                    {{ $league->country }}: {{ $league->name }}
-                                                </td>
-                                            </tr>
-                                            <tr>
+            <!-- Player tab content -->
+            <div class="tab-pane fade" id="nav-Player{{ $fixture->id }}" role="tabpanel"
+                aria-labelledby="nav-Player-tab">
 
-                                                <td class="wg_header" colspan="2"></td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                    data-toggle="tooltip" data-placement="left"
-                                                    title="MATCHES PLAYED">
-                                                    MP</td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                    data-toggle="tooltip" data-placement="left" title="WIN">W</td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                    data-toggle="tooltip" data-placement="left" title="DRAW">D</td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                    data-toggle="tooltip" data-placement="left" title="LOSE">L</td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xxs"
-                                                    data-toggle="tooltip" data-placement="left"
-                                                    title="GOALS FOR:GOALS AGAINST">G</td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left wg_hide_xs"
-                                                    data-toggle="tooltip" data-placement="left" title="DIFFERENCE">
-                                                    +/-</td>
-                                                <td class="wg_header wg_text_center wg_tooltip wg_tooltip_left"
-                                                    data-toggle="tooltip" data-placement="left" title="POINTS">P</td>
-                                                <td class="wg_header wg_hide_xs" colspan="2"></td>
-                                            </tr>
-                                            @forelse ($single_standing as $standing)
-                                                @php
-                                                    $rowColor = '';
-                                                    if (isset($standing->description) && !empty($standing->description)) {
-                                                        $rowColor = 'lightblue';
-                                                    }
-                                                @endphp
-                                                <tr>
-                                                    <td class="wg_text_center wg_bolder wg_width_20"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->rank }}
-                                                    </td>
-                                                    <td class="wg_nowrap"
-                                                        style="text-align: left; background-color:{{ $rowColor }};">
-                                                        <img class="wg_logo" src="{{ $standing->team->logo }}"
-                                                            alt="">
-                                                        {{ $standing->team->name }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->all->played }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->all->win }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->all->draw }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->all->lose }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20 wg_hide_xxs"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->all->goals->for }}:{{ $standing->all->goals->against }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20 wg_hide_xs"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        {{ $standing->goalsDiff }}
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20"
-                                                        style="background-color: {{ $rowColor }};">
-                                                        <span class="<?php echo isset($standing->description) && !empty($standing->description) ? 'wg_tooltip wg_tooltip_left' : ''; ?>" data-toggle="tooltip"
-                                                            data-placement="left"
-                                                            title="{{ $standing->description }}">
-                                                            {{ $standing->points }}
-                                                        </span>
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_90 wg_hide_xs"
-                                                        style="text-align: left; background-color: {{ $rowColor }};">
-                                                        @php
-                                                            $str = $standing->form;
-                                                            $strCount = strlen($str);
-                                                        @endphp
-                                                        @if ($strCount > 0)
-                                                            @for ($i = 0; $i < $strCount; $i++)
-                                                                @switch($str[$i])
-                                                                    @case('W')
-                                                                        <span class="wg_form wg_form_win">W</span>
-                                                                    @break
-
-                                                                    @case('L')
-                                                                        <span class="wg_form wg_form_lose">L</span>
-                                                                    @break
-
-                                                                    @case('D')
-                                                                        <span class="wg_form wg_form_draw">D</span>
-                                                                    @break
-
-                                                                    @default
-                                                                @endswitch
-                                                            @endfor
-                                                        @endif
-                                                    </td>
-                                                    <td class="wg_text_center wg_width_20 wg_hide_xs">
-                                                        @if (isset($standing->description) && !empty($standing->description))
-                                                            <span class="wg_info wg_tooltip wg_tooltip_left"
-                                                                data-toggle="tooltip" data-placement="left"
-                                                                title="{{ $standing->description }}">?</span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                @empty
-                                                    <tr>
-                                                        <td colspan="11">
-                                                            No information Available
-                                                        </td>
-                                                    </tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                        @empty
-                                            <table class="table wg-table">
-                                                <thead></thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="11">
-                                                            No Standings Available
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        @endforelse
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- end league table --}}
-
+                <div class="text-center my-3" id="nav-player-spinner">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
 
                     </div>
-
-
-
-                    <!-- Team stats tab content -->
-
-                    <div class="tab-pane fade" id="nav-stats{{ $fixture->id }}" role="tabpanel"
-                        aria-labelledby="nav-stats-tab">
-
-                        <div class="text-center my-3" id="fixture-spinner">
-                            <div class="spinner-border" role="status">
-                                <span class="sr-only">Loading...</span>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Player tab content -->
-                    <div class="tab-pane fade" id="nav-Player{{ $fixture->id }}" role="tabpanel"
-                        aria-labelledby="nav-Player-tab">
-
-                        <div class="text-center my-3" id="nav-player-spinner">
-                            <div class="spinner-border" role="status">
-                                <span class="sr-only">Loading...</span>
-
-                            </div>
-                        </div>
-
-                    </div>
-
                 </div>
 
             </div>
+
         </div>
+    </div>
+</div>
+

@@ -61,9 +61,11 @@ Route::get('/user-logout', [RegistrationController::class, 'user_logout'])->name
 Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function () {
 
     // routes for fixtures
+    Route::get('/fixture/standings/ajax/{id}', 'FixtureController@getStandings')->name('public.standings.ajax');
+    Route::get('/fixture/head-to-head/ajax/{id}', 'FixtureController@getHeadToHead')->name('public.headtohead.ajax');
     Route::get('/fixture/player-stats/ajax/{id}', 'FixtureController@getPlayerStats')->name('public.playerstats');
-    Route::get('/fixture/team-stats/ajax/{id}', 'FixtureController@getTeamStats')->name('public.teamstats');
     Route::get('/fixture/match-stats/ajax/{id}', 'FixtureController@getMatchStats')->name('public.matchstats');
+
     Route::get('/', 'FixtureController@fixtures')->name('public.fixtures');
     Route::get('/fixtures/ajax', 'FixtureController@fixturesAjax')->name('public.fixtures.ajax');
     Route::get('/fixture/{id}', 'FixtureController@getFixture')->name('public.fixture.get');
