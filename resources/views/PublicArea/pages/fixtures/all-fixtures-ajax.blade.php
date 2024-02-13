@@ -2,9 +2,9 @@
 @foreach ($leagues as $key => $league)
 
 <div class="match_list container">
-    
+
     <p class="match__title"> {{$fixtures[$key][0]->league->country}} - {{$fixtures[$key][0]->league->name}}  <img width="8%" src="{{$fixtures[$key][0]->league->logo}}"</p>
-    
+
     @if (session('success'))
         <div class="alert alert-success w-100 confirm_msgs">{{ session('success') }}</div>
     @endif
@@ -95,16 +95,6 @@
                                             <div class="schedule match_live">{{$fixture->goals->home}} - {{$fixture->goals->away}}</div>
                                     @endswitch
 
-                                    <table>
-                                        <tr>
-                                            <td>RP</td>
-                                            <td>RP</td>
-                                            <td>RP</td>
-                                            <td>BTTS</td>
-                                            <td>2.5</td>
-                                            <td>2.5</td>
-                                        </tr>
-                                    </table>
                             </div>
                         </button>
                     </h5>

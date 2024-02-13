@@ -60,9 +60,24 @@
                             $homeOdd = 100 / $homePercentage;
                             $drawOdd = 100 / $drawPercentage;
                             $awayOdd = 100 / $awayPercentage;
+
+                            $odd1 = $homeOdd + 0.11;
+                            $oddx = $drawOdd + 0.2;
+                            $odd2 = $awayOdd + 0.08;
+
+                            $homePercent = round(100 / $odd1, 0);
+                            $drawPercent = round(100 / $oddx, 0);
+                            $awayPercent = round(100 / $odd2, 0);
+
+                            $score = get_score($homeOdd);
+                            $btts_yes = get_btts_yes($score);
+                            $btts_no = get_btts_no($score);
+                            $u25 = get_u25($score);
+                            $o25 = get_o25($score);
+
                         @endphp
                         <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">Overview {{ $homeOdd }} | {{ $drawOdd }} | {{ $awayOdd }}</h5>
+                            <h5 class="text-left p-2">Overview</h5>
                         </div>
                         <div class="card">
                             <div class="card-body table-responsive">
@@ -105,6 +120,37 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th colspan="3">Result Prob</th>
+                                    <th colspan="2">U/O 2.5 Prob</th>
+                                    <th colspan="2">BTTS Prob</th>
+                                </tr>
+                                <tr>
+                                    <th>1</th>
+                                    <th>X</th>
+                                    <th>2</th>
+                                    <th>U</th>
+                                    <th>O</th>
+                                    <th>BTTS Yes</th>
+                                    <th>BTTS No</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $homePercent }}</td>
+                                        <td>{{ $drawPercent }}</td>
+                                        <td>{{ $awayPercent }}</td>
+                                        <td>{{ $u25 }}</td>
+                                        <td>{{ $o25 }}</td>
+                                        <td>{{ $btts_yes }}</td>
+                                        <td>{{ $btts_no }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     {{-- End of predictions --}}
@@ -507,7 +553,7 @@
                                             XI</th>
                                         <th colspan="2" class="text-left">Starting XI</th>
                                     </tr>
-                                    @foreach ($lineups[0]->startXI as $key => $startXI)
+                                    @foreach ($lineups[0]?->startXI as $key => $startXI)
                                     <tr>
                                         <td>{{$lineups[0]->startXI[$key]->player->number}}</td>
                                         <td class="text-left"
