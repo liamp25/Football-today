@@ -2,13 +2,17 @@
 @foreach ($leagues as $key => $league)
 
 <div class="match_list container">
+    
     <p class="match__title"> {{$fixtures[$key][0]->league->country}} - {{$fixtures[$key][0]->league->name}}  <img width="8%" src="{{$fixtures[$key][0]->league->logo}}"</p>
+    
     @if (session('success'))
-    <div class="alert alert-success w-100 confirm_msgs">{{ session('success') }}</div>
-@endif
-@if (session('failure'))
-<div class="alert alert-danger w-100 confirm_msgs">{{ session('failure') }}</div>
-@endif
+        <div class="alert alert-success w-100 confirm_msgs">{{ session('success') }}</div>
+    @endif
+
+    @if (session('failure'))
+    <div class="alert alert-danger w-100 confirm_msgs">{{ session('failure') }}</div>
+    @endif
+
     <div class="matchloop">
         @foreach ($fixtures[$key] as $fixture)
             <div class="card mb-2">
@@ -19,77 +23,88 @@
                             <div class="">
                                 @switch($fixture->fixture->status->short)
                                     @case("CANC")
-                                    <td class="minute novis">
-                                        <div class="match-card match-current-minute">&nbsp;</div>
-                                    </td>
+                                        <td class="minute novis">
+                                            <div class="match-card match-current-minute">&nbsp;</div>
+                                        </td>
                                     @break
                                     @case("NS")
-                                    <td class="minute novis">
-                                        <div class="match-card match-current-minute">&nbsp;</div>
-                                    </td>
+                                        <td class="minute novis">
+                                            <div class="match-card match-current-minute">&nbsp;</div>
+                                        </td>
                                     @break
                                     @case("PST")
-                                    <td class="minute novis">
-                                        <div class="match-card match-current-minute">&nbsp;</div>
-                                    </td>
+                                        <td class="minute novis">
+                                            <div class="match-card match-current-minute">&nbsp;</div>
+                                        </td>
                                     @break
                                     @case("TBD")
-                                    <td class="minute novis">
-                                        <div class="match-card match-current-minute">&nbsp;</div>
-                                    </td>
+                                        <td class="minute novis">
+                                            <div class="match-card match-current-minute">&nbsp;</div>
+                                        </td>
                                     @break
                                     @case("1H")
-                                    <td class="minute visible">
-                                        <div class="match-card match-current-minute">{{$fixture->fixture->status->elapsed}}'</div>
-                                    </td>
+                                        <td class="minute visible">
+                                            <div class="match-card match-current-minute">{{$fixture->fixture->status->elapsed}}'</div>
+                                        </td>
                                     @break
                                     @case("2H")
-                                    <td class="minute visible">
-                                        <div class="match-card match-current-minute">{{$fixture->fixture->status->elapsed}}'</div>
-                                    </td>
+                                        <td class="minute visible">
+                                            <div class="match-card match-current-minute">{{$fixture->fixture->status->elapsed}}'</div>
+                                        </td>
                                     @break
                                     @case("ET")
-                                    <td class="minute visible">
-                                        <div class="match-card match-current-minute">{{$fixture->fixture->status->elapsed}}'</div>
-                                    </td>
+                                        <td class="minute visible">
+                                            <div class="match-card match-current-minute">{{$fixture->fixture->status->elapsed}}'</div>
+                                        </td>
                                     @break
                                     @case("HT")
-                                    <td class="minute visible">
-                                        <div class="match-card match-current-minute">{{$fixture->fixture->status->short}}</div>
-                                    </td>
+                                        <td class="minute visible">
+                                            <div class="match-card match-current-minute">{{$fixture->fixture->status->short}}</div>
+                                        </td>
                                     @break
                                     @default
-                                    <td class="minute visible-2">
-                                        <div class="match-card match-current-minute">{{$fixture->fixture->status->short}}</div>
-                                    </td>
+                                        <td class="minute visible-2">
+                                            <div class="match-card match-current-minute">{{$fixture->fixture->status->short}}</div>
+                                        </td>
                                     @endswitch
 
-                                <div class="d-flex align-items-center">
-                                    <span>
-                                        <img width="20" class="mr-1" src="{{$fixture->teams->home->logo}}" alt="">{{$fixture->teams->home->name}}
-                                    </span>
-                                    <span class="mx-2">vs</span>
-                                    <span>
-                                        <img width="20" class="mr-1" src="{{$fixture->teams->away->logo}}" alt="">{{$fixture->teams->away->name}}
-                                    </span>
-                                </div>
-                                @switch($fixture->fixture->status->short)
-                                @case("CANC")
-                                <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
-                                @break
-                                @case("PST")
-                                <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
-                                @break
-                                @case("TBD")
-                                <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
-                                @break
-                                @case("NS")
-                                <div class="schedule match_live">{{\carbon\carbon::parse($fixture->fixture->timestamp)->setTimezone($timezone)->format('H:i')}}</div>
-                                @break
-                                @default
-                                <div class="schedule match_live">{{$fixture->goals->home}} - {{$fixture->goals->away}}</div>
-                                @endswitch
+                                    <div class="d-flex align-items-center">
+                                        <span>
+                                            <img width="20" class="mr-1" src="{{$fixture->teams->home->logo}}" alt="">{{$fixture->teams->home->name}}
+                                        </span>
+                                        <span class="mx-2">vs</span>
+                                        <span>
+                                            <img width="20" class="mr-1" src="{{$fixture->teams->away->logo}}" alt="">{{$fixture->teams->away->name}}
+                                        </span>
+                                    </div>
 
+                                    @switch($fixture->fixture->status->short)
+                                        @case("CANC")
+                                            <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
+                                        @break
+                                        @case("PST")
+                                            <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
+                                        @break
+                                        @case("TBD")
+                                            <div class="schedule match_live">{{$fixture->fixture->status->short}}</div>
+                                        @break
+                                        @case("NS")
+                                            <div class="schedule match_live">{{\carbon\carbon::parse($fixture->fixture->timestamp)->setTimezone($timezone)->format('H:i')}}</div>
+                                        @break
+                                        @default
+                                            <div class="schedule match_live">{{$fixture->goals->home}} - {{$fixture->goals->away}}</div>
+                                    @endswitch
+
+                                    <table>
+                                        <tr>
+                                            <td>RP</td>
+                                            <td>RP</td>
+                                            <td>RP</td>
+                                            <td>BTTS</td>
+                                            <td>2.5</td>
+                                            <td>2.5</td>
+                                        </tr>
+                                    </table>
                             </div>
                         </button>
                     </h5>

@@ -48,8 +48,21 @@
 
                     {{-- predictions --}}
                     <div class="mb-2">
+                        @php
+                            $homePercentage = $predictions['predictions'][0]->predictions->percent->home;
+                            $drawPercentage = $predictions['predictions'][0]->predictions->percent->draw;
+                            $awayPercentage = $predictions['predictions'][0]->predictions->percent->away;
+
+                            $homePercentage = intval(trim($homePercentage, "%"));
+                            $drawPercentage = intval(trim($drawPercentage, "%"));
+                            $awayPercentage = intval(trim($awayPercentage, "%"));
+
+                            $homeOdd = 100 / $homePercentage;
+                            $drawOdd = 100 / $drawPercentage;
+                            $awayOdd = 100 / $awayPercentage;
+                        @endphp
                         <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">Overview</h5>
+                            <h5 class="text-left p-2">Overview {{ $homeOdd }} | {{ $drawOdd }} | {{ $awayOdd }}</h5>
                         </div>
                         <div class="card">
                             <div class="card-body table-responsive">
@@ -601,7 +614,6 @@
             </div>
         </div>
     </div>
-
 
 
 <script>
