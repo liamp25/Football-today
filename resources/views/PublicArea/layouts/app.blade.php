@@ -75,6 +75,17 @@
             margin-left: 0 !important;
           }
         }
+
+        .probs-table{
+            width: 100%;
+            background: #000;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .probs-table th, .probs-table td{
+            padding: 0px 12px;
+        }
     </style>
 </head>
 

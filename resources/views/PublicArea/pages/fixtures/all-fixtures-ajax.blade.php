@@ -98,6 +98,35 @@
                             </div>
                         </button>
                     </h5>
+                    <table class="probs-table pt-{{ $fixture->fixture->id }}" data-id="{{ $fixture->fixture->id }}">
+                        <thead>
+                            {{-- <tr>
+                                <th colspan="3">Result Prob</th>
+                                <th colspan="2">U/O 2.5 Prob</th>
+                                <th colspan="2">BTTS Prob</th>
+                            </tr> --}}
+                            <tr>
+                                <th>1</th>
+                                <th>X</th>
+                                <th>2</th>
+                                <th>U 2.5 Prob</th>
+                                <th>O 2.5 Prob</th>
+                                <th>BTTS Yes</th>
+                                <th>BTTS No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="prob-tr-{{ $fixture->fixture->id }}">
+                                <td class="match_live">0</td>
+                                <td class="match_live">0</td>
+                                <td class="match_live">0</td>
+                                <td class="match_live">0</td>
+                                <td class="match_live">0</td>
+                                <td class="match_live">0</td>
+                                <td class="match_live">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div id="collapse{{$fixture->fixture->id}}" class="collapse" aria-labelledby="heading{{$fixture->fixture->id}}">

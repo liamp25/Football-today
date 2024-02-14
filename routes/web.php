@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminArea\MembershipController;
 use App\Http\Controllers\AdminArea\UserAccountController;
 use App\Http\Controllers\AdminArea\UserController;
 use App\Http\Controllers\AdminArea\StripeController;
+use App\Http\Controllers\PublicArea\FixtureController;
 use App\Http\Controllers\PublicArea\PlanController;
 
 /*
@@ -61,6 +62,8 @@ Route::get('/user-logout', [RegistrationController::class, 'user_logout'])->name
 Route::prefix('/')->namespace('App\Http\Controllers\PublicArea')->group(function () {
 
     // routes for fixtures
+    Route::get('/probabilities/ajax/{id}', 'FixtureController@getProbabilities')->name('public.probabilities.ajax');
+
     Route::get('/fixture/standings/ajax/{id}', 'FixtureController@getStandings')->name('public.standings.ajax');
     Route::get('/fixture/head-to-head/ajax/{id}', 'FixtureController@getHeadToHead')->name('public.headtohead.ajax');
     Route::get('/fixture/player-stats/ajax/{id}', 'FixtureController@getPlayerStats')->name('public.playerstats');
@@ -151,3 +154,6 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\AdminArea')->group(func
     Route::get('/user-account/reset-password', [UserAccountController::class, 'reset_password'])->name('reset-password');
     Route::post('/user-account/reset-password', [UserAccountController::class, 'reset_password_add'])->name('reset-password');
 });
+
+
+Route::get('salim/{id}', [FixtureController::class,'getProbabilities']);

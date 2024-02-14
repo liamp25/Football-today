@@ -209,4 +209,48 @@ class FixtureController extends Controller
 
         return view('PublicArea.pages.fixtures.player-stats-tab')->with($data);
     }
+
+    public function getProbabilities(int $id){
+
+        $prediction = FixtureCaller::getOnlyPredictions($id);
+
+        $homePercentage = $prediction->percent->home;
+        $drawPercentage = $prediction->percent->draw;
+        $awayPercentage = $prediction->percent->away;
+
+        $homePercentage = intval(trim($homePercentage, "%"));
+        $drawPercentage = intval(trim($drawPercentage, "%"));
+        $awayPercentage = intval(trim($awayPercentage, "%"));
+
+        $homeOdd = $homePercentage > 0 ? 100 / $homePercentage : 0;
+        $drawOdd = $drawPercentage > 0 ? 100 / $drawPercentage : 0;
+        $awayOdd = $awayPercentage > 0 ? 100 / $awayPercentage : 0;
+
+        $odd1 = $homeOdd > 0 ? $homeOdd + 0.11 : 0;
+        $oddx = $drawOdd > 0 ? $drawOdd + 0.2 : 0;
+        $odd2 = $awayOdd > 0 ? $awayOdd + 0.08 : 0;
+
+
+        $homePercent = $odd1 > 0 ? round(100 / $odd1, 0) : 0;
+        $drawPercent = $oddx > 0 ? round(100 / $oddx, 0) : 0;
+        $awayPercent = $odd2 > 0 ? round(100 / $odd2, 0) : 0;
+
+        $score = get_score($homeOdd);
+
+        $btts_yes = $score != "" ? get_btts_yes($score) : "0";
+        $btts_no =  $score != "" ? get_btts_no($score) : "0";
+        $u25 =      $score != "" ? get_u25($score) : "0";
+        $o25 =      $score != "" ? get_o25($score) : "0";
+
+        return response()->json([
+            "score" => $score,
+            "btts_yes" => $btts_yes,
+            "btts_no" => $btts_no,
+            "u25" => $u25,
+            "o25" => $o25,
+            "homePercent" => $homePercent,
+            "drawPercent" => $drawPercent,
+            "awayPercent" => $awayPercent,
+        ], 200);
+    }
 }

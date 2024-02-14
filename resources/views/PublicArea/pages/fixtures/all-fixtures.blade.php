@@ -12,7 +12,7 @@ if(Session::has("fcm_token")){
 
 <div class="row mt-3">
 
-    <div class="col text-left">
+    <div class="col-xl-8 text-left">
         <div id="fixtures_list" class="my-3">
             <div class="text-center">
                 <div class="spinner-border" role="status">
@@ -22,12 +22,12 @@ if(Session::has("fcm_token")){
         </div>
     </div>
 
-    {{-- <div class="col-xl-4 text-left">
+    <div class="col-xl-4 text-left">
         <div class="card align-middle bg-dark text-white">
             <h5 class="text-left p-2">Date Picker</h5>
         </div>
         <div class="calendar-wrapper"></div>
-    </div> --}}
+    </div>
 
 </div>
 
@@ -65,6 +65,7 @@ if(Session::has("fcm_token")){
         eval(config);
     });
 
+    let probFetched = false;
     function getAllFixtures() {
         $.ajax({
             url: "{{ route('public.fixtures.ajax') }}",
@@ -74,8 +75,47 @@ if(Session::has("fcm_token")){
             type: 'GET',
             dataType: 'html',
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 $('#fixtures_list').html(response);
+                
+               
+                    $(".probs-table").each(function(){
+
+                        let id = $(this).data("id");
+                        if(probFetched == false){
+                            $.ajax({
+                                url: "/probabilities/ajax/"+id,
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                                    'Accept': 'application/json'
+                                },
+                                type: 'GET',
+                                success: function (response) {
+                                    let html = "";
+                                    console.log(response);
+                                    html += `<td class='match_live'>${response.homePercent}</td>`;
+                                    html += `<td class='match_live'>${response.drawPercent}</td>`;
+                                    html += `<td class='match_live'>${response.awayPercent}</td>`;
+                                    html += `<td class='match_live'>${response.u25}</td>`;
+                                    html += `<td class='match_live'>${response.o25}</td>`;
+                                    html += `<td class='match_live'>${response.btts_yes}</td>`;
+                                    html += `<td class='match_live'>${response.btts_no}</td>`;
+                                    $("#prob-tr-"+id).html(html);
+
+                                    probFetched = true;
+                                }
+                            });  
+                        }
+                    
+                    });
+           
+                    // let ids = [];
+                    // $(".probs-table").each(function(){
+                    //     let id = $(this).data("id");
+                    //     ids.push(id);
+                    // });
+
+                    // console.log(ids);
             }
         });
     }

@@ -1,4 +1,8 @@
 <?php
+$homeOdd = 3.48;
+$drawOdd = 3.24;
+$awayOdd = 2;
+
 $score = '';
 if($homeOdd >= 1 && $homeOdd < 1.2){
     $score = '5:1';
@@ -266,3 +270,13 @@ $o25_array = [
 $o25 = $o25_array[$score];
 
 
+echo "<pre>";
+print_r([
+    "1" => round($homePercent),
+    "x" => round($drawPercent),
+    "2" => round($awayPercent),
+    "o25" => $o25,
+    "u25" => $u25,
+    "btts_yes" => $btts_yes,
+    "btts_no" => $btts_no
+]);

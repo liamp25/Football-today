@@ -44,7 +44,7 @@ class FixtureService
             $date = Carbon::now()->format('Y-m-d');
         }
 
-        $url = self::URL . '/fixtures?date=' . $date;
+        $url = self::URL . "/fixtures?date=$date";
 
         $resp = CurlCaller::get($url, []);
 
@@ -714,6 +714,29 @@ class FixtureService
         // }
 
         return $h2h;
+    }
+
+    public function getOnlyPredictions($id){
+
+        $cachedStats = Cache::get("probs-$id");
+        if($cachedStats){
+            return $cachedStats;
+        }
+
+        $predictions = [];
+
+        $url = self::URL . '/predictions?fixture=' . $id;
+
+        $resp = CurlCaller::get($url, []);
+
+        if ($resp) {
+            $predictions = $resp->response[0]->predictions;
+        }
+
+        $expiresAt = Carbon::now()->endOfDay();
+        Cache::put("probs-$id", $predictions, $expiresAt);
+
+        return $predictions;
     }
 
     public function getPredictions($id)

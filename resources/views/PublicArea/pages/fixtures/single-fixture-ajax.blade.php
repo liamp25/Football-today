@@ -57,9 +57,9 @@
                             $drawPercentage = intval(trim($drawPercentage, "%"));
                             $awayPercentage = intval(trim($awayPercentage, "%"));
 
-                            $homeOdd = 100 / $homePercentage;
-                            $drawOdd = 100 / $drawPercentage;
-                            $awayOdd = 100 / $awayPercentage;
+                            $homeOdd = $homePercentage > 0 ? 100 / $homePercentage : 0;
+                            $drawOdd = $drawPercentage > 0 ? 100 / $drawPercentage : 0;
+                            $awayOdd = $awayPercentage > 0 ? 100 / $awayPercentage : 0;
 
                             $odd1 = $homeOdd + 0.11;
                             $oddx = $drawOdd + 0.2;
@@ -77,7 +77,7 @@
 
                         @endphp
                         <div class="card align-middle bg-dark text-white">
-                            <h5 class="text-left p-2">Overview</h5>
+                            <h5 class="text-left p-2">Overview | {{ $homePercentage }} || {{ $drawPercentage }} || {{ $awayPercentage }}</h5>
                         </div>
                         <div class="card">
                             <div class="card-body table-responsive">
@@ -632,18 +632,14 @@
 
 
         <!-- win probiblity start-->
-        {{-- <p class="Progress_title text-center">Win probability</p>
+        <p class="Progress_title text-center">Win probability</p>
         <div class="px-5">
-            @php
-                $predictions = json_decode(json_encode($predictions), true);
-                $homePercentage = $predictions['predictions'][0]['predictions']['percent']['home'];
-                $awayPercentage = $predictions['predictions'][0]['predictions']['percent']['away'];
-            @endphp
             <div class="progress ">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span class="progress-bar-text">{{ $homePercentage }}</span></div>
+            <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span class="progress-bar-text">{{ $homePercentage }}</span></div>
+            <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><span class="progress-bar-text">{{ $drawPercentage }}</span></div>
             <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span class="progress-bar-text">{{ $awayPercentage }}</span></div>
             </div>
-        </div> --}}
+        </div>
         <!-- win probiblity End -->
 
 
