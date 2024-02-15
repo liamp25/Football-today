@@ -93,13 +93,11 @@ if(Session::has("fcm_token")){
                                 success: function (response) {
                                     let html = "";
                                     console.log(response);
+                                    html += `<td class='match_live'>${response.u25_or_o25 == "O2.5" ? "Yes" : "No"}</td>`;
                                     html += `<td class='match_live'>${response.homePercent}</td>`;
                                     html += `<td class='match_live'>${response.drawPercent}</td>`;
                                     html += `<td class='match_live'>${response.awayPercent}</td>`;
-                                    html += `<td class='match_live'>${response.u25}</td>`;
-                                    html += `<td class='match_live'>${response.o25}</td>`;
-                                    html += `<td class='match_live'>${response.btts_yes}</td>`;
-                                    html += `<td class='match_live'>${response.btts_no}</td>`;
+                                    html += `<td class='match_live'>${response.btts_yes_or_no == "Yes" ? "Yes" : "No"}</td>`;
                                     $("#prob-tr-"+id).html(html);
 
                                     probFetched = true;

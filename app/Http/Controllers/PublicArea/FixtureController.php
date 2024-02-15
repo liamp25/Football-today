@@ -237,20 +237,15 @@ class FixtureController extends Controller
 
         $score = get_score($homeOdd);
 
-        // $btts_yes = $score != "" ? get_btts_yes($score) : "0";
-        // $btts_no =  $score != "" ? get_btts_no($score) : "0";
-        // $u25 =      $score != "" ? get_u25($score) : "0";
-        // $o25 =      $score != "" ? get_o25($score) : "0";
-
-        $btts_yes_or_no = get_btts_yes_or_no($score);
+        $btts_yes_or_no = $score ? get_btts_yes_or_no($score) : "";
         $btts_yes = $btts_yes_or_no == "Yes" ? "Yes" : "No";
         $btts_no = $btts_yes_or_no == "No" ? "Yes" : "No";
 
-        $u25_or_o25 = get_u25_or_o25($score);
-        $u25 = $u25_or_o25 == "U25" ? "Yes" : "No";
-        $o25 = $u25_or_o25 == "O25" ? "Yes" : "No";
+        $u25_or_o25 = $score ? get_u25_or_o25($score) : "";
+        $u25 = $u25_or_o25 == "U2.5" ? "Yes" : "No";
+        $o25 = $u25_or_o25 == "O2.5" ? "Yes" : "No";
 
-        $one_x_two  = get_1x2($score);
+        $one_x_two  = $score ? get_1x2($score) : "";
         $one = $one_x_two == "1" ? "Yes" : "No";
         $x = $one_x_two == "X" ? "Yes" : "No";
         $two = $one_x_two == "2" ? "Yes" : "No";

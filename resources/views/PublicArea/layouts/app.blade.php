@@ -68,12 +68,13 @@
         transform: scale(1.2);
     }
         @media only screen and (max-width:992px){
-        li a.bg-danger{
-            width: max-content;
-            padding: 10px !important;
-            margin-bottom: 20px;
-            margin-left: 0 !important;
-          }
+            li a.bg-danger{
+                width: max-content;
+                padding: 10px !important;
+                margin-bottom: 20px;
+                margin-left: 0 !important;
+            }
+
         }
 
         .probs-table{
@@ -83,9 +84,25 @@
             font-size: 13px;
         }
 
-        .probs-table th, .probs-table td{
-            padding: 0px 12px;
+
+        @media only screen and (min-width:767px){
+            
+            .matchbtn{
+                display: flex;
+                align-items: center;
+            }
+
+            .probs-table{
+                max-width: 200px;
+            }
+
+            .probs-table th, .probs-table td{
+                padding: 0px 12px;
+            }
+
         }
+
+        
     </style>
 </head>
 
